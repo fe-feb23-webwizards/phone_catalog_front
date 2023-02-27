@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
-  BrowserRouter, Navigate, Route, Routes,
+  HashRouter, Navigate, Route, Routes,
 } from 'react-router-dom';
 import './index.scss';
 import { HomePage } from './components/HomePage/HomePage';
@@ -13,22 +13,17 @@ import { PageNotFound } from './components/PageNotFound/PageNotFound';
 import { App } from './App';
 
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     <Routes>
       <Route path="/" element={<App />}>
-        <Route index element={<HomePage />} />
-
         <Route path="/home" element={<Navigate to="/" replace />} />
-
         <Route path="/phones" element={<PhonesPage />} />
-
         <Route path="/tablets" element={<TabletsPage />} />
-
         <Route path="/accessories" element={<AccessoriesPage />} />
-
         <Route path="*" element={<PageNotFound />} />
+        <Route index element={<HomePage />} />
       </Route>
     </Routes>
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('root'),
 );
