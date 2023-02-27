@@ -1,3 +1,10 @@
-.starter {
-  font-size: 18px;
+@import './stylesScss/reset';
+@import './stylesScss/mixins';
+@import './stylesScss/fontsTypography';
+
+@import './stylesScss/_blocks/container';
+@import './stylesScss/_blocks/gridTemplate';
+
+:root {
+  font-family: "Mont", sans-serif;
 }
