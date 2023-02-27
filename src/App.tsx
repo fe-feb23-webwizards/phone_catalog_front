@@ -21,6 +21,7 @@ export const App: React.FC = () => {
     <div className="starter">
       <Provider onClick={() => ({})}>
         <h1>Hello Web Wizards</h1>
+        <h1>test Yura</h1>
       </Provider>
     </div>
   );
