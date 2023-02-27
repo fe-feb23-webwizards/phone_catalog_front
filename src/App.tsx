@@ -20,7 +20,7 @@ export const App: React.FC = () => {
   return (
     <div className="starter">
       <Provider onClick={() => ({})}>
-        <h1>Hello Web Wizards!!!</h1>
+        <h1>Hello Web Wizards!!!111</h1>
       </Provider>
     </div>
   );
