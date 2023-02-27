@@ -19,6 +19,7 @@ export const Provider: React.FC<Props> = React.memo(
 export const App: React.FC = () => {
   return (
     <div className="starter">
+      <p>This button make magic</p>
       <Provider onClick={() => ({})}>
         <h1>Hello Web Wizards</h1>
       </Provider>
