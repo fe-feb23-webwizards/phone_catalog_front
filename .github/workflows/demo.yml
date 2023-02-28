@@ -1,14 +1,12 @@
-name: Demo WorkFlow
+name: Test React App
 on: push
 jobs: 
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Hello Web Wizards
-        run: echo Hello GH Actions
       - name: Get repository code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Install dependecies
-        run: npm i
-      - name: Eslint test
+        run: npm ci
+      - name: Test application
         run: npm run lint
