@@ -20,9 +20,9 @@ ReactDOM.render(
         <Route path="/phones" element={<PhonesPage />} />
         <Route path="/tablets" element={<TabletsPage />} />
         <Route path="/accessories" element={<AccessoriesPage />} />
-        <Route path="*" element={<PageNotFound />} />
         <Route index element={<HomePage />} />
       </Route>
+      <Route path="*" element={<PageNotFound />} />
     </Routes>
   </HashRouter>,
   document.getElementById('root'),
