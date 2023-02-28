@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/phone_catalog_front/static/css/main.ddcab02b.chunk.css",
-    "main.js": "/phone_catalog_front/static/js/main.b713f6b3.chunk.js",
-    "main.js.map": "/phone_catalog_front/static/js/main.b713f6b3.chunk.js.map",
+    "main.css": "/phone_catalog_front/static/css/main.13aed1e2.chunk.css",
+    "main.js": "/phone_catalog_front/static/js/main.d74ab58f.chunk.js",
+    "main.js.map": "/phone_catalog_front/static/js/main.d74ab58f.chunk.js.map",
     "runtime-main.js": "/phone_catalog_front/static/js/runtime-main.59e92e60.js",
     "runtime-main.js.map": "/phone_catalog_front/static/js/runtime-main.59e92e60.js.map",
-    "static/js/2.b8d2aa51.chunk.js": "/phone_catalog_front/static/js/2.b8d2aa51.chunk.js",
-    "static/js/2.b8d2aa51.chunk.js.map": "/phone_catalog_front/static/js/2.b8d2aa51.chunk.js.map",
+    "static/js/2.b5f3df4e.chunk.js": "/phone_catalog_front/static/js/2.b5f3df4e.chunk.js",
+    "static/js/2.b5f3df4e.chunk.js.map": "/phone_catalog_front/static/js/2.b5f3df4e.chunk.js.map",
     "index.html": "/phone_catalog_front/index.html",
-    "static/css/main.ddcab02b.chunk.css.map": "/phone_catalog_front/static/css/main.ddcab02b.chunk.css.map",
-    "static/js/2.b8d2aa51.chunk.js.LICENSE.txt": "/phone_catalog_front/static/js/2.b8d2aa51.chunk.js.LICENSE.txt",
-    "static/media/Footer.scss": "/phone_catalog_front/static/media/FooterOk.d8dc8b76.svg",
-    "static/media/FooterLogo.ee9ae639.svg": "/phone_catalog_front/static/media/FooterLogo.ee9ae639.svg",
+    "static/css/main.13aed1e2.chunk.css.map": "/phone_catalog_front/static/css/main.13aed1e2.chunk.css.map",
+    "static/js/2.b5f3df4e.chunk.js.LICENSE.txt": "/phone_catalog_front/static/js/2.b5f3df4e.chunk.js.LICENSE.txt",
     "static/media/App.scss": "/phone_catalog_front/static/media/Mont-SemiBold.0b5e68eb.ttf",
-    "static/media/heart.578c502d.svg": "/phone_catalog_front/static/media/heart.578c502d.svg"
+    "static/media/banner-desktop.5ee429b1.jpeg": "/phone_catalog_front/static/media/banner-desktop.5ee429b1.jpeg",
+    "static/media/heart.578c502d.svg": "/phone_catalog_front/static/media/heart.578c502d.svg",
+    "static/media/Slider.scss": "/phone_catalog_front/static/media/prev.b18d031c.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.59e92e60.js",
-    "static/js/2.b8d2aa51.chunk.js",
-    "static/css/main.ddcab02b.chunk.css",
-    "static/js/main.b713f6b3.chunk.js"
+    "static/js/2.b5f3df4e.chunk.js",
+    "static/css/main.13aed1e2.chunk.css",
+    "static/js/main.d74ab58f.chunk.js"
   ]
 }
