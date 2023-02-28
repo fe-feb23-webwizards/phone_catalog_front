@@ -6,7 +6,6 @@ export const NewModelsList = () => {
   return (
     <section>
       <h1 className="title">Brand new models</h1>
-
       <div className="catalog">
         <div className="card">
           <img
