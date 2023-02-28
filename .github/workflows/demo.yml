@@ -1,0 +1,14 @@
+name: Demo WorkFlow
+on: push
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello Web Wizards
+        run: echo Hello GH Actions
+      - name: Get repository code
+        uses: actions/checkout@v3
+      - name: Install dependecies
+        run: npm ci
+      - name: Eslint test
+        run: npm run lint
