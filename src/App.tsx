@@ -12,11 +12,11 @@ export const App: React.FC = () => {
 
       <Outlet />
 
-      <Footer />
-
       <div className="starter">
         <NewModelsList />
       </div>
+
+      <Footer />
     </div>
 
   );
