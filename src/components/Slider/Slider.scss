@@ -1,0 +1,93 @@
+
+.title{
+  font-style: normal;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 56px;
+  /* identical to box height, or 117% */
+
+  letter-spacing: -0.01em;
+
+  /* Gray/Primary */
+
+  color: #0F0F11;
+
+  margin-bottom: 56px;
+}
+
+.slider-container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.slider-wrapper {
+  display: flex;
+  width: 1040px;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slider-image {
+  width: 100%;
+  height: 100%;
+}
+
+.slider-controls {
+  display: flex;
+  align-items: center;
+}
+
+.slider-control {
+  width: 32px;
+  height: 400px;
+
+  /* Gray / Icons + Placeholders */
+  border: 1px solid #B4BDC4;
+  border-radius: 48px;
+
+}
+
+.slider-control:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.slider-control-left {
+  margin-right: 20px;
+
+  background-image: url("./prev.svg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.slider-control-right {
+  margin-left: 20px;
+
+  background-image: url("./next.svg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+
+.slider-indicators {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.slider-indicator {
+  width: 14px;
+  height: 4px;
+
+  /* Gray/Primary */
+  background: #E2E6E9;
+
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+
+  &-active {
+    background: #0F0F11;
+  }
+}
