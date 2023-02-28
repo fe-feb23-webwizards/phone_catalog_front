@@ -12,7 +12,7 @@ export const App: React.FC = () => {
       <Header />
 
       <Outlet />
-
+      <Slider />
       <div className="starter">
         <NewModelsList />
       </div>
