@@ -7,8 +7,8 @@ jobs:
       - name: Hello Web Wizards
         run: echo Hello GH Actions
       - name: Get repository code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
       - name: Install dependecies
-        run: npm ci
+        run: npm i
       - name: Eslint test
         run: npm run lint
