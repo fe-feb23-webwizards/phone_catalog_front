@@ -30,7 +30,7 @@ export const NewModelsList = () => {
       <div className="catalog">
         {slidesToShow.map(el => (
           <div className="card" key={el.id}>
-            <img src={el.image} alt="iphone" className="card__img" />
+            <img src={`../../data/${el.image}`} alt="iphone" className="card__img" />
             <h2 className="card__name">{el.name}</h2>
             <span className="card__price">{`${el.price}$`}</span>
             <div className="card__underline"></div>

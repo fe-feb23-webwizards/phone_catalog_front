@@ -12,11 +12,8 @@ export const App: React.FC = () => {
       <Header />
 
       <Outlet />
-
-      <div className="starter">
-        <NewModelsList />
-      </div>
-
+      <Slider />
+      <NewModelsList />
       <Footer />
     </div>
 
