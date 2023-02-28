@@ -4,11 +4,7 @@
   font-weight: 800;
   font-size: 48px;
   line-height: 56px;
-  /* identical to box height, or 117% */
-
   letter-spacing: -0.01em;
-
-  /* Gray/Primary */
 
   color: #0F0F11;
 
@@ -19,13 +15,16 @@
   display: grid;
   justify-content: center;
   align-items: center;
+
   margin: 0 auto;
 }
 
 .slider-wrapper {
   display: flex;
+
   width: 1040px;
   height: 100%;
+
   transition: transform 0.5s ease-in-out;
 }
 
@@ -37,6 +36,8 @@
 .slider-controls {
   display: flex;
   align-items: center;
+
+  margin-bottom: 18px;
 }
 
 .slider-control {
