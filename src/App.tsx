@@ -11,7 +11,9 @@ export const App: React.FC = () => {
     <div className="App">
       <Header />
 
-      <Outlet />
+      <main className="main">
+        <Outlet />
+      </main>
 
       <Footer />
 

@@ -1,0 +1,20 @@
+@mixin gridColums ($number, $size) {
+  grid-template-columns: repeat($number, $size);
+}
+
+$card-width: 272px;
+
+.title {
+  margin-bottom: 24px;
+}
+
+.catalog {
+  display: grid;
+  @include gridColums(4, $card-width);
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  gap: 16px;
+  width: $card-width;
+  max-width: 1200px;
+}

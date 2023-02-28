@@ -1,6 +1,6 @@
-import cn from 'classnames';
 import React, { memo, ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
+import cn from 'classnames';
 
 type Props = {
   to: string,
