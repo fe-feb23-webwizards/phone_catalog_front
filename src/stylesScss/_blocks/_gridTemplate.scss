@@ -1,5 +1,6 @@
 $columns--tablet: 12;
 $columns--desktop: 24;
+$columns--mobile: 4;
 
 .grid {
   display: grid;
@@ -11,6 +12,10 @@ $columns--desktop: 24;
 
   @include onDesktop {
     grid-template-columns: repeat($columns--desktop, 1fr);
+  }
+
+  @include onMobile {
+    grid-template-columns: repeat($columns--mobile, 1fr);
   }
 
   &__item {
@@ -27,6 +32,16 @@ $columns--desktop: 24;
     @include onDesktop {
       @for $start from 1 through $columns--desktop {
         @for $end from 1 through $columns--desktop {
+          &--desktop_#{$start}-#{$end} {
+            grid-column: #{$start} / #{($end + 1)};
+          }
+        }
+      }
+    }
+
+    @include onMobile {
+      @for $start from 1 through $columns--mobile {
+        @for $end from 1 through $columns--mobile {
           &--desktop_#{$start}-#{$end} {
             grid-column: #{$start} / #{($end + 1)};
           }
