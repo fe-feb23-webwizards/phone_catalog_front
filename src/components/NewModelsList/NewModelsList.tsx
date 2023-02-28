@@ -1,6 +1,6 @@
 import React from 'react';
 import './NewModelsList.scss';
-import heart from '../../images/heart.svg';
+import heart from '../../stylesScss/images/heart.svg';
 
 export const NewModelsList = () => {
   return (
