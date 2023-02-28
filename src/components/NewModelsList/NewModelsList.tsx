@@ -14,7 +14,7 @@ export const NewModelsList = () => {
     setCurrentSlide(currentSlide === 0 ? phones.length - 1 : currentSlide - 1);
   };
 
-  const slidesToShow = phones.slice(currentSlide, currentSlide + 4);
+  const slidesToShow = phones.sort((a, b) => b.year - a.year).slice(currentSlide, currentSlide + 4);
 
   return (
     <section className="newModels">
