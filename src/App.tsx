@@ -13,12 +13,11 @@ export const App: React.FC = () => {
 
       <Outlet />
 
-      <Footer />
-
-      <Slider />
       <div className="starter">
         <NewModelsList />
       </div>
+
+      <Footer />
     </div>
 
   );
