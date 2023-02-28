@@ -4,10 +4,6 @@
 
 $card-width: 272px;
 
-* {
-  margin: 0;
-}
-
 .title {
   margin-bottom: 24px;
 }
@@ -117,6 +113,12 @@ $card-width: 272px;
     border: 1px solid #B4BDC3;
     border-radius: 50%;
     background-color: #fff;
+
+    transition: 0.3s, border 0.3s;
+  }
+
+  &__add-to-favorite:hover {
+    border: 1px solid black;
   }
 
   .description {
