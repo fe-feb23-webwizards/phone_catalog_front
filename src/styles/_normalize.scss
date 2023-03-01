@@ -1,0 +1,21 @@
+@import 'mixins';
+
+:root {
+  font-family: "Mont", sans-serif;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  background: #fff;
+
+  @include onTablet {
+    padding: 0 24px;
+  }
+
+  @include onDesktop {
+    padding: 0 32px;
+  }
+}

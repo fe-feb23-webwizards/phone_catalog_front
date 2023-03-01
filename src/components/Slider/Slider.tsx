@@ -1,13 +1,13 @@
 import React, {
-  memo, useState, useEffect, useCallback,
+  memo, useState, useCallback,
 } from 'react';
-import banner1 from './banner-desktop-1.jpeg';
+// import banner1 from './banner-desktop-1.jpeg';
 import banner2 from './banner-desktop-2.jpeg';
 import banner3 from './banner-desktop-3.jpeg';
 import './Slider.scss';
 
 const slides = [
-  { id: 'banner-1', image: banner1 },
+  { id: 'banner-1', image: banner2 },
   { id: 'banner-2', image: banner2 },
   { id: 'banner-3', image: banner3 },
 ];
@@ -23,21 +23,13 @@ export const Slider: React.FC = memo(() => {
     setCurrentSlide((currentSlide - 1 + slides.length) % slides.length);
   }, [currentSlide]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNextSlide();
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [handleNextSlide]);
-
   const slideStyle = {
-    transform: `translateX(-${currentSlide * 1040}px)`,
+    transform: `translateX(-${currentSlide * 100}%)`,
   };
 
   return (
-    <>
-      <h1 className="title">Welcome to Nice Gadgets store!</h1>
+    <section className="slider">
+      <h1 className="slider__title">Welcome to Nice Gadgets store!</h1>
 
       <div className="slider-container">
         <div className="slider-controls">
@@ -49,9 +41,12 @@ export const Slider: React.FC = memo(() => {
           />
 
           <div className="slider-wrapper" style={slideStyle}>
-            {slides.map(({ id, image }) => (
-              <div className="slider-item" key={id}>
-                <img className="slider-image" src={image} alt={`banner ${id}`} />
+            {slides.map((slide, index) => (
+              <div
+                className={`slider-item ${index === currentSlide ? 'slider-item-visible' : 'slider-item-hidden'}`}
+                key={slide.id}
+              >
+                <img className="slider-image" src={slide.image} alt={`banner ${slide.id}`} />
               </div>
             ))}
           </div>
@@ -74,10 +69,11 @@ export const Slider: React.FC = memo(() => {
                 index === currentSlide ? 'slider-indicator-active' : ''
               }`}
               onClick={() => setCurrentSlide(index)}
-            />
+            >
+            </div>
           ))}
         </div>
       </div>
-    </>
+    </section>
   );
 });

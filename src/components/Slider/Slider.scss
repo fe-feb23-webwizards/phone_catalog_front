@@ -1,13 +1,18 @@
-.title{
-  font-style: normal;
-  font-weight: 800;
-  font-size: 48px;
-  line-height: 56px;
-  letter-spacing: -0.01em;
+@import "../../styles/_colors.scss";
 
-  color: #0F0F11;
+.slider {
 
-  margin-bottom: 56px;
+  &__title{
+    font-style: normal;
+    font-weight: 800;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+
+    color: $color__primary;
+
+    margin-bottom: 56px;
+  }
 }
 
 .slider-container {
@@ -28,13 +33,29 @@
 }
 
 .slider-item {
-  width: 1040px;
-  flex-shrink: 0;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s;
+}
+
+.slider-item-visible {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.slider-item-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition-delay: 0.5s;
 }
 
 .slider-image {
   width: 100%;
-  height: 100%;
+
   border-radius: 8px;
   object-fit: cover;
 }
