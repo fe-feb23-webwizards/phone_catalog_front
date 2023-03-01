@@ -1,15 +1,19 @@
 @import 'mixins';
+@import "colors";
 
 :root {
-  font-family: "Mont", sans-serif;
+  font-family: "Mont_Regular", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+
+  background: $color__white;
 }
 
 .main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 16px;
-
-  background: #fff;
 
   @include onTablet {
     padding: 0 24px;
