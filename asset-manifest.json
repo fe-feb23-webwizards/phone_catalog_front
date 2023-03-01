@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/phone_catalog_front/static/css/main.c07037dd.chunk.css",
-    "main.js": "/phone_catalog_front/static/js/main.f1915bd6.chunk.js",
-    "main.js.map": "/phone_catalog_front/static/js/main.f1915bd6.chunk.js.map",
+    "main.css": "/phone_catalog_front/static/css/main.868460e3.chunk.css",
+    "main.js": "/phone_catalog_front/static/js/main.b33953bf.chunk.js",
+    "main.js.map": "/phone_catalog_front/static/js/main.b33953bf.chunk.js.map",
     "runtime-main.js": "/phone_catalog_front/static/js/runtime-main.59e92e60.js",
     "runtime-main.js.map": "/phone_catalog_front/static/js/runtime-main.59e92e60.js.map",
-    "static/js/2.eff37d1f.chunk.js": "/phone_catalog_front/static/js/2.eff37d1f.chunk.js",
-    "static/js/2.eff37d1f.chunk.js.map": "/phone_catalog_front/static/js/2.eff37d1f.chunk.js.map",
+    "static/js/2.443f0dbb.chunk.js": "/phone_catalog_front/static/js/2.443f0dbb.chunk.js",
+    "static/js/2.443f0dbb.chunk.js.map": "/phone_catalog_front/static/js/2.443f0dbb.chunk.js.map",
     "index.html": "/phone_catalog_front/index.html",
-    "static/css/main.c07037dd.chunk.css.map": "/phone_catalog_front/static/css/main.c07037dd.chunk.css.map",
-    "static/js/2.eff37d1f.chunk.js.LICENSE.txt": "/phone_catalog_front/static/js/2.eff37d1f.chunk.js.LICENSE.txt",
+    "static/css/main.868460e3.chunk.css.map": "/phone_catalog_front/static/css/main.868460e3.chunk.css.map",
+    "static/js/2.443f0dbb.chunk.js.LICENSE.txt": "/phone_catalog_front/static/js/2.443f0dbb.chunk.js.LICENSE.txt",
     "static/media/Footer.scss": "/phone_catalog_front/static/media/FooterOk.d8dc8b76.svg",
     "static/media/FooterLogo.ee9ae639.svg": "/phone_catalog_front/static/media/FooterLogo.ee9ae639.svg",
     "static/media/App.scss": "/phone_catalog_front/static/media/Mont-SemiBold.0b5e68eb.ttf",
-    "static/media/banner-desktop.5ee429b1.jpeg": "/phone_catalog_front/static/media/banner-desktop.5ee429b1.jpeg",
+    "static/media/banner-desktop-2.5ee429b1.jpeg": "/phone_catalog_front/static/media/banner-desktop-2.5ee429b1.jpeg",
+    "static/media/banner-desktop-3.5ee429b1.jpeg": "/phone_catalog_front/static/media/banner-desktop-3.5ee429b1.jpeg",
     "static/media/elemLogo.e22bc262.svg": "/phone_catalog_front/static/media/elemLogo.e22bc262.svg",
     "static/media/heart.1c1258b1.svg": "/phone_catalog_front/static/media/heart.1c1258b1.svg",
     "static/media/heartFavourite.fd9ca830.svg": "/phone_catalog_front/static/media/heartFavourite.fd9ca830.svg",
@@ -24,8 +25,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.59e92e60.js",
-    "static/js/2.eff37d1f.chunk.js",
-    "static/css/main.c07037dd.chunk.css",
-    "static/js/main.f1915bd6.chunk.js"
+    "static/js/2.443f0dbb.chunk.js",
+    "static/css/main.868460e3.chunk.css",
+    "static/js/main.b33953bf.chunk.js"
   ]
 }
