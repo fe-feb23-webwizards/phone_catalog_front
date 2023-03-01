@@ -1,6 +1,6 @@
 import React, { memo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../stylesScss/images/FooterLogo.svg';
+import logo from '../../styles/images/FooterLogo.svg';
 
 import './Footer.scss';
 

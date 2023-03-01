@@ -1,9 +1,9 @@
-@import './stylesScss/reset';
-@import './stylesScss/mixins';
-@import './stylesScss/fontsTypography';
+@import 'styles/reset';
+@import 'styles/mixins';
+@import 'styles/fontsTypography';
 
-@import './stylesScss/_blocks/container';
-@import './stylesScss/_blocks/gridTemplate';
+@import 'styles/_blocks/container';
+@import 'styles/_blocks/gridTemplate';
 
 :root {
   font-family: "Mont", sans-serif;

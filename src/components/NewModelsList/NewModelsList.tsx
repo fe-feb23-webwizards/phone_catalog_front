@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './NewModelsList.scss';
-import heart from '../../stylesScss/images/heart.svg';
+import heart from '../../styles/images/heart.svg';
 import phones from '../../data/phones.json';
 
 export const NewModelsList = () => {

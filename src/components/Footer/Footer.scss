@@ -1,4 +1,4 @@
-@import "../../stylesScss/_colors.scss";
+@import "../../styles/_colors.scss";
 
 .Footer {
   position: relative;
@@ -59,7 +59,7 @@
 
   &__left::after {
     position: absolute;
-    content: url('../../stylesScss/images/FooterOk.svg');
+    content: url('../../styles/images/FooterOk.svg');
     left: 70px;
     bottom: 47px;
   }
@@ -82,7 +82,7 @@
     cursor: pointer;
     width: 32px;
     height: 32px;
-    background-image: url("../../stylesScss/images/BackTo.svg");
+    background-image: url("../../styles/images/BackTo.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-color: $color__white;

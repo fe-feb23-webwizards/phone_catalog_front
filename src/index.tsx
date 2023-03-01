@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import {
   HashRouter, Navigate, Route, Routes,
 } from 'react-router-dom';
-import './index.scss';
 import { HomePage } from './components/HomePage/HomePage';
 import { PhonesPage } from './components/PhonesPage/PhonesPage';
 import { TabletsPage } from './components/TabletsPage/TabletsPage';
