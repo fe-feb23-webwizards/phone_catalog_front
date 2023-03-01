@@ -1,29 +1,75 @@
-import React, {
-  memo, useState,
-  /*
-useEffect
-*/ } from 'react';
+import React, { memo, useMemo, useState } from 'react';
+import './PhonesPage.scss';
 import { PhoneCards } from '../PhoneCards/PhoneCards';
 import { Pagination } from '../Pagination/Pagination';
 import phones from './cardsTestApi.json';
 import { Phone } from '../../types/Phone';
 
 export const PhonesPage: React.FC = memo(() => {
+  const [sortBy, setSortBy] = useState('newest');
+
   const [cards] = useState<Phone[]>(phones);
   const [isLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [cardsPerPage] = useState(16);
+  const [cardsPerPage, setCardsPerPage] = useState(16);
 
   const indexOfLastCard = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
   const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
 
+  const getSortedCards = useMemo(() => {
+    return currentCards.sort((card1: Phone, card2: Phone) => {
+      switch (sortBy) {
+        case 'newest':
+          return card2.year - card1.year;
+        case 'alphabetically':
+          return card1.phoneId.localeCompare(card2.phoneId);
+        case 'cheapest':
+          return card1.price - card2.price;
+        default:
+          return 0;
+      }
+    });
+  }, [sortBy, cards, currentPage, cardsPerPage]);
+
   return (
-    // <h1>Phones Page</h1>
-    <>
-      {/* // <h1>Phones Page</h1> */}
+    <div className="container">
+      <h1 className="page-title">Mobile Phones</h1>
+
+      <div className="catalog-display">
+        <div className="sorter">
+          <div className="sorter__name">Sort by</div>
+          <select
+            className="sorter__selector sorter__selector--sort"
+            onChange={(event) => {
+              setSortBy(event.target.value);
+              setCurrentPage(1);
+            }}
+          >
+            <option value="newest">Newest</option>
+            <option value="alphabetically">Alphabetically</option>
+            <option value="cheapest">Cheapest</option>
+          </select>
+        </div>
+
+        <div className="sorter">
+          <div className="sorter__name">Items on page</div>
+          <select
+            className="sorter__selector sorter__selector--per-page"
+            onChange={(event) => {
+              setCardsPerPage(+event.target.value);
+              setCurrentPage(1);
+            }}
+          >
+            <option value="16">16</option>
+            <option value="12">12</option>
+            <option value="8">8</option>
+          </select>
+        </div>
+      </div>
+
       <PhoneCards
-        cards={currentCards}
+        cards={getSortedCards}
         isLoading={isLoading}
       />
       <Pagination
@@ -32,6 +78,6 @@ export const PhonesPage: React.FC = memo(() => {
         changePage={setCurrentPage}
         currentPage={currentPage}
       />
-    </>
+    </div>
   );
 });

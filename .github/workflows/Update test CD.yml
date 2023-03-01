@@ -5,10 +5,11 @@ on:
     branches:
      - main
      
+permissions:
+  contents: write
+     
 jobs:
   build:
-    permissions:
-     contents: write
     runs-on: ubuntu-latest
    
     steps:
@@ -16,6 +17,11 @@ jobs:
       uses: actions/checkout@master
       with:
         persist-credentials: false
+        
+    - name: node install
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
         
     - name: Install
       run: npm install
