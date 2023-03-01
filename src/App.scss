@@ -1,16 +1,8 @@
 @import 'styles/reset';
 @import 'styles/mixins';
 @import 'styles/fontsTypography';
+@import 'styles/normalize';
+@import 'styles/colors';
 
 @import 'styles/_blocks/container';
 @import 'styles/_blocks/gridTemplate';
-
-:root {
-  font-family: "Mont", sans-serif;
-  background: #fff;
-}
-
-.main {
-  margin-top: 24px;
-  margin-bottom: 40px;
-}
