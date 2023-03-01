@@ -17,9 +17,8 @@ $card-width-mob: 287px;
   @include gridColums(4, $card-width-desc);
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin: auto;
   gap: 16px;
-  width: $card-width-desc;
   max-width: 1200px;
 
   @include onMobile {
