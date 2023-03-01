@@ -31,7 +31,7 @@ export const Header: React.FC = memo(() => (
     <div className="user-nav">
       <ul className="user-nav__list">
         <PageNavLink
-          to="favorites"
+          to="favourites"
           text={(
             <li className="user-nav__item">
               <img src={heart} alt="favorites" />
@@ -39,7 +39,7 @@ export const Header: React.FC = memo(() => (
           )}
         />
         <PageNavLink
-          to="shopping-bag"
+          to="cart"
           text={(
             <li className="user-nav__item">
               <img src={bag} alt="shopping bag" />
