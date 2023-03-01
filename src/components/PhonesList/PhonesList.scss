@@ -75,11 +75,10 @@ $card-width: 272px;
 .card {
   height: 506px;
   padding: 32px 16px 16px;
-
-  background-color: #fff;
+  margin-bottom: 56px;
+  background: #FFFFFF;
   border: 1px solid #E2E6E9;
-  border-radius: 5px;
-  margin-bottom: 80px;
+  border-radius: 8px;
 
   &__flex {
     display: flex;
