@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/phone_catalog_front/static/css/main.b3230a1a.chunk.css",
+    "main.css": "/phone_catalog_front/static/css/main.915a1d69.chunk.css",
     "main.js": "/phone_catalog_front/static/js/main.78cc3a81.chunk.js",
     "main.js.map": "/phone_catalog_front/static/js/main.78cc3a81.chunk.js.map",
     "runtime-main.js": "/phone_catalog_front/static/js/runtime-main.59e92e60.js",
@@ -8,7 +8,7 @@
     "static/js/2.cf1f481f.chunk.js": "/phone_catalog_front/static/js/2.cf1f481f.chunk.js",
     "static/js/2.cf1f481f.chunk.js.map": "/phone_catalog_front/static/js/2.cf1f481f.chunk.js.map",
     "index.html": "/phone_catalog_front/index.html",
-    "static/css/main.b3230a1a.chunk.css.map": "/phone_catalog_front/static/css/main.b3230a1a.chunk.css.map",
+    "static/css/main.915a1d69.chunk.css.map": "/phone_catalog_front/static/css/main.915a1d69.chunk.css.map",
     "static/js/2.cf1f481f.chunk.js.LICENSE.txt": "/phone_catalog_front/static/js/2.cf1f481f.chunk.js.LICENSE.txt",
     "static/media/Footer.scss": "/phone_catalog_front/static/media/FooterOk.d8dc8b76.svg",
     "static/media/FooterLogo.ee9ae639.svg": "/phone_catalog_front/static/media/FooterLogo.ee9ae639.svg",
@@ -25,7 +25,7 @@
   "entrypoints": [
     "static/js/runtime-main.59e92e60.js",
     "static/js/2.cf1f481f.chunk.js",
-    "static/css/main.b3230a1a.chunk.css",
+    "static/css/main.915a1d69.chunk.css",
     "static/js/main.78cc3a81.chunk.js"
   ]
 }
