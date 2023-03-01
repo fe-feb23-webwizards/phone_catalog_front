@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PhoneCard } from '../PhoneCard/PhoneCard';
 import './PhonesList.scss';
 import { Phone } from '../../types/Phone';
@@ -13,6 +13,7 @@ type Props = {
 export const PhonesList = (props: Props) => {
   const { title, phones } = props;
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [slidesPerView, setSlidesPerView] = useState(4);
 
   const nextSlide = () => {
     setCurrentSlide(currentSlide === phones.length - 1 ? 0 : currentSlide + 1);
@@ -22,7 +23,19 @@ export const PhonesList = (props: Props) => {
     setCurrentSlide(currentSlide === 0 ? phones.length - 1 : currentSlide - 1);
   };
 
-  const slidesToShow = phones.slice(currentSlide, currentSlide + 4);
+  const windowWidth = window.innerWidth;
+
+  useEffect(() => {
+    if (windowWidth < 1200) {
+      setSlidesPerView(3);
+    }
+
+    if (windowWidth < 640) {
+      setSlidesPerView(2);
+    }
+  }, []);
+
+  const slidesToShow = phones.slice(currentSlide, currentSlide + slidesPerView);
 
   return (
     <section className="phonesList">
@@ -37,7 +50,7 @@ export const PhonesList = (props: Props) => {
           </button>
         </div>
       </div>
-      <div className="catalog">
+      <div className={`catalog catalog--${slidesPerView}`}>
         {slidesToShow.map(el => (
           <PhoneCard phone={el} key={el.id} />
         ))}
