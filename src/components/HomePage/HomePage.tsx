@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import { PhonesList } from '../PhonesList/PhonesList';
 import { Slider } from '../Slider/Slider';
-import { phonesAPI } from '../../utils/phonesFromAPI'
+import { phonesAPI } from '../../utils/phonesFromAPI';
 
 const newPhones = phonesAPI.filter(el => el.year > 2018);
 const phonesWithDiscount = phonesAPI.filter(el => el.fullPrice - el.price > 50)

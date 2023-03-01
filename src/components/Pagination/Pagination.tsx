@@ -40,7 +40,6 @@ export const Pagination: React.FC<Props> = ({
           >
             {pageNumber}
           </button>
-          // </li>
         ))}
       </div>
 
