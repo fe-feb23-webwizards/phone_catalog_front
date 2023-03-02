@@ -1,3 +1,5 @@
+@import '../../styles/mixins';
+
 html {
   font-family: "Roboto", sans-serif;
   background-color: #e5e5e5;
@@ -18,56 +20,166 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
   padding: 0px;
   background: #FFFFFF;
   box-shadow: 0px 1px 0px #E2E6E9;
+
+  @include onMobile {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.header__mobile {
+  @include onMobile {
+    height: 100vh;
+  }
 }
 
 .nav {
   display: flex;
+
+  @include onMobile {
+    width: 100%;
+
+    flex-direction: column;
+  }
+
+  &__link {
+    display: flex;
+
+    @include onMobile {
+      flex-direction: row;
+      justify-content: space-between;
+      box-shadow: 0px 1px 0px #E2E6E9;
+    }
+
+    &--logo {
+      display: block;
+      margin: auto;
+      object-fit: contain;
+      margin-right: 48px;
+      margin-left: 24px;
+    
+      &-el {
+        position: absolute;
+        margin-left: -40px;
+      }
+    }
+
+    &--menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 64px;
+      height: 64px;
+      box-shadow: -1px 0px 0px #E2E6E9;
+      
+      @include onDesktop {
+        display: none;
+      }
+
+      @include onTablet {
+        display: none;
+      }
+    }
+  }
 }
 
-.user_nav {
+.navigation {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
+
+  @include onMobile {
+    flex-direction: column;
+    height: 100%;
+    opacity: 1;
+    transition: all 0.4s ease-in;
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+
+    @include onMobile {
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+
+    &:not(:last-child) {
+      margin-right: 64px;
+      transition: margin-right 0.3s ease-in-out;
+    
+      @include onTablet {
+        margin-right: 32px;
+        transition: margin-right 0.3s ease-in-out;
+      }
+
+      @include onMobile {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__user {
+    width: 100%;
+  
+    @include onMobile {
+      display: flex;
+    }
+
+    &__list {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: right;
+      list-style: none;
+      width: 100%;
+    
+      @include onMobile {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    &__item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 64px;
+      height: 64px;
+      box-shadow: -1px 0px 0px #E2E6E9;
+    
+      @include onMobile {
+        width: 100%;
+        border-top: 1px solid #E2E6E9;
+      }
+    }
+  }
 }
 
-.img__logo {
-  display: block;
-  margin: auto;
-  object-fit: contain;
-  margin-right: 48px;
-  margin-left: 24px;
+.navigation__mobile {
+  @include onMobile {
+    height: 0;
+    opacity: 0;
+    transition: all 0.4s ease-out;
+  }
 }
 
-.img__logo__el {
-  position: absolute;
-  margin-left: -40px;
-}
-
-
-.nav__list {
-  display: flex;
-  list-style: none;
-}
-
-.user-nav__list {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-}
-
-.nav__item:not(:last-child) {
-  margin-right: 64px;
-}
-
-.user-nav__item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 64px;
+.link__icon {
+  box-sizing: border-box;
   height: 64px;
-  box-shadow: -1px 0px 0px #E2E6E9;
+
+  @include onMobile {
+    display: block;
+    width: 100%;
+  }
 }
 
 .link__item {
@@ -75,6 +187,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 64px;
+
   font-family: 'Mont';
   font-style: normal;
   font-weight: 800;
@@ -85,25 +198,16 @@ body {
   text-transform: uppercase;
   color: #89939A;
 
+  &:hover {
+    color:#0F0F11;
+  }
+
+  @include onMobile {
+    width: fit-content;
+  }
 }
 
-.link__item:hover,
 .is-active {
-  color:#0F0F11;
-}
-
-.is-active {
-  position: relative;
-
-  &::after {
-  display: block;
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 4px;
-  bottom: 0;
-  left: 0;
-  background: #0F0F11;
-  /* border-radius: 8px; */
-}
+  box-sizing: border-box;
+  border-bottom: 4px solid #0F0F11;
 }
