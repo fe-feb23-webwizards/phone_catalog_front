@@ -1,29 +1,87 @@
-import React, { memo } from 'react';
+import React, {
+  memo, useState, useCallback,
+} from 'react';
+import banner1 from './banner-desktop-1.jpeg';
+import banner2 from './banner-desktop-2.jpeg';
+import banner3 from './banner-desktop-3.jpeg';
 import './Slider.scss';
-import banner from './banner-desktop.jpeg';
 
-export const Slider: React.FC = memo(() => (
-  <>
-    <h1 className="title">Welcome to Nice Gadgets store!</h1>
+const slides = [
+  { id: 'banner-1', image: banner1 },
+  { id: 'banner-2', image: banner2 },
+  { id: 'banner-3', image: banner3 },
+];
 
-    <div className="slider-container">
-      <div className="slider-controls">
-        {' '}
-        {/* eslint-disable-next-line react/button-has-type,jsx-a11y/control-has-associated-label */}
-        <button className="slider-control slider-control-left"></button>
-        <div className="slider-wrapper">
-          <img className="slider-image" src={banner} alt="banner 1" />
+export const Slider: React.FC = memo(() => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const handleNextSlide = useCallback(() => {
+    setCurrentSlide((currentSlide + 1) % slides.length);
+  }, [currentSlide]);
+
+  const handlePrevSlide = useCallback(() => {
+    setCurrentSlide((currentSlide - 1 + slides.length) % slides.length);
+  }, [currentSlide]);
+
+  const slideWrapperStyle = {
+    transform: `translateX(-${currentSlide * 100}%)`,
+  };
+
+  const slideStyle = (index: number) => {
+    return {
+      left: `${index * 100}%`,
+    };
+  };
+
+  return (
+    <section className="slider">
+      <h1 className="slider__title">Welcome to Nice Gadgets store!</h1>
+
+      <div className="slider-container">
+        <div className="slider-controls">
+          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+          <button
+            className="slider-control slider-control-left"
+            onClick={handlePrevSlide}
+            type="button"
+          />
+
+          <div className="slider-wrapper" style={slideWrapperStyle}>
+            {slides.map((slide, index) => (
+              <div
+                style={slideStyle(index)}
+                className={`slider-item ${index === currentSlide ? 'slider-item-visible' : 'slider-item-hidden'}`}
+                key={slide.id}
+              >
+                <h1>{slide.id}</h1>
+                <img key={slide.id} className="slider-image" src={slide.image} alt={`banner ${slide.id}`} />
+              </div>
+            ))}
+          </div>
+
+          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+          <button
+            className="slider-control slider-control-right"
+            onClick={handleNextSlide}
+            type="button"
+          />
         </div>
-        {/* eslint-disable-next-line react/button-has-type,jsx-a11y/control-has-associated-label */}
-        <button className="slider-control slider-control-right"></button>
+
+        <div className="slider-indicators">
+          {slides.map(({ id }, index) => (
+            // eslint-disable-next-line max-len
+            // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
+            <div
+              key={id}
+              className={`slider-indicator ${
+                index === currentSlide ? 'slider-indicator-active' : ''
+              }`}
+              onClick={() => setCurrentSlide(index)}
+            >
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="slider-indicators">
-        {' '}
-        <div className="slider-indicator slider-indicator-active"></div>
-        <div className="slider-indicator"></div>
-        {' '}
-        <div className="slider-indicator"></div>
-      </div>
-    </div>
-  </>
-));
+    </section>
+  );
+});
