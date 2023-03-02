@@ -26,31 +26,32 @@
 
 .slider-wrapper {
   display: flex;
-  overflow: hidden;
   width: 1040px;
+  position: relative;
   height: 400px;
   transition: transform 0.5s ease-in-out;
 }
 
 .slider-item {
   opacity: 0;
+  width: 100%;
   visibility: hidden;
   position: absolute;
   top: 0;
   left: 0;
-  transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s;
+  transition: transform 1.5s linear;
 }
 
 .slider-item-visible {
   opacity: 1;
   visibility: visible;
-  transition-delay: 0s;
+  transition: opacity 0.5s linear;
 }
 
 .slider-item-hidden {
   opacity: 0;
   visibility: hidden;
-  transition-delay: 0.5s;
+  transition: opacity 0.5s linear;
 }
 
 .slider-image {
@@ -63,14 +64,14 @@
 .slider-controls {
   display: flex;
   align-items: center;
-
   margin-bottom: 18px;
+  overflow: hidden;
 }
 
 .slider-control {
   width: 32px;
   height: 400px;
-
+  z-index: 999;
   border: 1px solid #B4BDC4;
   border-radius: 48px;
 

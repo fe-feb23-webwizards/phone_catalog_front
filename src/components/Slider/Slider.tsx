@@ -1,13 +1,13 @@
 import React, {
   memo, useState, useCallback,
 } from 'react';
-// import banner1 from './banner-desktop-1.jpeg';
+import banner1 from './banner-desktop-1.jpeg';
 import banner2 from './banner-desktop-2.jpeg';
 import banner3 from './banner-desktop-3.jpeg';
 import './Slider.scss';
 
 const slides = [
-  { id: 'banner-1', image: banner2 },
+  { id: 'banner-1', image: banner1 },
   { id: 'banner-2', image: banner2 },
   { id: 'banner-3', image: banner3 },
 ];
@@ -23,8 +23,14 @@ export const Slider: React.FC = memo(() => {
     setCurrentSlide((currentSlide - 1 + slides.length) % slides.length);
   }, [currentSlide]);
 
-  const slideStyle = {
+  const slideWrapperStyle = {
     transform: `translateX(-${currentSlide * 100}%)`,
+  };
+
+  const slideStyle = (index: number) => {
+    return {
+      left: `${index * 100}%`,
+    };
   };
 
   return (
@@ -40,13 +46,15 @@ export const Slider: React.FC = memo(() => {
             type="button"
           />
 
-          <div className="slider-wrapper" style={slideStyle}>
+          <div className="slider-wrapper" style={slideWrapperStyle}>
             {slides.map((slide, index) => (
               <div
+                style={slideStyle(index)}
                 className={`slider-item ${index === currentSlide ? 'slider-item-visible' : 'slider-item-hidden'}`}
                 key={slide.id}
               >
-                <img className="slider-image" src={slide.image} alt={`banner ${slide.id}`} />
+                <h1>{slide.id}</h1>
+                <img key={slide.id} className="slider-image" src={slide.image} alt={`banner ${slide.id}`} />
               </div>
             ))}
           </div>
