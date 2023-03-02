@@ -7,6 +7,31 @@
   gap: 16px;
 }
 
+.page-title {
+  margin-top: 40px;
+  margin-bottom: 8px;
+
+  font-family: 'Mont';
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+
+  letter-spacing: -0.01em;
+  color: #0F0F11;
+}
+
+.products-amount {
+  margin-bottom: 40px;
+
+  font-family: 'Mont';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+
+  color: #89939A;
+}
+
 .sorter {
   margin-bottom: 24px;
 
@@ -28,7 +53,7 @@
 
     border: 1px solid #b4bdc4;
     border-radius: 8px;
-    
+
     font-family: 'Mont';
     font-style: normal;
     font-weight: 700;
@@ -42,7 +67,17 @@
 
     &--per-page {
       width: 136px;
+
+      @include onMobile {
+        max-width: 136px;
+        ;
+        margin: auto
+      }
     }
 
+    @include onMobile {
+      max-width: 136px;
+      ;
+    }
   }
 }
