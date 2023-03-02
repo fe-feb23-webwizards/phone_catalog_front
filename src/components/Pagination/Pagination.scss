@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 40px;
+  flex-wrap: nowrap;
 }
 
 .pag-buttons {
@@ -42,6 +43,8 @@
 }
 
 .pag-list {
+  display: flex;
+  flex-wrap: nowrap;
   &__item {
     text-align: center;
     line-height: 32px;

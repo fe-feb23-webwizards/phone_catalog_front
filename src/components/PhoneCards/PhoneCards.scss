@@ -1,36 +1,20 @@
 @import "../../styles/mixins";
 
-@mixin gridColums ($number, $size) {
-  grid-template-columns: repeat($number, $size);
-}
-
-$card-width-desc: 272px;
-$card-width-tab: 288px;
-$card-width-mob: 287px;
-
-.title {
-  margin-bottom: 24px;
-}
-
 .catalog {
   display: grid;
-  @include gridColums(4, $card-width-desc);
+  grid-template-columns: repeat(1, minmax(min-content, max-content));
   justify-content: center;
-  align-items: center;
-  margin: 0 auto;
   gap: 16px;
-  width: $card-width-desc;
-  max-width: 1200px;
-
-  @include onMobile {
-    @include gridColums(2, $card-width-mob);
-  }
 
   @include onTablet {
-    @include gridColums(3, $card-width-tab);
+    grid-template-columns: repeat(2, minmax(min-content, max-content));
+
+    @media (min-width: 900px) {
+      grid-template-columns: repeat(3, minmax(min-content, max-content));
+    }
   }
 
   @include onDesktop {
-    @include gridColums(4, $card-width-desc);
+    grid-template-columns: repeat(4, minmax(min-content, max-content));
   }
 }
