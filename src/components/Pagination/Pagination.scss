@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 40px;
+  flex-wrap: nowrap;
 }
 
 .pag-buttons {
@@ -38,10 +38,13 @@
 
   &:hover {
     border-color: #0F0F11;
+    transition: 0.3s, border 0.3s;
   }
 }
 
 .pag-list {
+  display: flex;
+  flex-wrap: nowrap;
   &__item {
     text-align: center;
     line-height: 32px;
@@ -51,4 +54,10 @@
       color: #0F0F11;
     }
   }
+}
+
+.is-active-pag {
+  color: #fff;
+  border-color: #0F0F11;
+  background-color: #0F0F11;
 }

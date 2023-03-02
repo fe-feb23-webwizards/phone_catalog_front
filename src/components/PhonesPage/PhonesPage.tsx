@@ -1,8 +1,9 @@
 import React, { memo, useMemo, useState } from 'react';
+// import { Link } from 'react-router-dom';
 import './PhonesPage.scss';
 import { PhoneCards } from '../PhoneCards/PhoneCards';
 import { Pagination } from '../Pagination/Pagination';
-import phones from './cardsTestApi.json';
+import phones from '../../data/phones.json';
 import { Phone } from '../../types/Phone';
 
 export const PhonesPage: React.FC = memo(() => {
@@ -16,6 +17,8 @@ export const PhonesPage: React.FC = memo(() => {
   const indexOfLastCard = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
   const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
+
+  const productsAmount = cards.length;
 
   const getSortedCards = useMemo(() => {
     return currentCards.sort((card1: Phone, card2: Phone) => {
@@ -35,6 +38,7 @@ export const PhonesPage: React.FC = memo(() => {
   return (
     <div className="container">
       <h1 className="page-title">Mobile Phones</h1>
+      <h2 className="products-amount">{`${productsAmount} models`}</h2>
 
       <div className="catalog-display">
         <div className="sorter">
