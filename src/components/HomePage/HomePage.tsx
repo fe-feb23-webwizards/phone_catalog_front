@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { PhonesList } from '../PhonesList/PhonesList';
-import { Slider } from '../Slider/Slider';
+import { TopSlider } from '../Slider/TopSlider';
 import { phonesAPI } from '../../utils/phonesFromAPI';
 import { Categories } from '../Categories/Categories';
 
@@ -11,7 +11,7 @@ const phonesCount = phonesAPI.length;
 
 export const HomePage: React.FC = memo(() => (
   <>
-    <Slider />
+    <TopSlider />
     <PhonesList
       title="Brand new models"
       phones={newPhones}
