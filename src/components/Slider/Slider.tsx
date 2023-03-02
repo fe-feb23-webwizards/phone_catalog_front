@@ -37,11 +37,11 @@ export const Slider: React.FC = memo(() => {
     <section className="slider">
       <h1 className="slider__title">Welcome to Nice Gadgets store!</h1>
 
-      <div className="slider-container">
-        <div className="slider-controls">
+      <div className="slider__container">
+        <div className="slider__controls">
           {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           <button
-            className="slider-control slider-control-left"
+            className="slider__control slider__control-left"
             onClick={handlePrevSlide}
             type="button"
           />
@@ -53,7 +53,6 @@ export const Slider: React.FC = memo(() => {
                 className={`slider-item ${index === currentSlide ? 'slider-item-visible' : 'slider-item-hidden'}`}
                 key={slide.id}
               >
-                <h1>{slide.id}</h1>
                 <img key={slide.id} className="slider-image" src={slide.image} alt={`banner ${slide.id}`} />
               </div>
             ))}
@@ -61,20 +60,20 @@ export const Slider: React.FC = memo(() => {
 
           {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           <button
-            className="slider-control slider-control-right"
+            className="slider__control slider__control-right"
             onClick={handleNextSlide}
             type="button"
           />
         </div>
 
-        <div className="slider-indicators">
+        <div className="slider__indicators">
           {slides.map(({ id }, index) => (
             // eslint-disable-next-line max-len
             // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
             <div
               key={id}
-              className={`slider-indicator ${
-                index === currentSlide ? 'slider-indicator-active' : ''
+              className={`slider__indicator ${
+                index === currentSlide ? 'slider__indicator-active' : ''
               }`}
               onClick={() => setCurrentSlide(index)}
             >
