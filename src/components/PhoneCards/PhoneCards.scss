@@ -1,8 +1,12 @@
+@import "../../styles/mixins";
+
 @mixin gridColums ($number, $size) {
   grid-template-columns: repeat($number, $size);
 }
 
-$card-width: 272px;
+$card-width-desc: 272px;
+$card-width-tab: 288px;
+$card-width-mob: 287px;
 
 .title {
   margin-bottom: 24px;
@@ -10,11 +14,22 @@ $card-width: 272px;
 
 .catalog {
   display: grid;
-  @include gridColums(4, $card-width);
+  @include gridColums(4, $card-width-desc);
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin: auto;
   gap: 16px;
-  width: $card-width;
   max-width: 1200px;
+
+  @include onMobile {
+    @include gridColums(2, $card-width-mob);
+  }
+
+  @include onTablet {
+    @include gridColums(3, $card-width-tab);
+  }
+
+  @include onDesktop {
+    @include gridColums(4, $card-width-desc);
+  }
 }

@@ -17,11 +17,13 @@ export const PhoneCard: React.FC<Props> = memo(({ phone }) => {
     image,
   } = phone;
 
+  const phoneImage = `https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_front/main/src/data/${image}`;
+
   return (
     <div className="card" key={id}>
 
       <img
-        src={`../../data${image}`}
+        src={phoneImage}
         alt="iphone"
         className="card__img"
       />
