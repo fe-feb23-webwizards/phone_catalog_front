@@ -1,18 +1,20 @@
 {
   "files": {
-    "main.css": "/phone_catalog_front/static/css/main.ad6eff0e.chunk.css",
-    "main.js": "/phone_catalog_front/static/js/main.af75f7b5.chunk.js",
-    "main.js.map": "/phone_catalog_front/static/js/main.af75f7b5.chunk.js.map",
+    "main.css": "/phone_catalog_front/static/css/main.24ffeb6e.chunk.css",
+    "main.js": "/phone_catalog_front/static/js/main.79fc5678.chunk.js",
+    "main.js.map": "/phone_catalog_front/static/js/main.79fc5678.chunk.js.map",
     "runtime-main.js": "/phone_catalog_front/static/js/runtime-main.59e92e60.js",
     "runtime-main.js.map": "/phone_catalog_front/static/js/runtime-main.59e92e60.js.map",
-    "static/js/2.eff37d1f.chunk.js": "/phone_catalog_front/static/js/2.eff37d1f.chunk.js",
-    "static/js/2.eff37d1f.chunk.js.map": "/phone_catalog_front/static/js/2.eff37d1f.chunk.js.map",
+    "static/js/2.ef64cbaf.chunk.js": "/phone_catalog_front/static/js/2.ef64cbaf.chunk.js",
+    "static/js/2.ef64cbaf.chunk.js.map": "/phone_catalog_front/static/js/2.ef64cbaf.chunk.js.map",
     "index.html": "/phone_catalog_front/index.html",
-    "static/css/main.ad6eff0e.chunk.css.map": "/phone_catalog_front/static/css/main.ad6eff0e.chunk.css.map",
-    "static/js/2.eff37d1f.chunk.js.LICENSE.txt": "/phone_catalog_front/static/js/2.eff37d1f.chunk.js.LICENSE.txt",
+    "static/css/main.24ffeb6e.chunk.css.map": "/phone_catalog_front/static/css/main.24ffeb6e.chunk.css.map",
+    "static/js/2.ef64cbaf.chunk.js.LICENSE.txt": "/phone_catalog_front/static/js/2.ef64cbaf.chunk.js.LICENSE.txt",
     "static/media/Footer.scss": "/phone_catalog_front/static/media/FooterOk.d8dc8b76.svg",
     "static/media/FooterLogo.ee9ae639.svg": "/phone_catalog_front/static/media/FooterLogo.ee9ae639.svg",
     "static/media/App.scss": "/phone_catalog_front/static/media/Mont-SemiBold.0b5e68eb.ttf",
+    "static/media/accessories.43480975.svg": "/phone_catalog_front/static/media/accessories.43480975.svg",
+    "static/media/banner-desktop-1.5ee429b1.jpeg": "/phone_catalog_front/static/media/banner-desktop-1.5ee429b1.jpeg",
     "static/media/banner-desktop-2.5ee429b1.jpeg": "/phone_catalog_front/static/media/banner-desktop-2.5ee429b1.jpeg",
     "static/media/banner-desktop-3.5ee429b1.jpeg": "/phone_catalog_front/static/media/banner-desktop-3.5ee429b1.jpeg",
     "static/media/elemLogo.e22bc262.svg": "/phone_catalog_front/static/media/elemLogo.e22bc262.svg",
@@ -21,12 +23,14 @@
     "static/media/Pagination.scss": "/phone_catalog_front/static/media/right-arrow.b06db608.svg",
     "static/media/logo.9befc55e.svg": "/phone_catalog_front/static/media/logo.9befc55e.svg",
     "static/media/Slider.scss": "/phone_catalog_front/static/media/prev.b18d031c.svg",
-    "static/media/shoppingBag.f9929c0c.svg": "/phone_catalog_front/static/media/shoppingBag.f9929c0c.svg"
+    "static/media/phones.2b8c7bd0.svg": "/phone_catalog_front/static/media/phones.2b8c7bd0.svg",
+    "static/media/shoppingBag.f9929c0c.svg": "/phone_catalog_front/static/media/shoppingBag.f9929c0c.svg",
+    "static/media/tablets.f9b2d988.svg": "/phone_catalog_front/static/media/tablets.f9b2d988.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.59e92e60.js",
-    "static/js/2.eff37d1f.chunk.js",
-    "static/css/main.ad6eff0e.chunk.css",
-    "static/js/main.af75f7b5.chunk.js"
+    "static/js/2.ef64cbaf.chunk.js",
+    "static/css/main.24ffeb6e.chunk.css",
+    "static/js/main.79fc5678.chunk.js"
   ]
 }
