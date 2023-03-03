@@ -44,7 +44,7 @@ $columns--mobile: 4;
     @include onMobile {
       @for $start from 1 through $columns--mobile {
         @for $end from 1 through $columns--mobile {
-          &--desktop_#{$start}-#{$end} {
+          &--mobile_#{$start}-#{$end} {
             grid-column: #{$start} / #{($end + 1)};
           }
         }
