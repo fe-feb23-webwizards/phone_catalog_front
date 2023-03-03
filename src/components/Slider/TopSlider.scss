@@ -1,7 +1,25 @@
 @import "../../styles/_colors.scss";
-@import "../../styles/mixins";
+
+@mixin onDesktop {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (min-width: 320px) and (max-width: 639px) {
+    @content;
+  }
+}
 
 .slider {
+
   &__title {
     font-size: 32px;
     line-height: 41px;
@@ -61,9 +79,8 @@
 
       display: block;
 
-      height: 100%;
-
       width: 32px;
+      height: 100%;
 
       border: 1px solid #b4bdc4;
       border-radius: 48px;
@@ -183,6 +200,6 @@
     position: relative;
 
     display: block;
-
+    box-sizing: border-box;
   }
 }
