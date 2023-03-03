@@ -189,3 +189,87 @@ $card-width: 272px;
     }
   }
 }
+
+@import "../../styles/mixins";
+@import "../../styles//_blocks/gridTemplate";
+
+
+.catalog-display {
+  display: flex;
+  gap: 16px;
+}
+
+.page-title {
+  margin-top: 40px;
+  margin-bottom: 8px;
+
+  font-family: 'Mont';
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+
+  letter-spacing: -0.01em;
+  color: #0F0F11;
+}
+
+.products-amount {
+  margin-bottom: 40px;
+
+  font-family: 'Mont';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+
+  color: #89939A;
+}
+
+.sorter {
+  margin-bottom: 24px;
+
+  &__name {
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: #89939a;
+    padding-bottom: 4px;
+  }
+
+  &__selector {
+    grid-column: 1 / 5;
+
+    height: 40px;
+    padding: 10px;
+
+    border: 1px solid #b4bdc4;
+    border-radius: 8px;
+
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    color: #000;
+
+    &--sort {
+      width: 187px;
+    }
+
+    &--per-page {
+      width: 136px;
+
+      @include onMobile {
+        max-width: 136px;
+        ;
+        margin: auto
+      }
+    }
+
+    @include onMobile {
+      max-width: 136px;
+      ;
+    }
+  }
+}

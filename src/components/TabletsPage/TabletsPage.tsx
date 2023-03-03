@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
+import { ItemPage } from '../ItemPage/ItemPage';
 
 export const TabletsPage: React.FC = memo(() => (
-  <h1>Tablets page</h1>
+  <ItemPage />
 ));
