@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { PhonesList } from '../PhonesList/PhonesList';
-import { Slider } from '../Slider/Slider';
+import { TopSlider } from '../Slider/TopSlider';
 import { phonesAPI } from '../../utils/phonesFromAPI';
 import { ShopByCategory } from '../Categories/ShopByCategory/ShopByCategory';
 
@@ -10,7 +10,7 @@ const phonesWithDiscount = phonesAPI.filter(el => el.fullPrice - el.price > 50)
 
 export const HomePage: React.FC = memo(() => (
   <>
-    <Slider />
+    <TopSlider />
     <PhonesList
       title="Brand new models"
       phones={newPhones}
