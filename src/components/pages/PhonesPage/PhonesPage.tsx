@@ -1,10 +1,10 @@
 import React, { memo, useMemo, useState } from 'react';
 // import { Link } from 'react-router-dom';
 import './PhonesPage.scss';
-import { PhoneCards } from '../PhoneCards/PhoneCards';
-import { Pagination } from '../Pagination/Pagination';
-import phones from '../../data/phones.json';
-import { Phone } from '../../types/Phone';
+import { PhoneCards } from '../../PhoneCards/PhoneCards';
+import { Pagination } from '../../Pagination/Pagination';
+import phones from '../../../data/phones.json';
+import { Phone } from '../../../types/Phone';
 
 export const PhonesPage: React.FC = memo(() => {
   const [sortBy, setSortBy] = useState('newest');

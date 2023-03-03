@@ -1,4 +1,4 @@
-@import "../../styles/mixins";
+@import "../../../styles/mixins";
 
 .subtitle {
   font-family: 'Mont';
@@ -28,7 +28,7 @@
     width: 5px;
     height: 10px;
     margin-right: 14px;
-    background-image: url(../../stylesScss/images/right-grey-arrow.svg);
+    background-image: url(../../../stylesScss/images/right-grey-arrow.svg);
     background-repeat: no-repeat;
     background-position: center;
     color: #B4BDC4;
@@ -40,7 +40,7 @@
     width: 14px;
     height: 15px;
     margin-right: 14px;
-    background-image: url(../../stylesScss/images/home.svg);
+    background-image: url(../../../stylesScss/images/home.svg);
     background-repeat: no-repeat;
     background-position: center;
 
@@ -50,7 +50,7 @@
       top: 6px;
       width: 6px;
       height: 8px;
-      background-image: url(../../stylesScss/images/home-inside.svg);
+      background-image: url(../../../stylesScss/images/home-inside.svg);
       background-repeat: no-repeat;
       background-position: center;
     }

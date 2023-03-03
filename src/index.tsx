@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import {
   HashRouter, Navigate, Route, Routes,
 } from 'react-router-dom';
-import { HomePage } from './components/HomePage/HomePage';
-import { PhonesPage } from './components/PhonesPage/PhonesPage';
-import { TabletsPage } from './components/TabletsPage/TabletsPage';
-import { AccessoriesPage } from './components/AccessoriesPage/AccessoriesPage';
-import { PageNotFound } from './components/PageNotFound/PageNotFound';
-import { Favourites } from './components/Favourites/Favourites';
+import { HomePage } from './components/pages/HomePage/HomePage';
+import { PhonesPage } from './components/pages/PhonesPage/PhonesPage';
+import { TabletsPage } from './components/pages/TabletsPage/TabletsPage';
+import { AccessoriesPage } from './components/pages/AccessoriesPage/AccessoriesPage';
+import { PageNotFound } from './components/pages/PageNotFound/PageNotFound';
+import { Favourites } from './components/pages/FavouritesPage/FavouritesPages';
 import { App } from './App';
-import { Cart } from './components/Cart/Cart';
+import { Cart } from './components/pages/CartPage/CartPage';
 
 ReactDOM.render(
   <HashRouter>

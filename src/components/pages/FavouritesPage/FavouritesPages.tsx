@@ -1,8 +1,8 @@
 import React, { memo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { PhoneCards } from '../PhoneCards/PhoneCards';
-import phones from '../../data/phones.json';
-import './Favourites.scss';
+import { PhoneCards } from '../../PhoneCards/PhoneCards';
+import phones from '../../../data/phones.json';
+import './FavouritesPages.scss';
 
 const favourites = phones.slice(0, 6);
 
