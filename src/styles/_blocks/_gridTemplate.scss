@@ -1,51 +1,70 @@
 @import '../mixins';
 
-$columns--tablet: 12;
-$columns--desktop: 24;
-$columns--mobile: 4;
-
 .grid {
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
   column-gap: 16px;
 
+  &--desktop {
+    display: block;
+
+    @include onDesktop {
+      display: grid;
+    }
+  }
+
+  &--tablet {
+    display: block;
+
+    @include onTablet {
+      display: grid;
+    }
+  }
+
+  &--mobile {
+    display: block;
+
+    @include onMobile {
+      display: grid;
+    }
+  }
+
   @include onTablet {
-    grid-template-columns: repeat($columns--tablet, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 24px;
   }
 
   @include onDesktop {
-    grid-template-columns: repeat($columns--desktop, 1fr);
-  }
-
-  @include onMobile {
-    grid-template-columns: repeat($columns--mobile, 1fr);
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
   }
 
   &__item {
-    @include onTablet {
-      @for $start from 1 through $columns--tablet {
-        @for $end from 1 through $columns--tablet {
-          &--tablet_#{$start}-#{$end} {
-            grid-column: #{$start} / #{($end + 1)};
+    @for $start from 1 through 4 {
+      @for $end from $start through 12 {
+        &--mobile-#{$start}-#{$end} {
+          @include onMobile {
+            grid-column: #{$start} / #{$end + 1};
           }
         }
       }
     }
 
-    @include onDesktop {
-      @for $start from 1 through $columns--desktop {
-        @for $end from 1 through $columns--desktop {
-          &--desktop_#{$start}-#{$end} {
-            grid-column: #{$start} / #{($end + 1)};
+    @for $start from 1 through 12 {
+      @for $end from $start through 12 {
+        &--tablet-#{$start}-#{$end} {
+          @include onTablet {
+            grid-column: #{$start} / #{$end + 1};
           }
         }
       }
     }
 
-    @include onMobile {
-      @for $start from 1 through $columns--mobile {
-        @for $end from 1 through $columns--mobile {
-          &--desktop_#{$start}-#{$end} {
-            grid-column: #{$start} / #{($end + 1)};
+    @for $start from 1 through 24 {
+      @for $end from $start through 24 {
+        &--desktop-#{$start}-#{$end} {
+          @include onDesktop {
+            grid-column: #{$start} / #{$end + 1};
           }
         }
       }
