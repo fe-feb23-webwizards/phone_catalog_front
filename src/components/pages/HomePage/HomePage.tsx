@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
-import { PhonesList } from '../PhonesList/PhonesList';
-import { TopSlider } from '../Slider/TopSlider';
-import { phonesAPI } from '../../utils/phonesFromAPI';
-import { ShopByCategory } from '../Categories/ShopByCategory/ShopByCategory';
+import { PhonesList } from '../../PhonesList/PhonesList';
+import { TopSlider } from '../../Slider/TopSlider';
+import { phonesAPI } from '../../../utils/phonesFromAPI';
+import { ShopByCategory } from '../../Categories/ShopByCategory/ShopByCategory';
 
 const newPhones = phonesAPI.filter(el => el.year > 2018);
 const phonesWithDiscount = phonesAPI.filter(el => el.fullPrice - el.price > 50)
