@@ -1,5 +1,6 @@
 import React from 'react';
 import './Pagination.scss';
+import cn from 'classnames';
 
 type Props = {
   cardsPerPage: number,
@@ -35,7 +36,12 @@ export const Pagination: React.FC<Props> = ({
           <button
             type="button"
             key={pageNumber}
-            className="pag-buttons pag-list__item pag-list__item--link "
+            className={cn(
+              'pag-buttons pag-list__item pag-list__item--link ',
+              {
+                'is-active-pag': pageNumber === currentPage,
+              },
+            )}
             onClick={() => changePage(pageNumber)}
           >
             {pageNumber}

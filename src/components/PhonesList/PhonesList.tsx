@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { PhoneCard } from '../PhoneCard/PhoneCard';
 import './PhonesList.scss';
 import { Phone } from '../../types/Phone';
-import arrowLeft from '../../stylesScss/images/left-arrow.svg';
-import arrowRight from '../../stylesScss/images/right-arrow.svg';
+import arrowLeft from '../../styles/images/left-arrow.svg';
+import arrowRight from '../../styles/images/right-arrow.svg';
 
 type Props = {
   title: string,
