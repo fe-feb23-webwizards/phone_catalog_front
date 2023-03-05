@@ -16,10 +16,10 @@ export const PhoneCards: React.FC<Props> = memo(({ cards, isLoading }) => {
   }
 
   return (
-    <div className="catalog">
+    <section className="catalog">
       {cards.map(card => (
         <PhoneCard phone={card} key={card.id} />
       ))}
-    </div>
+    </section>
   );
 });
