@@ -2,6 +2,10 @@ import React, { memo } from 'react';
 import { Phone } from '../../types/Phone';
 import { PhoneCard } from '../PhoneCard/PhoneCard';
 import './PhoneCards.scss';
+import {
+  getLocalStorageData,
+  StorageKeys,
+} from '../../hooks/useLocalStorage';
 
 type Props = {
   cards: Phone[],
@@ -15,11 +19,24 @@ export const PhoneCards: React.FC<Props> = memo(({ cards, isLoading }) => {
     );
   }
 
+  const phonesToCart = getLocalStorageData(StorageKeys.CART);
+  const phonesToFavourites = getLocalStorageData(StorageKeys.FAVOURITES);
+
   return (
     <section className="catalog">
-      {cards.map(card => (
-        <PhoneCard phone={card} key={card.id} />
-      ))}
+      {cards.map(card => {
+        const isInCart = phonesToCart.includes(card.id);
+        const isInFavourites = phonesToFavourites.includes(card.id);
+
+        return (
+          <PhoneCard
+            isInCart={isInCart}
+            isInFavourites={isInFavourites}
+            phone={card}
+            key={card.id}
+          />
+        );
+      })}
     </section>
   );
 });
