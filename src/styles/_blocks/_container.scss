@@ -3,14 +3,14 @@
 .container {
     width: 100%;
     max-width: 1200px;
-    padding: 0 16px;
+    padding: 25px 16px 80px;
 
     @include onTablet {
-      padding: 0 24px;
+      padding: 25px 24px 60px;
     }
 
     @include onDesktop {
-      padding: 0 32px;
-      margin: 0 auto;
+      padding: 25px 24px 50px;
+
     }
   }

@@ -1,8 +1,9 @@
 import React, { memo, useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { PhoneCards } from '../../PhoneCards/PhoneCards';
 import phones from '../../../data/phones.json';
 import './FavouritesPages.scss';
+import { Breadcrump } from '../../Breadcrump/Breadcrump';
 
 const favourites = phones.slice(0, 6);
 
@@ -11,13 +12,7 @@ export const Favourites: React.FC = memo(() => {
 
   return (
     <div className="container">
-      <div className="back-block">
-        <Link to="/home" className="back-block__home">
-          <div className="back-block__home--inside" />
-        </Link>
-        <div className="back-block__arrow"></div>
-        <p className="back-block__text">Favourites</p>
-      </div>
+      <Breadcrump pageName="Favourites" />
 
       {favourites.length > 0 ? (
         <>

@@ -1,0 +1,42 @@
+.AboutPhone {
+  &__header {
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 140%;
+
+    color: #0F0F11;
+
+    &::after {
+      content: '';
+      height: 1px;
+      margin-top: 16px;
+      margin-bottom: 32px;
+      display: block;
+      background-color: #E2E6E9;
+    }
+  }
+
+  &__title {
+    margin-bottom: 16px;
+
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+
+    color: #0F0F11
+  }
+
+  &__text {
+    margin-bottom: 16px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #89939A;
+  }
+}
