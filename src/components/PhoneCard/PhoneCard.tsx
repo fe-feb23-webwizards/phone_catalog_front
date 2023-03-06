@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { Phone } from '../../types/Phone';
-import heart from '../../stylesScss/images/heart.svg';
+import heart from '../../styles/images/heart.svg';
 
 type Props = {
   phone: Phone,

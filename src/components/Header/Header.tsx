@@ -1,6 +1,7 @@
 import React, { memo, useState } from 'react';
 import cn from 'classnames';
 import './Header.scss';
+import { Link } from 'react-router-dom';
 import logo from './imgForHeader/logo.svg';
 import heart from './imgForHeader/heartFavourite.svg';
 import bag from './imgForHeader/shoppingBag.svg';
@@ -42,10 +43,10 @@ export const Header: React.FC = memo(() => {
     <header className={cn('header', { header__mobile: isOpenMenu })}>
       <nav className="nav">
         <div className="nav__link">
-          <a href="/#" className="nav__link--logo">
+          <Link to="/#" className="nav__link--logo">
             <img src={logo} alt="logo" />
             <img className="nav__link--logo-el" src={elementLogo} alt="logo" />
-          </a>
+          </Link>
           <div
             className="nav__link--menu nav__link--menu-open"
             onClick={() => setIsOpen(!isOpenMenu)}

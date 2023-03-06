@@ -58,7 +58,7 @@
 
   &__left::after {
     position: absolute;
-    content: url('../../styles/images/FooterOk.svg');
+    content: url('../../styles/images/footer-logo-ok-sign.svg');
     left: 70px;
     bottom: 47px;
   }
@@ -81,7 +81,7 @@
     cursor: pointer;
     width: 32px;
     height: 32px;
-    background-image: url("../../styles/images/BackTo.svg");
+    background-image: url("../../styles/images/backto-arrow.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-color: $color__white;
