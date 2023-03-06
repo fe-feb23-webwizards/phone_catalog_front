@@ -1,23 +1,23 @@
 import React, { memo } from 'react';
-import { Phone } from '../../types/Phone';
 import heart from '../../styles/images/heart.svg';
+import { PhoneFromAPI } from '../../types/PhoneFromAPI';
 
 type Props = {
-  phone: Phone,
+  phone: PhoneFromAPI,
 };
 
 export const PhoneCard: React.FC<Props> = memo(({ phone }) => {
   const {
     id,
     name,
-    price,
+    priceRegular,
     screen,
     capacity,
     ram,
-    image,
+    images,
   } = phone;
 
-  const phoneImage = `https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_front/main/src/data/${image}`;
+  const phoneImage = `https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_front/main/src/data/${images[0]}`;
 
   return (
     <div className="card" key={id}>
@@ -31,7 +31,7 @@ export const PhoneCard: React.FC<Props> = memo(({ phone }) => {
         {name}
       </h2>
 
-      <span className="card__price">{`${price}$`}</span>
+      <span className="card__price">{`${priceRegular}$`}</span>
 
       <div className="card__underline"></div>
 
