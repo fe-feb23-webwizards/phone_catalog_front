@@ -3,12 +3,14 @@
 .Footer {
   position: relative;
   max-width: 100%;
+  top: 125px;
   height: 96px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 -1px 0 $color__elements;
   padding: 0 25px;
+  margin:  auto 0;
   background-color: $color__white;
 
   &__nav-link {
