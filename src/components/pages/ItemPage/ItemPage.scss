@@ -1,4 +1,23 @@
+@import '../../../styles/mixins';
+
 .ItemPage {
+  &__title {
+    margin-bottom: 50px;
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+
+    letter-spacing: -0.01em;
+
+    color: #0F0F11;
+
+    @include onMobile {
+      margin-bottom: 30px;
+    }
+  }
+
   &__interact-sect {
     margin-bottom: 80px;
   }
@@ -138,7 +157,6 @@
     font-weight: 700;
     font-size: 12px;
     line-height: 15px;
-
     
     color: #0F0F11;
   }
@@ -157,5 +175,21 @@
     height: 48px;
     width: 48px;
     margin-left: 0; //у ориг кнопки вказаний m-l, замінила gap для себе
+  }
+}
+
+.phone {
+  &__small-img {
+    height: 270px;
+    object-fit: contain;
+    object-position: center;
+
+    @media screen and (min-width: 900px) {
+      height: 350px;
+    }
+
+    @include onDesktop {
+      height: 442px;
+    }
   }
 }
