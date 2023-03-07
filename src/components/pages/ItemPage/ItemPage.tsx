@@ -1,5 +1,8 @@
 import React, { memo, useState } from 'react';
 import './ItemPage.scss';
+import './SliderStyle.scss';
+import cn from 'classnames';
+import Slider from 'react-slick';
 import cn from 'classnames';
 
 import phone from '../../../data/phones/apple-iphone-11-128gb-black.json';
@@ -8,6 +11,32 @@ import { TechSpecs } from '../../TechSpecs/TechSpecs';
 import { AboutPhone } from '../../AboutPhone/AboutPhone';
 import heart from '../../../styles/images/heart.svg';
 import { Breadcrump } from '../../Breadcrump/Breadcrump';
+
+const img1 = phone.images[0];
+const img2 = phone.images[1];
+const img3 = phone.images[2];
+const img4 = phone.images[3];
+const img5 = phone.images[4];
+
+const phonePhotos = [img1, img2, img3, img4, img5];
+
+const imgPath = 'https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_front/main/src/data/';
+
+const settings = {
+  customPaging(i: number) {
+    return (
+      <img src={imgPath + phonePhotos[i]} alt="img" className="slick-image" />
+    );
+  },
+  dots: true,
+  dotsClass: 'slick-dots-for-small-img',
+  infinite: true,
+  speed: 1000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  adaptiveHeight: true,
+};
 
 export const ItemPage: React.FC = memo(() => {
   const [currentCapacity, setCurrentCapacity] = useState('64 GB');
@@ -28,6 +57,24 @@ export const ItemPage: React.FC = memo(() => {
 
         <div className="grid grid--tablet grid--desktop">
           <div className="
+
+            grid__item--desktop-1-13
+            grid__item--tablet-1-6"
+          >
+
+            <Slider
+              {...settings}
+            >
+              <img src={imgPath + img1} alt="" className="phone__small-img" />
+              <img src={imgPath + img2} alt="" className="phone__small-img" />
+              <img src={imgPath + img3} alt="" className="phone__small-img" />
+              <img src={imgPath + img4} alt="" className="phone__small-img" />
+              <img src={imgPath + img5} alt="" className="phone__small-img" />
+            </Slider>
+          </div>
+
+          <div className="
+
             grid__item--desktop-15-20
             grid__item--tablet-8-12
             grid__item--tablet-1-4"
