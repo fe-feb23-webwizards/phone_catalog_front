@@ -1,21 +1,27 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import heart from '../../styles/images/heart.svg';
 import { PhoneFromAPI } from '../../types/PhoneFromAPI';
 
 type Props = {
-  phone: PhoneFromAPI,
+  phone: PhoneFromAPI;
+  shouldShowDiscount: boolean;
 };
 
-export const PhoneCard: React.FC<Props> = memo(({ phone }) => {
+export const PhoneCard: React.FC<Props> = memo(({ phone, shouldShowDiscount }) => {
   const {
     id,
     name,
     priceRegular,
+    priceDiscount,
     screen,
     capacity,
     ram,
     images,
   } = phone;
+
+  const [shouldShowDiscountOnCard, setShouldShowDiscountOnCard] = useState(shouldShowDiscount);
+
+  console.log(setShouldShowDiscountOnCard);
 
   const phoneImage = `https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_front/main/src/data/${images[0]}`;
 
@@ -31,7 +37,8 @@ export const PhoneCard: React.FC<Props> = memo(({ phone }) => {
         {name}
       </h2>
 
-      <span className="card__price">{`${priceRegular}$`}</span>
+      <span className="card__price">{`${priceDiscount}$`}</span>
+      {shouldShowDiscountOnCard && <span className="card__price-regular">{`${priceRegular}$`}</span>}
 
       <div className="card__underline"></div>
 

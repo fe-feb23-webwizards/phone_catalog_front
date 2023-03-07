@@ -10,27 +10,33 @@ import { PhoneCards } from '../../PhoneCards/PhoneCards';
 import { Pagination } from '../../Pagination/Pagination';
 import { Phone } from '../../../types/Phone';
 import { PhoneFromAPI } from '../../../types/PhoneFromAPI';
-import { getPhone } from '../../../api/phones';
+import { getPhones } from '../../../api/phones';
 import { phonesAPI } from '../../../utils/phonesFromAPI';
 
 export const PhonesPage: React.FC = memo(() => {
   const [sortBy, setSortBy] = useState('newest');
   const [phones, setPhones] = useState<PhoneFromAPI[] | Phone[]>([]);
-
-  console.log(phones);
-
-  useEffect(() => {
-    try {
-      getPhone(1, 71)
-        .then(setPhones);
-    } catch (error) {
-      setPhones(phonesAPI);
-    }
-  }, []);
-
-  const [isLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(16);
+
+  const showDiscount = true;
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    try {
+      getPhones(1, 71)
+        .then(res => {
+          setPhones(res);
+          setIsLoading(false);
+        });
+    } catch (error) {
+      setPhones(phonesAPI);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
 
   const indexOfLastCard = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
@@ -92,16 +98,23 @@ export const PhonesPage: React.FC = memo(() => {
         </div>
       </div>
 
-      <PhoneCards
-        cards={currentCards}
-        isLoading={isLoading}
-      />
-      <Pagination
-        cardsPerPage={cardsPerPage}
-        totalCards={phones.length}
-        changePage={setCurrentPage}
-        currentPage={currentPage}
-      />
+      {isLoading ? (
+        <h1>is Loading</h1>
+      ) : (
+        <>
+          <PhoneCards
+            cards={currentCards}
+            isLoading={isLoading}
+            shouldShowDiscount={showDiscount}
+          />
+          <Pagination
+            cardsPerPage={cardsPerPage}
+            totalCards={phones.length}
+            changePage={setCurrentPage}
+            currentPage={currentPage}
+          />
+        </>
+      )}
     </div>
   );
 });
