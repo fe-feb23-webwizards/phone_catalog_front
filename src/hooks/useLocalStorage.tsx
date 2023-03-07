@@ -21,6 +21,19 @@ export function addToLocalStorage({ id, key }: Props) {
   }
 }
 
+export function delStorageElement(id: string) {
+  const myLocalData = localStorage.getItem(StorageKeys.CART);
+
+  if (myLocalData) {
+    const indexToDelete = [...JSON.parse(myLocalData)].lastIndexOf(id);
+    const newData = [...JSON.parse(myLocalData)];
+
+    newData.splice(indexToDelete, 1);
+
+    localStorage.setItem(StorageKeys.CART, JSON.stringify(newData));
+  }
+}
+
 export function deleteFromLocalStorage({ id, key }: Props) {
   const myLocalData = localStorage.getItem(key);
 

@@ -1,8 +1,5 @@
 import React, { memo, useEffect, useState } from 'react';
 import elementBack from './imgCart/elemBack.svg';
-import deleteButton from './imgCart/icon_close.svg';
-import buttonMinus from './imgCart/button-.svg';
-import buttonPlus from './imgCart/button+.svg';
 import './CartPage.scss';
 import phones from '../../../data/phones.json';
 import { Phone } from '../../../types/Phone';
@@ -11,9 +8,11 @@ import {
   deleteFromLocalStorage,
   StorageKeys,
 } from '../../../hooks/useLocalStorage';
+import { CartProduct } from '../../CartProduct/CartProduct';
 
 export const Cart: React.FC = memo(() => {
   const [phonesToCart, setPhonesToCart] = useState<Phone[]>([]);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     const storageArray = getLocalStorageData(StorageKeys.CART);
@@ -21,6 +20,29 @@ export const Cart: React.FC = memo(() => {
 
     setPhonesToCart(addedProductsToCart);
   }, []);
+
+  // гівнокод для відображення суми - якось !?!
+  useEffect(() => {
+    const storageArray = getLocalStorageData(StorageKeys.CART);
+    const prodFromStorage = [...JSON.parse(storageArray)];
+
+    const prodPrices = prodFromStorage
+      .map(idEl => phonesToCart.find(item => item.id === idEl)?.price);
+
+    const filteredProdPrices = prodPrices.filter(el => el !== undefined);
+
+    const sum = filteredProdPrices.reduce((currentSum, item) => {
+      if (item && currentSum) {
+        return currentSum + item;
+      }
+
+      return currentSum;
+    }, 0);
+
+    if (sum) {
+      setTotal(sum);
+    }
+  }, [total]);
 
   const deleteProduct = (id: string) => {
     deleteFromLocalStorage({ id, key: StorageKeys.CART });
@@ -41,52 +63,18 @@ export const Cart: React.FC = memo(() => {
 
       <div className="order">
         <div className="goods">
-          {phonesToCart.map(product => {
-            const phoneImage = `https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_front/main/src/data/${product.image}`;
-            // тут пропишу логіку роботи з каунтером
-
-            return (
-              <div key={product.id} className="product">
-                <div className="product__info">
-                  <img
-                    // className='deleteButton'
-                    onClick={() => deleteProduct(product.id)}
-                    aria-hidden="true"
-                    src={deleteButton}
-                    alt="deleteButton"
-                  />
-                  <img
-                    className="product__info__img"
-                    src={phoneImage}
-                    alt="imageIphone"
-                  />
-
-                  <div
-                    className="product__info__title"
-                  >
-                    {product.name}
-                  </div>
-                </div>
-                <div className="product__counting">
-                  <div className="product__counting__quantity">
-                    <div>
-                      <img src={buttonMinus} alt="buttonMinus" />
-                    </div>
-                    <div>1</div>
-                    <div>
-                      <img src={buttonPlus} alt="buttonPlus" />
-                    </div>
-                  </div>
-
-                  <div className="product__counting__price">{product.price}</div>
-                </div>
-              </div>
-            );
-          })}
+          {phonesToCart.map(product => (
+            <CartProduct
+              key={product.id}
+              setTotal={setTotal}
+              product={product}
+              deleteProduct={deleteProduct}
+            />
+          ))}
         </div>
 
         <div className="total">
-          <div className="total__price">$2657</div>
+          <div className="total__price">111</div>
           <div className="total__title">
             {`Total for ${phonesToCart.length} ${phonesToCart.length === 1 ? 'item' : 'items'}`}
           </div>

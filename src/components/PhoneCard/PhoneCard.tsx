@@ -31,18 +31,24 @@ export const PhoneCard: React.FC<Props> = memo(({ phone, isInCart, isInFavourite
 
   const phoneImage = `https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_front/main/src/data/${image}`;
 
-  const onCartClick = (keyName: StorageKeys) => {
+  const onCartClick = () => {
     if (isAdded) {
-      deleteFromLocalStorage({ id, key: keyName });
+      deleteFromLocalStorage({ id, key: StorageKeys.CART });
     } else {
-      addToLocalStorage({ id, key: keyName });
+      addToLocalStorage({ id, key: StorageKeys.CART });
     }
 
-    if (keyName === StorageKeys.CART) {
-      setIsAdded(!isAdded);
+    setIsAdded(!isAdded);
+  };
+
+  const onFavouritesClick = () => {
+    if (isFavourites) {
+      deleteFromLocalStorage({ id, key: StorageKeys.FAVOURITES });
     } else {
-      setIsFavourites(!isFavourites);
+      addToLocalStorage({ id, key: StorageKeys.FAVOURITES });
     }
+
+    setIsFavourites(!isFavourites);
   };
 
   return (
@@ -78,7 +84,7 @@ export const PhoneCard: React.FC<Props> = memo(({ phone, isInCart, isInFavourite
         <button
           type="button"
           className="card__button"
-          onClick={() => onCartClick(StorageKeys.CART)}
+          onClick={() => onCartClick()}
         >
           {isAdded ? 'Added' : 'Add to cart'}
         </button>
@@ -86,7 +92,7 @@ export const PhoneCard: React.FC<Props> = memo(({ phone, isInCart, isInFavourite
         <button
           type="button"
           className="card__add-to-favorite"
-          onClick={() => onCartClick(StorageKeys.FAVOURITES)}
+          onClick={() => onFavouritesClick()}
         >
           <img src={isFavourites ? heartActive : heart} alt="favorite" />
         </button>

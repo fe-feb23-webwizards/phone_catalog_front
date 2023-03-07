@@ -1,0 +1,130 @@
+@import '../../styles/mixins';
+
+.product {
+  width: 100%;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  gap: 0;
+  padding: 0 16px;
+
+  border: 1px solid #E2E6E9;
+  border-radius: 16px;
+  background: #FFFFFF;
+
+  @include onTablet {
+    height: 128px;
+    flex-direction: row;
+    gap: 24px;
+    padding: 0 25px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 24px;
+
+    @include onMobile {
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__deleteButton {
+      border: 0;
+      height: 16px;
+      width: 16px;
+    
+      transition: transform 0.3s ease-in-out;
+    
+      cursor: pointer;
+    
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    &__img {
+      width: 50px;
+      height: 66px;
+    }
+
+    &__title {
+      width: 176px;
+  
+      font-family: 'Mont';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: #0F0F11;
+  
+      @include onDesktop {
+        width: 336px;
+      }
+  
+      @include onMobile {
+        width: 128px;
+      }
+    }
+  }
+
+  &__counting {
+    display: flex;
+    justify-content: space-between;
+    gap: 53px;
+    align-items: center;
+
+    @include onMobile {
+      width: 100%;
+    }
+
+    &__quantity {
+      width: 95px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  
+    &__price {
+      width: 60px;
+      font-family: 'Mont';
+      font-style: normal;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 140%;
+      color: #0F0F11
+    }
+  }
+}
+
+.button__counting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 48px;
+  border: 1px solid #E2E6E9;
+  width: 32px;
+  height: 32px;
+
+  background-color: #fff;
+  color: #0F0F11;
+
+  cursor: pointer;
+    
+  &:hover {
+    transform: scale(1.2);
+    border: 1px solid #0F0F11;
+    color: #0F0F11;
+
+    transition: all 0.4s ease-in-out;
+  }
+
+  &:disabled {
+    color: #B4BDC4;
+    border: 1px solid #B4BDC4;
+  }
+}
