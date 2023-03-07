@@ -3,7 +3,6 @@ import './ItemPage.scss';
 import './SliderStyle.scss';
 import cn from 'classnames';
 import Slider from 'react-slick';
-import cn from 'classnames';
 
 import phone from '../../../data/phones/apple-iphone-11-128gb-black.json';
 import { ColorSelector } from '../../ColorSelector/ColorSelector';

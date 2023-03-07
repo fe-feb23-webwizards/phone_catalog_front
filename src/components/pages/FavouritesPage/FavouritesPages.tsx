@@ -1,26 +1,36 @@
-import React, { memo, useState } from 'react';
-// import { Link } from 'react-router-dom';
+import React, { memo, useEffect, useState } from 'react';
 import { PhoneCards } from '../../PhoneCards/PhoneCards';
-import phones from '../../../data/phones.json';
 import './FavouritesPages.scss';
 import { Breadcrump } from '../../Breadcrump/Breadcrump';
-
-const favourites = phones.slice(0, 6);
+import { PhoneFromAPI } from '../../../types/PhoneFromAPI';
+import { getPhone } from '../../../api/phones';
 
 export const Favourites: React.FC = memo(() => {
   const [isLoading] = useState(false);
+  const [phones, setPhones] = useState<PhoneFromAPI[]>([]);
+
+  console.log(phones);
+
+  useEffect(() => {
+    try {
+      getPhone(1, 6)
+        .then(setPhones);
+    } catch (error) {
+      setPhones([]);
+    }
+  }, []);
 
   return (
     <div className="container">
       <Breadcrump pageName="Favourites" />
 
-      {favourites.length > 0 ? (
+      {phones.length > 0 ? (
         <>
           <h1 className="page-title">Favourites</h1>
           <p className="products-amount">
-            {`${favourites.length} items`}
+            {`${phones.length} items`}
           </p>
-          <PhoneCards cards={favourites} isLoading={isLoading} />
+          <PhoneCards cards={phones} isLoading={isLoading} />
         </>
       ) : (
         <h1 className="subtitle">No favourites yet</h1>
