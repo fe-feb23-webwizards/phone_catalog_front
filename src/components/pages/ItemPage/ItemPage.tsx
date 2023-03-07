@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import './ItemPage.scss';
 import './SliderStyle.scss';
 import cn from 'classnames';
@@ -10,6 +10,9 @@ import { TechSpecs } from '../../TechSpecs/TechSpecs';
 import { AboutPhone } from '../../AboutPhone/AboutPhone';
 import heart from '../../../styles/images/heart.svg';
 import { Breadcrump } from '../../Breadcrump/Breadcrump';
+import { PhonesList } from '../../PhonesList/PhonesList';
+import { getPhones } from '../../../api/phones';
+import { PhoneFromAPI } from '../../../types/PhoneFromAPI';
 
 const img1 = phone.images[0];
 const img2 = phone.images[1];
@@ -39,6 +42,16 @@ const settings = {
 
 export const ItemPage: React.FC = memo(() => {
   const [currentCapacity, setCurrentCapacity] = useState('64 GB');
+  const [newPhones, setNewPhones] = useState<PhoneFromAPI[]>([]);
+
+  useEffect(() => {
+    try {
+      getPhones()
+        .then(setNewPhones);
+    } catch (error) {
+      setNewPhones([]);
+    }
+  }, []);
 
   const phoneColors: React.CSSProperties[] = [
     { background: '#FCDBC1' },
@@ -230,6 +243,11 @@ export const ItemPage: React.FC = memo(() => {
             <TechSpecs product={phone} />
           </div>
         </div>
+
+        <PhonesList
+          title="You may also like"
+          phones={newPhones}
+        />
       </div>
     </>
   );
