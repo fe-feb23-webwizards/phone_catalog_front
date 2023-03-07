@@ -1,19 +1,9 @@
-@import "../../../styles/mixins";
-
-.subtitle {
-  font-family: 'Mont';
-  font-size: 32px;
-
-  @include onDesktop {
-    font-size: 48px;
-  }
-}
-
 .back-block {
   display: flex;
   align-items: center;
   line-height: 15px;
   gap: 14px;
+  margin-bottom: 25px;
 
   &__text {
     font-family: 'Mont';
@@ -28,7 +18,7 @@
   &__arrow {
     width: 5px;
     height: 10px;
-    background-image: url(../../../styles/images/right-grey-arrow.svg);
+    background-image: url(../../styles/images/right-grey-arrow.svg);
     background-repeat: no-repeat;
     background-position: center;
     color: #B4BDC4;
@@ -39,7 +29,7 @@
     position: relative;
     width: 14px;
     height: 15px;
-    background-image: url(../../../styles/images/home.svg);
+    background-image: url(../../styles/images/home.svg);
     background-repeat: no-repeat;
     background-position: center;
 
@@ -49,7 +39,7 @@
       top: 6px;
       width: 6px;
       height: 8px;
-      background-image: url(../../../styles/images/home-inside.svg);
+      background-image: url(../../styles/images/home-inside.svg);
       background-repeat: no-repeat;
       background-position: center;
     }
