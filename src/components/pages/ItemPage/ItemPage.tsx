@@ -2,8 +2,9 @@ import React, { memo, useState } from 'react';
 import './ItemPage.scss';
 import './SliderStyle.scss';
 import cn from 'classnames';
-
 import Slider from 'react-slick';
+import cn from 'classnames';
+
 import phone from '../../../data/phones/apple-iphone-11-128gb-black.json';
 import { ColorSelector } from '../../ColorSelector/ColorSelector';
 import { TechSpecs } from '../../TechSpecs/TechSpecs';
@@ -56,6 +57,7 @@ export const ItemPage: React.FC = memo(() => {
 
         <div className="grid grid--tablet grid--desktop">
           <div className="
+
             grid__item--desktop-1-13
             grid__item--tablet-1-6"
           >
@@ -72,6 +74,7 @@ export const ItemPage: React.FC = memo(() => {
           </div>
 
           <div className="
+
             grid__item--desktop-15-20
             grid__item--tablet-8-12
             grid__item--tablet-1-4"
