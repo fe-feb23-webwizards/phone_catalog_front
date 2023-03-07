@@ -3,17 +3,17 @@ import { PhoneCards } from '../../PhoneCards/PhoneCards';
 import './FavouritesPages.scss';
 import { Breadcrump } from '../../Breadcrump/Breadcrump';
 import { PhoneFromAPI } from '../../../types/PhoneFromAPI';
-import { getPhone } from '../../../api/phones';
+import { getPhones } from '../../../api/phones';
 
 export const Favourites: React.FC = memo(() => {
   const [isLoading] = useState(false);
   const [phones, setPhones] = useState<PhoneFromAPI[]>([]);
 
-  console.log(phones);
+  const shouldShowDiscount = true;
 
   useEffect(() => {
     try {
-      getPhone(1, 6)
+      getPhones(1, 6)
         .then(setPhones);
     } catch (error) {
       setPhones([]);
@@ -30,7 +30,11 @@ export const Favourites: React.FC = memo(() => {
           <p className="products-amount">
             {`${phones.length} items`}
           </p>
-          <PhoneCards cards={phones} isLoading={isLoading} />
+          <PhoneCards
+            cards={phones}
+            isLoading={isLoading}
+            shouldShowDiscount={shouldShowDiscount}
+          />
         </>
       ) : (
         <h1 className="subtitle">No favourites yet</h1>

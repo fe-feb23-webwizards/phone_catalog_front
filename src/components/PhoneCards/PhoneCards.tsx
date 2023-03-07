@@ -6,9 +6,12 @@ import './PhoneCards.scss';
 type Props = {
   isLoading: boolean;
   cards: PhoneFromAPI[];
+  shouldShowDiscount: boolean;
 };
 
-export const PhoneCards: React.FC<Props> = memo(({ cards, isLoading }) => {
+export const PhoneCards: React.FC<Props> = memo(({ cards, isLoading, shouldShowDiscount }) => {
+  const shouldShowDiscountOnCard = shouldShowDiscount;
+
   if (isLoading) {
     return (
       <h1>Is loading...</h1>
@@ -18,7 +21,7 @@ export const PhoneCards: React.FC<Props> = memo(({ cards, isLoading }) => {
   return (
     <section className="catalog">
       {cards.map(card => (
-        <PhoneCard phone={card} key={card.id} />
+        <PhoneCard phone={card} key={card.id} shouldShowDiscount={shouldShowDiscountOnCard} />
       ))}
     </section>
   );

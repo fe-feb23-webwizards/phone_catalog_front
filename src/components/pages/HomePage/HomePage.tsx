@@ -6,14 +6,20 @@ import { PhoneFromAPI } from '../../../types/PhoneFromAPI';
 import { getPhones } from '../../../api/phones';
 
 export const HomePage: React.FC = memo(() => {
-  const [newPhones, setNewPhones] = useState<PhoneFromAPI[]>([]);
+  const [phones, setPhones] = useState<PhoneFromAPI[]>([]);
+
+  const newPhones = phones.filter(el => el.name.includes('11') && el.priceRegular - el.priceDiscount < 60).sort((a, b) => b.priceRegular - a.priceRegular);
+  const phonesWithDiscount = phones.filter(el => el.priceRegular - el.priceDiscount > 70)
+    .sort((a, b) => a.priceRegular - b.priceRegular);
+
+  console.log(phonesWithDiscount);
 
   useEffect(() => {
     try {
-      getPhones()
-        .then(setNewPhones);
+      getPhones(1, 71)
+        .then(setPhones);
     } catch (error) {
-      setNewPhones([]);
+      setPhones([]);
     }
   }, []);
 
@@ -27,7 +33,7 @@ export const HomePage: React.FC = memo(() => {
       <ShopByCategory />
       <PhonesList
         title="Hot prices"
-        phones={newPhones}
+        phones={phonesWithDiscount}
       />
     </>
   );
