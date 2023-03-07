@@ -65,7 +65,7 @@ export const TechSpecs: React.FC<Props> = ({ product }) => {
       <div className="TechSpecs__sect">
         <p className="TechSpecs__textChar">Cell</p>
         <p className="TechSpecs__textValue">
-          {product.cell}
+          {product.cell.map((el, i) => (i ? `, ${el}` : el))}
         </p>
       </div>
     </div>
