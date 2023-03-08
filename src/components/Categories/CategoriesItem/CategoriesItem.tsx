@@ -18,7 +18,9 @@ export const CategoriesItem: React.FC<Props> = ({
 }) => {
   return (
     <div className="category">
-      <img src={imageUrl} alt={imageAlt} className="category__photo" />
+      <a href={categoryLink}>
+        <img src={imageUrl} alt={imageAlt} className="category__photo" />
+      </a>
 
       <h4 className="category__name">
         <a href={categoryLink} className="category__link">
