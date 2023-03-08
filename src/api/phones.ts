@@ -15,3 +15,7 @@ export const getPhonesForSlider = (sortBy: string) => {
   return client.get<PhonesResponse>(`/products?sortBy=${sortBy}`)
     .then(res => res.data);
 };
+
+export const getPhoneById = (phoneId: string) => {
+  return client.get<PhonesResponse>(`/product_details/${phoneId}`);
+};

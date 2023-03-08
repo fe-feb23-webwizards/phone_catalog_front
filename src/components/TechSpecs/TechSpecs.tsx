@@ -1,5 +1,5 @@
 import React from 'react';
-import { PhoneFromAPI } from '../../types/PhonesResponse';
+import { PhoneFromAPI } from '../../types/PhoneFromAPI';
 import './TechSpecs.scss';
 
 type Props = {

@@ -1,15 +1,31 @@
-import React, { memo, useState } from 'react';
-import heart from '../../styles/images/heart.svg';
+import React, { memo, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Phone } from '../../types/Phone';
+import heart from '../../styles/images/heart.svg';
+import heartActive from '../../styles/images/heart-active.svg';
+import { addToLocalStorage, deleteFromLocalStorage, StorageKeys } from '../../hooks/useLocalStorage';
 
 type Props = {
-  phone: Phone;
+  phone: Phone,
+  isInCart: boolean;
+  isInFavourites: boolean;
   shouldShowDiscount: boolean;
 };
 
-export const PhoneCard: React.FC<Props> = memo(({ phone, shouldShowDiscount }) => {
+export const PhoneCard: React.FC<Props> = memo(({
+  phone, isInCart, isInFavourites, shouldShowDiscount,
+}) => {
+  const [isAdded, setIsAdded] = useState(false);
+  const [isFavourites, setIsFavourites] = useState(false);
+
+  useEffect(() => {
+    setIsAdded(isInCart);
+    setIsFavourites(isInFavourites);
+  }, []);
+
   const {
     id,
+    phoneId,
     name,
     price,
     fullPrice,
@@ -27,17 +43,39 @@ export const PhoneCard: React.FC<Props> = memo(({ phone, shouldShowDiscount }) =
 
   const phoneImage = `https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_front/main/src/data/${image}`;
 
+  const onCartClick = () => {
+    if (isAdded) {
+      deleteFromLocalStorage({ id, key: StorageKeys.CART });
+    } else {
+      addToLocalStorage({ id, key: StorageKeys.CART });
+    }
+
+    setIsAdded(!isAdded);
+  };
+
+  const onFavouritesClick = () => {
+    if (isFavourites) {
+      deleteFromLocalStorage({ id, key: StorageKeys.FAVOURITES });
+    } else {
+      addToLocalStorage({ id, key: StorageKeys.FAVOURITES });
+    }
+
+    setIsFavourites(!isFavourites);
+  };
+
   return (
     <div className="card" key={id}>
 
-      <img
-        src={phoneImage}
-        alt="iphone"
-        className="card__img"
-      />
-      <h2 className="card__name">
-        {name}
-      </h2>
+      <Link to={phoneId}>
+        <img
+          src={phoneImage}
+          alt="iphone"
+          className="card__img"
+        />
+        <h2 className="card__name">
+          {name}
+        </h2>
+      </Link>
 
       <span className="card__price">{`${price}$`}</span>
       {shouldShowDiscountOnCard && <span className="card__price-regular">{`${fullPrice}$`}</span>}
@@ -58,18 +96,20 @@ export const PhoneCard: React.FC<Props> = memo(({ phone, shouldShowDiscount }) =
       </div>
 
       <div className="card__flex">
-        <a
-          href="/"
+        <button
+          type="button"
           className="card__button"
+          onClick={() => onCartClick()}
         >
-          Add to cart
-        </a>
+          {isAdded ? 'Added' : 'Add to cart'}
+        </button>
 
         <button
           type="button"
           className="card__add-to-favorite"
+          onClick={() => onFavouritesClick()}
         >
-          <img src={heart} alt="favorite" />
+          <img src={isFavourites ? heartActive : heart} alt="favorite" />
         </button>
       </div>
 
