@@ -1,6 +1,7 @@
 import React, { memo, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import cn from 'classnames';
+import Slider from 'react-slick';
 import { getPhoneById } from '../../../api/phones';
 import { PhonesResponse } from '../../../types/PhonesResponse';
 import { Breadcrump } from '../../Breadcrump/Breadcrump';
@@ -17,6 +18,7 @@ export const ItemPage: React.FC = memo(() => {
 
   const [currentItem, setCurrentItem] = useState<PhonesResponse | null>(null);
   const [currentCapacity, setCurrentCapacity] = useState('64 GB');
+  const [images, setImages] = useState<string[]>([]);
 
   const loadPhone = async () => {
     try {
@@ -24,6 +26,7 @@ export const ItemPage: React.FC = memo(() => {
         const res = await getPhoneById(phoneSlug);
 
         setCurrentItem(res);
+        setImages(res.images);
       }
     } catch {
       setCurrentItem(null);
@@ -33,6 +36,22 @@ export const ItemPage: React.FC = memo(() => {
   useEffect(() => {
     loadPhone();
   }, []);
+
+  const settings = {
+    customPaging(i: number) {
+      return (
+        <img src={images[i]} alt="img" className="slick-image" />
+      );
+    },
+    dots: true,
+    dotsClass: 'slick-dots-for-small-img',
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    adaptiveHeight: true,
+  };
 
   return (
     <>
@@ -48,15 +67,13 @@ export const ItemPage: React.FC = memo(() => {
               grid__item--tablet-1-6"
             >
 
-              {/* <Slider
-              {...settings}
-            >
-              <img src={imgPath + currentItem.images[0]} alt="" className="phone__small-img" />
-              <img src={imgPath + currentItem.images[1]} alt="" className="phone__small-img" />
-              <img src={imgPath + currentItem.images[2]} alt="" className="phone__small-img" />
-              <img src={imgPath + currentItem.images[3]} alt="" className="phone__small-img" />
-              <img src={imgPath + currentItem.images[4]} alt="" className="phone__small-img" />
-            </Slider> */}
+              <Slider
+                {...settings}
+              >
+                {currentItem.images.map(image => (
+                  <img src={image} alt="" className="phone__small-img" key={currentItem.id} />
+                ))}
+              </Slider>
             </div>
 
             <div className="
