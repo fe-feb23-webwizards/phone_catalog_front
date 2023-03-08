@@ -114,11 +114,11 @@ body {
     justify-content: center;
 
     &:not(:last-child) {
-      margin-right: 64px;
+      margin-right: 32px;
       transition: margin-right 0.3s ease-in-out;
     
-      @include onTablet {
-        margin-right: 32px;
+      @include onDesktop {
+        margin-right: 64px;
         transition: margin-right 0.3s ease-in-out;
       }
 
