@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import cn from 'classnames';
 import Slider from 'react-slick';
 import { getPhoneById } from '../../../api/phones';
-import { PhonesResponse } from '../../../types/PhonesResponse';
+import { PhoneFromAPI } from '../../../types/PhoneFromAPI';
 import { Breadcrump } from '../../Breadcrump/Breadcrump';
 
 import './SliderStyle.scss';
@@ -17,7 +17,7 @@ import { ColorSelector } from '../../ColorSelector/ColorSelector';
 export const ItemPage: React.FC = memo(() => {
   const { phoneSlug } = useParams();
 
-  const [currentItem, setCurrentItem] = useState<PhonesResponse | null>(null);
+  const [currentItem, setCurrentItem] = useState<PhoneFromAPI | null>(null);
   const [currentCapacity, setCurrentCapacity] = useState('64 GB');
   const [images, setImages] = useState<string[]>([]);
 

@@ -15,7 +15,7 @@ export const PhonesList = (props: Props) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slidesPerView, setSlidesPerView] = useState(4);
 
-  const shouldShowDiscount = phones.every(el => el.price !== el.fullPrice);
+  const shouldShowDiscount = phones.every(el => el.price < 800);
 
   const nextSlide = () => {
     if (currentSlide === phones.length - slidesPerView) {
@@ -37,11 +37,11 @@ export const PhonesList = (props: Props) => {
 
   useEffect(() => {
     if (windowWidth < 1200) {
-      setSlidesPerView(3);
+      setSlidesPerView(2);
     }
 
     if (windowWidth < 640) {
-      setSlidesPerView(2);
+      setSlidesPerView(1);
     }
   }, []);
 
