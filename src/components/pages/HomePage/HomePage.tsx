@@ -2,22 +2,23 @@ import React, { memo, useEffect, useState } from 'react';
 import { PhonesList } from '../../PhonesList/PhonesList';
 import { TopSlider } from '../../Slider/TopSlider';
 import { ShopByCategory } from '../../Categories/ShopByCategory/ShopByCategory';
-import { PhoneFromAPI } from '../../../types/PhoneFromAPI';
 import { getPhones } from '../../../api/phones';
+import { Phone } from '../../../types/Phone';
 
 export const HomePage: React.FC = memo(() => {
-  const [phones, setPhones] = useState<PhoneFromAPI[]>([]);
+  const [phones, setPhones] = useState<Phone[]>([]);
 
-  const newPhones = phones.filter(el => el.name.includes('11') && el.priceRegular - el.priceDiscount < 60).sort((a, b) => b.priceRegular - a.priceRegular);
-  const phonesWithDiscount = phones.filter(el => el.priceRegular - el.priceDiscount > 70)
-    .sort((a, b) => a.priceRegular - b.priceRegular);
+  const newPhones = phones.filter(el => el.price - el.fullPrice)
+    .sort((a, b) => a.price - b.price);
+  const phonesWithDiscount = phones.filter(el => el.price !== el.fullPrice)
+    .sort((a, b) => a.price - b.price);
 
-  console.log(phonesWithDiscount);
+  console.log(newPhones);
 
   useEffect(() => {
     try {
       getPhones(1, 71)
-        .then(setPhones);
+        .then(res => setPhones(res.data));
     } catch (error) {
       setPhones([]);
     }

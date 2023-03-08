@@ -1,11 +1,11 @@
 import React, { memo } from 'react';
-import { PhoneFromAPI } from '../../types/PhoneFromAPI';
+import { Phone } from '../../types/Phone';
 import { PhoneCard } from '../PhoneCard/PhoneCard';
 import './PhoneCards.scss';
 
 type Props = {
   isLoading: boolean;
-  cards: PhoneFromAPI[];
+  cards: Phone[];
   shouldShowDiscount: boolean;
 };
 
