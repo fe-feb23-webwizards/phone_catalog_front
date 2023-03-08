@@ -136,7 +136,6 @@ body {
     }
 
     &__list {
-      box-sizing: border-box;
       display: flex;
       justify-content: right;
       list-style: none;
@@ -208,6 +207,36 @@ body {
 }
 
 .is-active {
-  box-sizing: border-box;
   border-bottom: 4px solid #0F0F11;
+}
+
+.cartNav {
+  position: relative;
+}
+.count__cart__prod {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+
+  top: 1.1rem;
+  right: 1.1rem;
+  user-select: none;
+  
+  background: #F447AF;
+  width: 1.2rem;
+  height: 1.2rem;
+  z-index: 1;
+
+  border-radius: 50%;
+  border: 2px solid #fff;
+  font-family: "Mont-Regular";
+  font-size: .6rem;
+  color: #fff;
+
+  @include onMobile {
+    top: 1rem;
+    right: 5.5rem;
+  }
 }
