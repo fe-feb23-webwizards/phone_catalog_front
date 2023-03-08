@@ -7,5 +7,5 @@ export const getPhones = (page: number, perPage: number) => {
 };
 
 export const getPhoneById = (phoneId: string) => {
-  return client.get<PhoneFromAPI>(`/phones/${phoneId}`);
+  return client.get<PhonesResponse>(`/product_details/${phoneId}`);
 };
