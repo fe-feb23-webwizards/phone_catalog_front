@@ -9,13 +9,12 @@ import './PhonesPage.scss';
 import { PhoneCards } from '../../PhoneCards/PhoneCards';
 import { Pagination } from '../../Pagination/Pagination';
 import { Phone } from '../../../types/Phone';
-import { PhoneFromAPI } from '../../../types/PhoneFromAPI';
 import { getPhones } from '../../../api/phones';
 import { phonesAPI } from '../../../utils/phonesFromAPI';
 
 export const PhonesPage: React.FC = memo(() => {
   const [sortBy, setSortBy] = useState('newest');
-  const [phones, setPhones] = useState<PhoneFromAPI[] | Phone[]>([]);
+  const [phones, setPhones] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(16);
@@ -28,7 +27,7 @@ export const PhonesPage: React.FC = memo(() => {
     try {
       getPhones(1, 71)
         .then(res => {
-          setPhones(res);
+          setPhones(res.data);
           setIsLoading(false);
         });
     } catch (error) {
