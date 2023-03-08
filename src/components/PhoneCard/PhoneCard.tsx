@@ -62,16 +62,18 @@ export const PhoneCard: React.FC<Props> = memo(({
   };
 
   return (
-    <Link to={phoneId} className="card" key={id}>
+    <div className="card" key={id}>
 
-      <img
-        src={phoneImage}
-        alt="iphone"
-        className="card__img"
-      />
-      <h2 className="card__name">
-        {name}
-      </h2>
+      <Link to={phoneId}>
+        <img
+          src={phoneImage}
+          alt="iphone"
+          className="card__img"
+        />
+        <h2 className="card__name">
+          {name}
+        </h2>
+      </Link>
 
       <span className="card__price">{`${price}$`}</span>
       {shouldShowDiscountOnCard && <span className="card__price-regular">{`${fullPrice}$`}</span>}
@@ -109,6 +111,6 @@ export const PhoneCard: React.FC<Props> = memo(({
         </button>
       </div>
 
-    </Link>
+    </div>
   );
 });
