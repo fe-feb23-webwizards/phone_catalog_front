@@ -12,12 +12,14 @@ import {
 type Props = {
   product: Phone;
   total: number;
+  totalCount: number;
   deleteProduct: (id: string) => void;
   setTotal: React.Dispatch<React.SetStateAction<number>>;
+  setTotalCount: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const CartProduct: React.FC<Props> = memo(({
-  product, total, deleteProduct, setTotal,
+  product, total, deleteProduct, setTotal, totalCount, setTotalCount,
 }) => {
   const [productCounter, setProductCounter] = useState(1);
 
@@ -33,16 +35,16 @@ export const CartProduct: React.FC<Props> = memo(({
     addToLocalStorage({ id, key: StorageKeys.CART });
 
     setProductCounter(productCounter + 1);
-
     setTotal(total + product.price);
+    setTotalCount(totalCount + 1);
   };
 
   const onMinusClick = (id: string) => {
     delStorageElement(id);
 
     setProductCounter(productCounter - 1);
-
     setTotal(total - product.price);
+    setTotalCount(totalCount - 1);
   };
 
   const phoneImage = `https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_front/main/src/data/${product.image}`;
