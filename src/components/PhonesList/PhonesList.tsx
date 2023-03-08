@@ -3,11 +3,11 @@ import { PhoneCard } from '../PhoneCard/PhoneCard';
 import './PhonesList.scss';
 import arrowLeft from '../../styles/images/left-arrow.svg';
 import arrowRight from '../../styles/images/right-arrow.svg';
-import { PhoneFromAPI } from '../../types/PhoneFromAPI';
+import { Phone } from '../../types/Phone';
 
 type Props = {
   title: string,
-  phones: PhoneFromAPI[],
+  phones: Phone[],
 };
 
 export const PhonesList = (props: Props) => {
@@ -15,7 +15,7 @@ export const PhonesList = (props: Props) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slidesPerView, setSlidesPerView] = useState(4);
 
-  const shouldShowDiscount = phones.every(el => el.priceRegular - el.priceDiscount > 70);
+  const shouldShowDiscount = phones.every(el => el.price !== el.fullPrice);
 
   const nextSlide = () => {
     if (currentSlide === phones.length - slidesPerView) {
