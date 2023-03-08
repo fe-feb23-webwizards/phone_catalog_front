@@ -5,6 +5,7 @@ import React, {
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import './TopSlider.scss';
+import './TopSliderSlick.scss';
 import '../../styles/_blocks/_gridTemplate.scss';
 
 import banner_1 from '../../data/img/banner-desktop.jpeg';
