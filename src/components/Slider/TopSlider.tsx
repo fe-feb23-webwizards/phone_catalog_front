@@ -4,26 +4,25 @@ import React, {
 
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
-
-import banner_1 from './banner-desktop.jpeg';
-import banner_2 from '../../data/img/banner-phones.png';
-import banner_3 from '../../data/img/banner-tablets.png';
-
 import './TopSlider.scss';
 import '../../styles/_blocks/_gridTemplate.scss';
+
+import banner_1 from '../../data/img/banner-desktop.jpeg';
+import banner_2 from '../../data/img/banner-phones.png';
+import banner_3 from '../../data/img/banner-tablets.png';
 
 export const TopSlider: React.FC = memo(() => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
     adaptiveHeight: true,
     arrows: true,
     draggable: true,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 5000,
     customPaging: () => (
       <div
         className="slick-dot"
@@ -54,7 +53,7 @@ export const TopSlider: React.FC = memo(() => {
             {...settings}
           >
             <img
-              className="slider__image"
+              className="slider__image slider__image-mobile"
               src={banner_1}
               alt="banner for slider"
             />
