@@ -11,13 +11,18 @@ import { PageNotFound } from './components/pages/PageNotFound/PageNotFound';
 import { Favourites } from './components/pages/FavouritesPage/FavouritesPages';
 import { App } from './App';
 import { Cart } from './components/pages/CartPage/CartPage';
+import { ItemPage } from './components/pages/ItemPage/ItemPage';
 
 ReactDOM.render(
   <HashRouter>
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="/home" element={<Navigate to="/" replace />} />
-        <Route path="/phones" element={<PhonesPage />} />
+        <Route path="/phones">
+          <Route index element={<PhonesPage />} />
+          <Route path=":phoneSlug" element={<ItemPage />} />
+          <Route index element={<PhonesPage />} />
+        </Route>
         <Route path="/tablets" element={<TabletsPage />} />
         <Route path="/accessories" element={<AccessoriesPage />} />
         <Route path="/favourites" element={<Favourites />} />

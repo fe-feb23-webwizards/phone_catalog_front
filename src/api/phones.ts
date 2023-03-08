@@ -5,3 +5,7 @@ export const getPhones = (page: number, perPage: number) => {
   return client.get<PhonesResponse>(`/products?page=${page}&perPage=${perPage}`)
     .then(res => res.data);
 };
+
+export const getPhoneById = (phoneId: string) => {
+  return client.get<PhonesResponse>(`/product_details/${phoneId}`);
+};
