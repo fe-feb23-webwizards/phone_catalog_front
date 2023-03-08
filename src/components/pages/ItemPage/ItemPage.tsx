@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import cn from 'classnames';
+// import cn from 'classnames';
 import Slider from 'react-slick';
 import { getPhoneById } from '../../../api/phones';
 import { PhoneFromAPI } from '../../../types/PhoneFromAPI';
@@ -13,6 +13,7 @@ import heart from '../../../styles/images/heart.svg';
 import { AboutPhone } from '../../AboutPhone/AboutPhone';
 import { TechSpecs } from '../../TechSpecs/TechSpecs';
 import { ColorSelector } from '../../ColorSelector/ColorSelector';
+import { CapacitySelector } from '../../CapacitySelector/CapacitySelector';
 
 export const ItemPage: React.FC = memo(() => {
   const { phoneSlug } = useParams();
@@ -28,6 +29,7 @@ export const ItemPage: React.FC = memo(() => {
 
         setCurrentItem(res);
         setImages(res.images);
+        setCurrentCapacity(res.capacity);
       }
     } catch {
       setCurrentItem(null);
@@ -120,44 +122,14 @@ export const ItemPage: React.FC = memo(() => {
                     <div
                       className="ItemPage__selector"
                     >
-                      <button
-                        type="button"
-                        className={cn(
-                          'ItemPage__capacity-btn',
-                          {
-                            'ItemPage__capacity-btn--is-active': currentCapacity === '64 GB',
-                          },
-                        )}
-                        onClick={() => setCurrentCapacity('64 GB')}
-                      >
-                        64 GB
-                      </button>
-
-                      <button
-                        type="button"
-                        className={cn(
-                          'ItemPage__capacity-btn',
-                          {
-                            'ItemPage__capacity-btn--is-active': currentCapacity === '256 GB',
-                          },
-                        )}
-                        onClick={() => setCurrentCapacity('256 GB')}
-                      >
-                        256 GB
-                      </button>
-
-                      <button
-                        type="button"
-                        className={cn(
-                          'ItemPage__capacity-btn',
-                          {
-                            'ItemPage__capacity-btn--is-active': currentCapacity === '512 GB',
-                          },
-                        )}
-                        onClick={() => setCurrentCapacity('512 GB')}
-                      >
-                        512 GB
-                      </button>
+                      {currentItem.capacityAvailable.map((capacity) => (
+                        <CapacitySelector
+                          key={capacity}
+                          capacity={capacity}
+                          setCapacity={setCurrentCapacity}
+                          currentCapacity={currentCapacity}
+                        />
+                      ))}
                     </div>
 
                     <div className="ItemPage__line" />
