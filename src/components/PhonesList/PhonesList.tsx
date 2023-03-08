@@ -37,11 +37,11 @@ export const PhonesList = (props: Props) => {
 
   useEffect(() => {
     if (windowWidth < 1200) {
-      setSlidesPerView(3);
+      setSlidesPerView(2);
     }
 
     if (windowWidth < 640) {
-      setSlidesPerView(2);
+      setSlidesPerView(1);
     }
   }, []);
 
