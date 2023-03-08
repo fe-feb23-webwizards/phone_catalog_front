@@ -44,14 +44,14 @@ export const PhonesPage: React.FC = memo(() => {
   const productsAmount = phones.length;
 
   const getSortedCards = useMemo(() => {
-    return currentCards.sort((card1: PhoneFromAPI, card2: PhoneFromAPI) => {
+    return currentCards.sort((card1: Phone, card2: Phone) => {
       switch (sortBy) {
         case 'newest':
-          return card2.priceRegular - card1.priceRegular;
+          return card2.price - card1.price;
         case 'alphabetically':
           return card1.id.localeCompare(card2.id);
         case 'cheapest':
-          return card1.priceRegular - card2.priceRegular;
+          return card1.price - card2.price;
         default:
           return 0;
       }
