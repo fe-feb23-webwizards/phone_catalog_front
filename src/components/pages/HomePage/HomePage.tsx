@@ -16,7 +16,7 @@ export const HomePage: React.FC = memo(() => {
   useEffect(() => {
     try {
       getPhones(1, 71)
-        .then(res => setPhones(res.data));
+        .then(setPhones);
     } catch (error) {
       setPhones([]);
     }

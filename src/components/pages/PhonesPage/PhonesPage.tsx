@@ -26,10 +26,7 @@ export const PhonesPage: React.FC = memo(() => {
 
     try {
       getPhones(1, 71)
-        .then(res => {
-          setPhones(res.data);
-          setIsLoading(false);
-        });
+        .then(setPhones);
     } catch (error) {
       setPhones(phonesAPI);
     } finally {
