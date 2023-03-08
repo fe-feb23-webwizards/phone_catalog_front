@@ -11,6 +11,10 @@
 
   background-color: #fff;
 
+  &--is-active {
+    border-color: #0F0F11;
+  }
+
   &__color {
     content: '';
     position: absolute;

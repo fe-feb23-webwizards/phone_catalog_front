@@ -1,21 +1,29 @@
 import './ColorSelector.scss';
-import React from 'react';
+import React, { memo } from 'react';
+import cn from 'classnames';
 
 type Props = {
   color: string,
+  currentColor: string;
+  setColor: (col: string) => void;
 };
 
-export const ColorSelector: React.FC<Props> = ({ color }) => {
-  // if (color === 'spacegray') {
-  //   color = '#4f5b66';
-  // }
-
+export const ColorSelector: React.FC<Props> = memo(({ color, currentColor, setColor }) => {
   return (
-    <button type="button" className="color-selector">
+    <button
+      type="button"
+      className={cn(
+        'color-selector',
+        {
+          'color-selector--is-active': color === currentColor,
+        },
+      )}
+      onClick={() => setColor(color)}
+    >
       <div
         className="color-selector__color"
         style={{ backgroundColor: color }}
       />
     </button>
   );
-};
+});

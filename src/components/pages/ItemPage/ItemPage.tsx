@@ -19,7 +19,8 @@ export const ItemPage: React.FC = memo(() => {
   const { phoneSlug } = useParams();
 
   const [currentItem, setCurrentItem] = useState<PhoneFromAPI | null>(null);
-  const [currentCapacity, setCurrentCapacity] = useState('64 GB');
+  const [currentCapacity, setCurrentCapacity] = useState('');
+  const [currentColor, setCurrentColor] = useState('');
   const [images, setImages] = useState<string[]>([]);
 
   const loadPhone = async () => {
@@ -30,6 +31,7 @@ export const ItemPage: React.FC = memo(() => {
         setCurrentItem(res);
         setImages(res.images);
         setCurrentCapacity(res.capacity);
+        setCurrentColor(res.color);
       }
     } catch {
       setCurrentItem(null);
@@ -107,7 +109,12 @@ export const ItemPage: React.FC = memo(() => {
                         }
 
                         return (
-                          <ColorSelector color={col} key={color} />
+                          <ColorSelector
+                            color={col}
+                            currentColor={currentColor}
+                            setColor={setCurrentColor}
+                            key={color}
+                          />
                         );
                       })}
                     </div>
