@@ -1,24 +1,30 @@
 @import "../../styles/_colors.scss";
+@import "../../styles/mixins";
 
-@mixin onDesktop {
-  @media screen and (min-width: 1200px) {
-    @content;
-  }
-}
-
-@mixin onTablet {
-  @media (min-width: 640px) {
-    @content;
-  }
-}
-
-@mixin onMobile {
-  @media (min-width: 320px) and (max-width: 639px) {
-    @content;
-  }
-}
+//@mixin onDesktop {
+//  @media screen and (min-width: 1200px) {
+//    @content;
+//  }
+//}
+//
+//@mixin onTablet {
+//  @media (min-width: 640px) {
+//    @content;
+//  }
+//}
+//
+//@mixin onMobile {
+//  @media (min-width: 320px) and (max-width: 639px) {
+//    @content;
+//  }
+//}
 
 .slider {
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
   &__title {
     font-size: 32px;
@@ -26,12 +32,12 @@
     font-weight: 800;
     letter-spacing: -0.01em;
     color: #0f0f11;
-    margin: 0 0 24px 16px;
+    margin: 24px 0 24px 16px;
 
     width: 288px;
 
     @include onTablet {
-      margin: 0 0 32px 0;
+      margin: 32px 0 32px 0;
       font-size: 48px;
       line-height: 56px;
 
@@ -39,7 +45,7 @@
     }
 
     @include onDesktop {
-      margin: 0 0 56px 0;
+      margin: 56px 0 56px 0;
 
       width: 100%;
     }
