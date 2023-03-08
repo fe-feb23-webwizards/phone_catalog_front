@@ -12,6 +12,7 @@ import './ItemPage.scss';
 import heart from '../../../styles/images/heart.svg';
 import { AboutPhone } from '../../AboutPhone/AboutPhone';
 import { TechSpecs } from '../../TechSpecs/TechSpecs';
+import { ColorSelector } from '../../ColorSelector/ColorSelector';
 
 export const ItemPage: React.FC = memo(() => {
   const { phoneSlug } = useParams();
@@ -88,14 +89,26 @@ export const ItemPage: React.FC = memo(() => {
                       <h2 className="ItemPage__sect-title">Available colors</h2>
                       {/* <h2 className="ItemPage__phone-id">ID: 802390</h2> */}
                     </div>
-                    {/*
-                  <div
-                    className="ItemPage__selector"
-                  >
-                    {phoneColors.map((color) => (
-                      <ColorSelector color={color} key={phoneColors.indexOf(color)} />
-                    ))}
-                  </div> */}
+
+                    <div
+                      className="ItemPage__selector"
+                    >
+                      {currentItem.colorsAvailable.map((color) => {
+                        let col = color;
+
+                        if (color === 'spacegray') {
+                          col = '#343d46';
+                        }
+
+                        if (color === 'midnightgreen') {
+                          col = '#004953';
+                        }
+
+                        return (
+                          <ColorSelector color={col} key={color} />
+                        );
+                      })}
+                    </div>
                     <div className="ItemPage__line" />
                   </div>
 
