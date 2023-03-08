@@ -13,12 +13,10 @@ export const HomePage: React.FC = memo(() => {
   const phonesWithDiscount = phones.filter(el => el.price !== el.fullPrice)
     .sort((a, b) => a.price - b.price);
 
-  console.log(newPhones);
-
   useEffect(() => {
     try {
       getPhones(1, 71)
-        .then(res => setPhones(res.data));
+        .then(setPhones);
     } catch (error) {
       setPhones([]);
     }
