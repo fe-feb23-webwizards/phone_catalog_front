@@ -1,32 +1,68 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Phone } from '../../types/Phone';
 import heart from '../../styles/images/heart.svg';
-import { PhoneFromAPI } from '../../types/PhoneFromAPI';
+import heartActive from '../../styles/images/heart-active.svg';
+import { addToLocalStorage, deleteFromLocalStorage, StorageKeys } from '../../hooks/useLocalStorage';
 
 type Props = {
-  phone: PhoneFromAPI;
+  phone: Phone,
+  isInCart: boolean;
+  isInFavourites: boolean;
   shouldShowDiscount: boolean;
 };
 
-export const PhoneCard: React.FC<Props> = memo(({ phone, shouldShowDiscount }) => {
+export const PhoneCard: React.FC<Props> = memo(({
+  phone, isInCart, isInFavourites, shouldShowDiscount,
+}) => {
+  const [isAdded, setIsAdded] = useState(false);
+  const [isFavourites, setIsFavourites] = useState(false);
+
+  useEffect(() => {
+    setIsAdded(isInCart);
+    setIsFavourites(isInFavourites);
+  }, []);
+
   const {
     id,
+    phoneId,
     name,
-    priceRegular,
-    priceDiscount,
+    price,
+    fullPrice,
     screen,
     capacity,
     ram,
-    images,
+    image,
   } = phone;
 
   const [shouldShowDiscountOnCard, setShouldShowDiscountOnCard] = useState(shouldShowDiscount);
 
   console.log(setShouldShowDiscountOnCard);
 
-  const phoneImage = `https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_front/main/src/data/${images[0]}`;
+  const phoneImage = `https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_front/main/src/data/${image}`;
+
+  const onCartClick = () => {
+    if (isAdded) {
+      deleteFromLocalStorage({ id, key: StorageKeys.CART });
+    } else {
+      addToLocalStorage({ id, key: StorageKeys.CART });
+    }
+
+    setIsAdded(!isAdded);
+  };
+
+  const onFavouritesClick = () => {
+    if (isFavourites) {
+      deleteFromLocalStorage({ id, key: StorageKeys.FAVOURITES });
+    } else {
+      addToLocalStorage({ id, key: StorageKeys.FAVOURITES });
+    }
+
+    setIsFavourites(!isFavourites);
+  };
 
   return (
-    <div className="card" key={id}>
+    <Link to={phoneId} className="card" key={id}>
 
       <img
         src={phoneImage}
@@ -37,8 +73,8 @@ export const PhoneCard: React.FC<Props> = memo(({ phone, shouldShowDiscount }) =
         {name}
       </h2>
 
-      <span className="card__price">{`${priceDiscount}$`}</span>
-      {shouldShowDiscountOnCard && <span className="card__price-regular">{`${priceRegular}$`}</span>}
+      <span className="card__price">{`${price}$`}</span>
+      {shouldShowDiscountOnCard && <span className="card__price-regular">{`${fullPrice}$`}</span>}
 
       <div className="card__underline"></div>
 
@@ -56,21 +92,23 @@ export const PhoneCard: React.FC<Props> = memo(({ phone, shouldShowDiscount }) =
       </div>
 
       <div className="card__flex">
-        <a
-          href="/"
+        <button
+          type="button"
           className="card__button"
+          onClick={() => onCartClick()}
         >
-          Add to cart
-        </a>
+          {isAdded ? 'Added' : 'Add to cart'}
+        </button>
 
         <button
           type="button"
           className="card__add-to-favorite"
+          onClick={() => onFavouritesClick()}
         >
-          <img src={heart} alt="favorite" />
+          <img src={isFavourites ? heartActive : heart} alt="favorite" />
         </button>
       </div>
 
-    </div>
+    </Link>
   );
 });

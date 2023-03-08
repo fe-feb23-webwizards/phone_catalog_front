@@ -9,13 +9,12 @@ import './PhonesPage.scss';
 import { PhoneCards } from '../../PhoneCards/PhoneCards';
 import { Pagination } from '../../Pagination/Pagination';
 import { Phone } from '../../../types/Phone';
-import { PhoneFromAPI } from '../../../types/PhoneFromAPI';
 import { getPhones } from '../../../api/phones';
 import { phonesAPI } from '../../../utils/phonesFromAPI';
 
 export const PhonesPage: React.FC = memo(() => {
   const [sortBy, setSortBy] = useState('newest');
-  const [phones, setPhones] = useState<PhoneFromAPI[] | Phone[]>([]);
+  const [phones, setPhones] = useState<Phone[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(16);
@@ -27,10 +26,7 @@ export const PhonesPage: React.FC = memo(() => {
 
     try {
       getPhones(1, 71)
-        .then(res => {
-          setPhones(res);
-          setIsLoading(false);
-        });
+        .then(setPhones);
     } catch (error) {
       setPhones(phonesAPI);
     } finally {
@@ -45,14 +41,14 @@ export const PhonesPage: React.FC = memo(() => {
   const productsAmount = phones.length;
 
   const getSortedCards = useMemo(() => {
-    return currentCards.sort((card1: PhoneFromAPI, card2: PhoneFromAPI) => {
+    return currentCards.sort((card1: Phone, card2: Phone) => {
       switch (sortBy) {
         case 'newest':
-          return card2.priceRegular - card1.priceRegular;
+          return card2.price - card1.price;
         case 'alphabetically':
           return card1.id.localeCompare(card2.id);
         case 'cheapest':
-          return card1.priceRegular - card2.priceRegular;
+          return card1.price - card2.price;
         default:
           return 0;
       }

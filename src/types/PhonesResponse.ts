@@ -1,4 +1,9 @@
-export interface PhoneFromAPI {
+interface description {
+  title: string;
+  text: string[];
+}
+
+export interface PhonesResponse {
   id: string;
   namespaceId: string;
   name: string;
@@ -9,10 +14,7 @@ export interface PhoneFromAPI {
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: {
-    title: string;
-    text: string[];
-  }[];
+  description: description[];
   screen: string;
   resolution: string;
   processor: string;
