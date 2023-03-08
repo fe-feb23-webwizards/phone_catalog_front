@@ -49,3 +49,7 @@ export function getLocalStorageData(key: StorageKeys) {
 
   return myLocalData ? JSON.parse(myLocalData) : [];
 }
+
+export function deleteAllLocalFromCart() {
+  localStorage.removeItem(StorageKeys.CART);
+}

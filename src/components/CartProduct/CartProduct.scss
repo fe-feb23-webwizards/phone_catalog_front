@@ -124,6 +124,7 @@
   }
 
   &:disabled {
+    transform: scale(1);
     color: #B4BDC4;
     border: 1px solid #B4BDC4;
   }

@@ -7,42 +7,34 @@ import {
   getLocalStorageData,
   deleteFromLocalStorage,
   StorageKeys,
+  deleteAllLocalFromCart,
 } from '../../../hooks/useLocalStorage';
 import { CartProduct } from '../../CartProduct/CartProduct';
+import deleteButton from './imgCart/icon_close.svg';
 
 export const Cart: React.FC = memo(() => {
   const [phonesToCart, setPhonesToCart] = useState<Phone[]>([]);
   const [total, setTotal] = useState(0);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
-    const storageArray = getLocalStorageData(StorageKeys.CART);
+    const storageArray: string[] = getLocalStorageData(StorageKeys.CART);
     const addedProductsToCart = phones.filter(phone => (storageArray.includes(phone.id)));
 
-    setPhonesToCart(addedProductsToCart);
-  }, []);
+    const prodPrices = storageArray
+      .map(idEl => {
+        const productObject = phones.find(item => item.id === idEl);
 
-  // гівнокод для відображення суми - якось !?!
-  useEffect(() => {
-    const storageArray = getLocalStorageData(StorageKeys.CART);
-    const prodFromStorage = [...JSON.parse(storageArray)];
+        return productObject ? productObject.price : 0;
+      });
 
-    const prodPrices = prodFromStorage
-      .map(idEl => phonesToCart.find(item => item.id === idEl)?.price);
-
-    const filteredProdPrices = prodPrices.filter(el => el !== undefined);
-
-    const sum = filteredProdPrices.reduce((currentSum, item) => {
-      if (item && currentSum) {
-        return currentSum + item;
-      }
-
-      return currentSum;
+    const sum = prodPrices.reduce((currentSum, item) => {
+      return currentSum + item;
     }, 0);
 
-    if (sum) {
-      setTotal(sum);
-    }
-  }, [total]);
+    setPhonesToCart(addedProductsToCart);
+    setTotal(sum);
+  }, []);
 
   const deleteProduct = (id: string) => {
     deleteFromLocalStorage({ id, key: StorageKeys.CART });
@@ -50,6 +42,13 @@ export const Cart: React.FC = memo(() => {
     const updatedPhones = phonesToCart.filter(phone => phone.id !== id);
 
     setPhonesToCart(updatedPhones);
+  };
+
+  const deleteAllProduct = () => {
+    deleteAllLocalFromCart();
+    setPhonesToCart([]);
+    setTotal(0);
+    setModalIsOpen(true);
   };
 
   return (
@@ -66,6 +65,7 @@ export const Cart: React.FC = memo(() => {
           {phonesToCart.map(product => (
             <CartProduct
               key={product.id}
+              total={total}
               setTotal={setTotal}
               product={product}
               deleteProduct={deleteProduct}
@@ -74,15 +74,34 @@ export const Cart: React.FC = memo(() => {
         </div>
 
         <div className="total">
-          <div className="total__price">111</div>
+          <div className="total__price">{total}</div>
           <div className="total__title">
             {`Total for ${phonesToCart.length} ${phonesToCart.length === 1 ? 'item' : 'items'}`}
           </div>
           <div className="total__checkout">
-            <button className="total__checkout__but" type="button">Checkout</button>
+            <button
+              className="total__checkout__but"
+              type="button"
+              onClick={() => deleteAllProduct()}
+            >
+              Checkout
+            </button>
           </div>
         </div>
       </div>
+
+      {modalIsOpen && (
+        <div className="modal">
+          <button
+            type="button"
+            className="modal__delBut"
+            onClick={() => setModalIsOpen(false)}
+          >
+            <img src={deleteButton} alt="deleteButton" />
+          </button>
+          <p>Замовлення прийнято! Дякуємо та гарного дня!</p>
+        </div>
+      )}
     </div>
   );
 });

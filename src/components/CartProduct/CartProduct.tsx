@@ -11,12 +11,13 @@ import {
 
 type Props = {
   product: Phone;
+  total: number;
   deleteProduct: (id: string) => void;
   setTotal: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const CartProduct: React.FC<Props> = memo(({
-  product, deleteProduct, setTotal,
+  product, total, deleteProduct, setTotal,
 }) => {
   const [productCounter, setProductCounter] = useState(1);
 
@@ -33,8 +34,7 @@ export const CartProduct: React.FC<Props> = memo(({
 
     setProductCounter(productCounter + 1);
 
-    setTotal(1);
-    // щоб мій батько перерендер робив - або забрати мемо?!?
+    setTotal(total + product.price);
   };
 
   const onMinusClick = (id: string) => {
@@ -42,7 +42,7 @@ export const CartProduct: React.FC<Props> = memo(({
 
     setProductCounter(productCounter - 1);
 
-    setTotal(1);
+    setTotal(total - product.price);
   };
 
   const phoneImage = `https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_front/main/src/data/${product.image}`;
@@ -52,7 +52,10 @@ export const CartProduct: React.FC<Props> = memo(({
       <div className="product__info">
         <img
           className="product__info__deleteButton"
-          onClick={() => deleteProduct(product.id)}
+          onClick={() => {
+            deleteProduct(product.id);
+            setTotal(total - (product.price * productCounter));
+          }}
           aria-hidden="true"
           src={deleteButton}
           alt="deleteButton"
