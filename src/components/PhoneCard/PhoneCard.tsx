@@ -1,9 +1,9 @@
 import React, { memo, useState } from 'react';
 import heart from '../../styles/images/heart.svg';
-import { PhoneFromAPI } from '../../types/PhoneFromAPI';
+import { Phone } from '../../types/Phone';
 
 type Props = {
-  phone: PhoneFromAPI;
+  phone: Phone;
   shouldShowDiscount: boolean;
 };
 
@@ -11,19 +11,19 @@ export const PhoneCard: React.FC<Props> = memo(({ phone, shouldShowDiscount }) =
   const {
     id,
     name,
-    priceRegular,
-    priceDiscount,
+    price,
+    fullPrice,
     screen,
     capacity,
     ram,
-    images,
+    image,
   } = phone;
 
   const [shouldShowDiscountOnCard, setShouldShowDiscountOnCard] = useState(shouldShowDiscount);
 
   console.log(setShouldShowDiscountOnCard);
 
-  const phoneImage = `https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_front/main/src/data/${images[0]}`;
+  const phoneImage = `https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_front/main/src/data/${image}`;
 
   return (
     <div className="card" key={id}>
@@ -37,8 +37,8 @@ export const PhoneCard: React.FC<Props> = memo(({ phone, shouldShowDiscount }) =
         {name}
       </h2>
 
-      <span className="card__price">{`${priceDiscount}$`}</span>
-      {shouldShowDiscountOnCard && <span className="card__price-regular">{`${priceRegular}$`}</span>}
+      <span className="card__price">{`${price}$`}</span>
+      {shouldShowDiscountOnCard && <span className="card__price-regular">{`${fullPrice}$`}</span>}
 
       <div className="card__underline"></div>
 

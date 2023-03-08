@@ -1,6 +1,6 @@
-import { PhoneFromAPI } from '../types/PhoneFromAPI';
+import { Phone } from '../types/Phone';
 import { client } from '../utils/fetchClients';
 
 export const getPhones = (page: number, perPage: number) => {
-  return client.get<PhoneFromAPI[]>(`/phones?page=${page}&perPage=${perPage}`);
+  return client.get<Phone[]>(`/products?page=${page}&perPage=${perPage}`);
 };
