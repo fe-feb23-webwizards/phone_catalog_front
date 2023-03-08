@@ -8,11 +8,14 @@ import {
 } from '../../hooks/useLocalStorage';
 
 type Props = {
-  cards: Phone[],
-  isLoading: boolean,
+  isLoading: boolean;
+  cards: Phone[];
+  shouldShowDiscount: boolean;
 };
 
-export const PhoneCards: React.FC<Props> = memo(({ cards, isLoading }) => {
+export const PhoneCards: React.FC<Props> = memo(({ cards, isLoading, shouldShowDiscount }) => {
+  const shouldShowDiscountOnCard = shouldShowDiscount;
+
   if (isLoading) {
     return (
       <h1>Is loading...</h1>
@@ -34,6 +37,7 @@ export const PhoneCards: React.FC<Props> = memo(({ cards, isLoading }) => {
             isInFavourites={isInFavourites}
             phone={card}
             key={card.id}
+            shouldShowDiscount={shouldShowDiscountOnCard}
           />
         );
       })}

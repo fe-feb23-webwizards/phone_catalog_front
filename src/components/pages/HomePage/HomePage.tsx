@@ -1,24 +1,39 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { PhonesList } from '../../PhonesList/PhonesList';
 import { TopSlider } from '../../Slider/TopSlider';
-import { phonesAPI } from '../../../utils/phonesFromAPI';
 import { ShopByCategory } from '../../Categories/ShopByCategory/ShopByCategory';
+import { getPhones } from '../../../api/phones';
+import { Phone } from '../../../types/Phone';
 
-const newPhones = phonesAPI.filter(el => el.year > 2018);
-const phonesWithDiscount = phonesAPI.filter(el => el.fullPrice - el.price > 50)
-  .sort((a, b) => a.price - b.price);
+export const HomePage: React.FC = memo(() => {
+  const [phones, setPhones] = useState<Phone[]>([]);
 
-export const HomePage: React.FC = memo(() => (
-  <>
-    <TopSlider />
-    <PhonesList
-      title="Brand new models"
-      phones={newPhones}
-    />
-    <ShopByCategory />
-    <PhonesList
-      title="Hot prices"
-      phones={phonesWithDiscount}
-    />
-  </>
-));
+  const newPhones = phones.filter(el => el.price - el.fullPrice)
+    .sort((a, b) => a.price - b.price);
+  const phonesWithDiscount = phones.filter(el => el.price !== el.fullPrice)
+    .sort((a, b) => a.price - b.price);
+
+  useEffect(() => {
+    try {
+      getPhones(1, 71)
+        .then(setPhones);
+    } catch (error) {
+      setPhones([]);
+    }
+  }, []);
+
+  return (
+    <>
+      <TopSlider />
+      <PhonesList
+        title="Brand new models"
+        phones={newPhones}
+      />
+      <ShopByCategory />
+      <PhonesList
+        title="Hot prices"
+        phones={phonesWithDiscount}
+      />
+    </>
+  );
+});

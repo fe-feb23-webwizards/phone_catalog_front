@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://gentle-springs-47615.herokuapp.com';
 
 type RequestMethod = 'GET';
 

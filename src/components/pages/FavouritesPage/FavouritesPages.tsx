@@ -1,31 +1,40 @@
-import React, { memo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { memo, useEffect, useState } from 'react';
 import { PhoneCards } from '../../PhoneCards/PhoneCards';
-import phones from '../../../data/phones.json';
 import './FavouritesPages.scss';
-
-const favourites = phones.slice(0, 6);
+import { Breadcrump } from '../../Breadcrump/Breadcrump';
+import { Phone } from '../../../types/Phone';
+import { getPhones } from '../../../api/phones';
 
 export const Favourites: React.FC = memo(() => {
   const [isLoading] = useState(false);
+  const [phones, setPhones] = useState<Phone[]>([]);
+
+  const shouldShowDiscount = true;
+
+  useEffect(() => {
+    try {
+      getPhones(1, 6)
+        .then(setPhones);
+    } catch (error) {
+      setPhones([]);
+    }
+  }, []);
 
   return (
     <div className="container">
-      <div className="back-block">
-        <Link to="/home" className="back-block__home">
-          <div className="back-block__home--inside" />
-        </Link>
-        <div className="back-block__arrow"></div>
-        <p className="back-block__text">Favourites</p>
-      </div>
+      <Breadcrump pageName="Favourites" />
 
-      {favourites.length > 0 ? (
+      {phones.length > 0 ? (
         <>
           <h1 className="page-title">Favourites</h1>
           <p className="products-amount">
-            {`${favourites.length} items`}
+            {`${phones.length} items`}
           </p>
-          <PhoneCards cards={favourites} isLoading={isLoading} />
+          <PhoneCards
+            cards={phones}
+            isLoading={isLoading}
+            shouldShowDiscount={shouldShowDiscount}
+          />
         </>
       ) : (
         <h1 className="subtitle">No favourites yet</h1>

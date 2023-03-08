@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
+import { PageNotFound } from '../PageNotFound/PageNotFound';
 
 export const AccessoriesPage: React.FC = memo(() => (
-  <h1>Accessories Page</h1>
+  <PageNotFound />
 ));

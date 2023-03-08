@@ -8,9 +8,12 @@ type Props = {
   phone: Phone,
   isInCart: boolean;
   isInFavourites: boolean;
+  shouldShowDiscount: boolean;
 };
 
-export const PhoneCard: React.FC<Props> = memo(({ phone, isInCart, isInFavourites }) => {
+export const PhoneCard: React.FC<Props> = memo(({
+  phone, isInCart, isInFavourites, shouldShowDiscount,
+}) => {
   const [isAdded, setIsAdded] = useState(false);
   const [isFavourites, setIsFavourites] = useState(false);
 
@@ -23,11 +26,16 @@ export const PhoneCard: React.FC<Props> = memo(({ phone, isInCart, isInFavourite
     id,
     name,
     price,
+    fullPrice,
     screen,
     capacity,
     ram,
     image,
   } = phone;
+
+  const [shouldShowDiscountOnCard, setShouldShowDiscountOnCard] = useState(shouldShowDiscount);
+
+  console.log(setShouldShowDiscountOnCard);
 
   const phoneImage = `https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_front/main/src/data/${image}`;
 
@@ -64,6 +72,7 @@ export const PhoneCard: React.FC<Props> = memo(({ phone, isInCart, isInFavourite
       </h2>
 
       <span className="card__price">{`${price}$`}</span>
+      {shouldShowDiscountOnCard && <span className="card__price-regular">{`${fullPrice}$`}</span>}
 
       <div className="card__underline"></div>
 

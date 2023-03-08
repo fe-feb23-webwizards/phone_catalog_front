@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { PhoneCard } from '../PhoneCard/PhoneCard';
 import './PhonesList.scss';
-import { Phone } from '../../types/Phone';
 import arrowLeft from '../../styles/images/left-arrow.svg';
 import arrowRight from '../../styles/images/right-arrow.svg';
+import { Phone } from '../../types/Phone';
 
 type Props = {
   title: string,
@@ -15,12 +15,22 @@ export const PhonesList = (props: Props) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [slidesPerView, setSlidesPerView] = useState(4);
 
+  const shouldShowDiscount = phones.every(el => el.price !== el.fullPrice);
+
   const nextSlide = () => {
-    setCurrentSlide(currentSlide === phones.length - 1 ? 0 : currentSlide + 1);
+    if (currentSlide === phones.length - slidesPerView) {
+      return;
+    }
+
+    setCurrentSlide(currentSlide + 1);
   };
 
   const prevSlide = () => {
-    setCurrentSlide(currentSlide === 0 ? phones.length - 1 : currentSlide - 1);
+    if (currentSlide === 0) {
+      return;
+    }
+
+    setCurrentSlide(currentSlide - 1);
   };
 
   const windowWidth = window.innerWidth;
@@ -45,6 +55,7 @@ export const PhonesList = (props: Props) => {
           <button type="button" className="scroll__left" onClick={prevSlide}>
             <img src={arrowLeft} alt="arrow" className="scroll__icon" />
           </button>
+
           <button type="button" className="scroll__right" onClick={nextSlide}>
             <img src={arrowRight} alt="arrow" className="scroll__icon" />
           </button>
@@ -52,7 +63,7 @@ export const PhonesList = (props: Props) => {
       </div>
       <div className={`catalog catalog--${slidesPerView}`}>
         {slidesToShow.map(el => (
-          <PhoneCard phone={el} key={el.id} />
+          <PhoneCard phone={el} key={el.id} shouldShowDiscount={shouldShowDiscount} />
         ))}
       </div>
     </section>

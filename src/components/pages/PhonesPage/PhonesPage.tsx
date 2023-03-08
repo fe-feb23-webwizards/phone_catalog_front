@@ -1,39 +1,61 @@
-import React, { memo, useMemo, useState } from 'react';
+import React, {
+  memo,
+  useMemo,
+  useState,
+  useEffect,
+} from 'react';
 // import { Link } from 'react-router-dom';
 import './PhonesPage.scss';
 import { PhoneCards } from '../../PhoneCards/PhoneCards';
 import { Pagination } from '../../Pagination/Pagination';
-import phones from '../../../data/phones.json';
 import { Phone } from '../../../types/Phone';
+import { getPhones } from '../../../api/phones';
+import { phonesAPI } from '../../../utils/phonesFromAPI';
 
 export const PhonesPage: React.FC = memo(() => {
   const [sortBy, setSortBy] = useState('newest');
-
-  const [cards] = useState<Phone[]>(phones);
-  const [isLoading] = useState(false);
+  const [phones, setPhones] = useState<Phone[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [cardsPerPage, setCardsPerPage] = useState(16);
 
+  const showDiscount = true;
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    try {
+      getPhones(1, 71)
+        .then(setPhones);
+    } catch (error) {
+      setPhones(phonesAPI);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
   const indexOfLastCard = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
+  const currentCards = phones.slice(indexOfFirstCard, indexOfLastCard);
 
-  const productsAmount = cards.length;
+  const productsAmount = phones.length;
 
   const getSortedCards = useMemo(() => {
     return currentCards.sort((card1: Phone, card2: Phone) => {
       switch (sortBy) {
         case 'newest':
-          return card2.year - card1.year;
+          return card2.price - card1.price;
         case 'alphabetically':
-          return card1.phoneId.localeCompare(card2.phoneId);
+          return card1.id.localeCompare(card2.id);
         case 'cheapest':
           return card1.price - card2.price;
         default:
           return 0;
       }
     });
-  }, [sortBy, cards, currentPage, cardsPerPage]);
+  }, [sortBy, phones, currentPage, cardsPerPage]);
+
+  console.log(getSortedCards);
 
   return (
     <div className="container">
@@ -72,16 +94,23 @@ export const PhonesPage: React.FC = memo(() => {
         </div>
       </div>
 
-      <PhoneCards
-        cards={getSortedCards}
-        isLoading={isLoading}
-      />
-      <Pagination
-        cardsPerPage={cardsPerPage}
-        totalCards={cards.length}
-        changePage={setCurrentPage}
-        currentPage={currentPage}
-      />
+      {isLoading ? (
+        <h1>is Loading</h1>
+      ) : (
+        <>
+          <PhoneCards
+            cards={currentCards}
+            isLoading={isLoading}
+            shouldShowDiscount={showDiscount}
+          />
+          <Pagination
+            cardsPerPage={cardsPerPage}
+            totalCards={phones.length}
+            changePage={setCurrentPage}
+            currentPage={currentPage}
+          />
+        </>
+      )}
     </div>
   );
 });

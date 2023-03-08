@@ -90,6 +90,7 @@ $card-width: 272px;
     margin: auto;
     margin-bottom: 8px;
     height: 42px;
+    max-width: 208px;
     font-family: 'Mont';
     font-style: normal;
     font-weight: 600;
@@ -104,6 +105,13 @@ $card-width: 272px;
     font-size: 22px;
     line-height: 140%;
     margin-bottom: 8px;
+    margin-right: 8px;
+  }
+
+  &__price-regular{
+    font-size: 22px;
+    color: #89939A;
+    text-decoration: line-through;
   }
 
   &__underline {
