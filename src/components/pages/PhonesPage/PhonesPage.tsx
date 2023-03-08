@@ -1,6 +1,5 @@
 import React, {
   memo,
-  useMemo,
   useState,
   useEffect,
 } from 'react';
@@ -9,8 +8,9 @@ import './PhonesPage.scss';
 import { PhoneCards } from '../../PhoneCards/PhoneCards';
 import { Pagination } from '../../Pagination/Pagination';
 import { Phone } from '../../../types/Phone';
-import { getPhones } from '../../../api/phones';
 import { phonesAPI } from '../../../utils/phonesFromAPI';
+import { Loader } from '../../Loader/Loader';
+import { getSortedPhones } from '../../../api/phones';
 
 export const PhonesPage: React.FC = memo(() => {
   const [sortBy, setSortBy] = useState('newest');
@@ -21,41 +21,22 @@ export const PhonesPage: React.FC = memo(() => {
 
   const showDiscount = true;
 
-  useEffect(() => {
-    setIsLoading(true);
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+  const currentCards = phones.slice(indexOfFirstCard, indexOfLastCard);
 
+  useEffect(() => {
     try {
-      getPhones(1, 71)
+      getSortedPhones(1, 71, sortBy)
         .then(setPhones);
     } catch (error) {
       setPhones(phonesAPI);
     } finally {
       setIsLoading(false);
     }
-  }, []);
-
-  const indexOfLastCard = currentPage * cardsPerPage;
-  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  const currentCards = phones.slice(indexOfFirstCard, indexOfLastCard);
+  }, [sortBy]);
 
   const productsAmount = phones.length;
-
-  const getSortedCards = useMemo(() => {
-    return currentCards.sort((card1: Phone, card2: Phone) => {
-      switch (sortBy) {
-        case 'newest':
-          return card2.price - card1.price;
-        case 'alphabetically':
-          return card1.id.localeCompare(card2.id);
-        case 'cheapest':
-          return card1.price - card2.price;
-        default:
-          return 0;
-      }
-    });
-  }, [sortBy, phones, currentPage, cardsPerPage]);
-
-  console.log(getSortedCards);
 
   return (
     <div className="container">
@@ -94,8 +75,10 @@ export const PhonesPage: React.FC = memo(() => {
         </div>
       </div>
 
-      {isLoading ? (
-        <h1>is Loading</h1>
+      {!phones.length ? (
+        <>
+          <Loader />
+        </>
       ) : (
         <>
           <PhoneCards

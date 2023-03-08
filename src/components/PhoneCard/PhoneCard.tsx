@@ -21,7 +21,9 @@ export const PhoneCard: React.FC<Props> = memo(({ phone, shouldShowDiscount }) =
 
   const [shouldShowDiscountOnCard, setShouldShowDiscountOnCard] = useState(shouldShowDiscount);
 
-  console.log(setShouldShowDiscountOnCard);
+  if (!phone) {
+    setShouldShowDiscountOnCard(true);
+  }
 
   const phoneImage = `https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_front/main/src/data/${image}`;
 
