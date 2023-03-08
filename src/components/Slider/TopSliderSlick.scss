@@ -1,0 +1,132 @@
+@import "../../styles/_colors.scss";
+@import "../../styles/mixins";
+
+.slick {
+  @include onTablet {
+    &-prev,
+    &-next {
+      font-size: 0;
+      line-height: 0;
+
+      position: absolute;
+      top: 50%;
+
+      display: block;
+
+      width: 32px;
+      height: 100%;
+
+      border: 1px solid #b4bdc4;
+      border-radius: 48px;
+      padding: 14px;
+
+      -ms-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+
+      cursor: pointer;
+
+      transition: border 0.3s;
+
+      color: transparent;
+      outline: none;
+      background: transparent;
+
+      &:hover {
+        border: 1px solid #0f0f11;
+      }
+    }
+
+    &-prev {
+      left: -45px;
+      position: absolute;
+      z-index: 1;
+
+      &::after {
+        content: '';
+        display: block;
+
+        width: 6px;
+        height: 10px;
+
+        background-image: url('../../../src/styles/images/left-arrow.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+    }
+
+    &-next {
+      right: -45px;
+
+      &::before {
+        content: '';
+        display: block;
+
+        width: 6px;
+        height: 10px;
+
+        background-image: url('../../../src/styles/images/right-arrow.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+    }
+  }
+
+  &-dot {
+    background: #e2e6e9;
+    transition: opacity 0.3s, background 0.3s;
+
+    &:hover {
+      background: #0f0f11;
+      opacity: 0.3;
+    }
+  }
+
+  &-dots {
+    position: absolute;
+
+    display: block;
+
+    width: 100%;
+    padding: 18px 0 0 0;
+    margin: 0;
+
+    list-style: none;
+
+    text-align: center;
+
+    & li {
+      position: relative;
+
+      display: inline-block;
+
+      margin-right: 14px;
+
+      cursor: pointer;
+    }
+  }
+
+  &-active {
+    .slick-dot {
+      background: #0f0f11;
+    }
+  }
+
+  &-slider {
+    position: relative;
+
+    display: block;
+    box-sizing: border-box;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    -webkit-touch-callout: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+  }
+}

@@ -3,7 +3,7 @@ import { PhoneCards } from '../../PhoneCards/PhoneCards';
 import './FavouritesPages.scss';
 import { Breadcrump } from '../../Breadcrump/Breadcrump';
 import { Phone } from '../../../types/Phone';
-import { getPhones } from '../../../api/phones';
+import { getAllPhones } from '../../../api/phones';
 
 export const Favourites: React.FC = memo(() => {
   const [isLoading] = useState(false);
@@ -13,7 +13,7 @@ export const Favourites: React.FC = memo(() => {
 
   useEffect(() => {
     try {
-      getPhones(1, 6)
+      getAllPhones(1, 6)
         .then(setPhones);
     } catch (error) {
       setPhones([]);

@@ -1,9 +1,9 @@
 import React from 'react';
-import { PhonesResponse } from '../../types/PhonesResponse';
+import { PhoneFromAPI } from '../../types/PhoneFromAPI';
 import './TechSpecs.scss';
 
 type Props = {
-  product: PhonesResponse;
+  product: PhoneFromAPI;
 };
 
 export const TechSpecs: React.FC<Props> = ({ product }) => {

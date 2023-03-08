@@ -1,4 +1,5 @@
 import React, { memo, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Phone } from '../../types/Phone';
 import heart from '../../styles/images/heart.svg';
 import heartActive from '../../styles/images/heart-active.svg';
@@ -24,6 +25,7 @@ export const PhoneCard: React.FC<Props> = memo(({
 
   const {
     id,
+    phoneId,
     name,
     price,
     fullPrice,
@@ -35,7 +37,9 @@ export const PhoneCard: React.FC<Props> = memo(({
 
   const [shouldShowDiscountOnCard, setShouldShowDiscountOnCard] = useState(shouldShowDiscount);
 
-  console.log(setShouldShowDiscountOnCard);
+  if (!phone) {
+    setShouldShowDiscountOnCard(true);
+  }
 
   const phoneImage = `https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_front/main/src/data/${image}`;
 
@@ -62,14 +66,16 @@ export const PhoneCard: React.FC<Props> = memo(({
   return (
     <div className="card" key={id}>
 
-      <img
-        src={phoneImage}
-        alt="iphone"
-        className="card__img"
-      />
-      <h2 className="card__name">
-        {name}
-      </h2>
+      <Link to={phoneId}>
+        <img
+          src={phoneImage}
+          alt="iphone"
+          className="card__img"
+        />
+        <h2 className="card__name">
+          {name}
+        </h2>
+      </Link>
 
       <span className="card__price">{`${price}$`}</span>
       {shouldShowDiscountOnCard && <span className="card__price-regular">{`${fullPrice}$`}</span>}
