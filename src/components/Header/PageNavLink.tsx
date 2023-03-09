@@ -14,7 +14,7 @@ export const PageNavLink: React.FC<Props> = memo(({ to, text, setIsOpen }) => {
       onClick={() => setIsOpen(false)}
       to={to}
       className={({ isActive }) => cn('link__item', {
-        'is-active': isActive,
+        'link__item--is-active': isActive,
       })}
     >
       {text}
