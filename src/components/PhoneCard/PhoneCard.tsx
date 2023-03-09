@@ -1,9 +1,19 @@
 import React, { memo, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Phone } from '../../types/Phone';
 import heart from '../../styles/images/heart.svg';
 import heartActive from '../../styles/images/heart-active.svg';
-import { addToLocalStorage, deleteFromLocalStorage, StorageKeys } from '../../hooks/useLocalStorage';
+import {
+  addToLocalStorage, deleteFromLocalStorage, getLocalStorageData, StorageKeys,
+} from '../../hooks/useLocalStorage';
+import {
+  decrementCart,
+  incrementCart,
+  incrementFavourites,
+  decrementFavourites,
+  setFavouritesValue,
+} from '../Header/headerSlice.slice';
 
 type Props = {
   phone: Phone,
@@ -17,6 +27,8 @@ export const PhoneCard: React.FC<Props> = memo(({
 }) => {
   const [isAdded, setIsAdded] = useState(false);
   const [isFavourites, setIsFavourites] = useState(false);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setIsAdded(isInCart);
@@ -46,8 +58,10 @@ export const PhoneCard: React.FC<Props> = memo(({
   const onCartClick = () => {
     if (isAdded) {
       deleteFromLocalStorage({ id, key: StorageKeys.CART });
+      dispatch(decrementCart());
     } else {
       addToLocalStorage({ id, key: StorageKeys.CART });
+      dispatch(incrementCart());
     }
 
     setIsAdded(!isAdded);
@@ -56,11 +70,16 @@ export const PhoneCard: React.FC<Props> = memo(({
   const onFavouritesClick = () => {
     if (isFavourites) {
       deleteFromLocalStorage({ id, key: StorageKeys.FAVOURITES });
+      dispatch(decrementFavourites());
     } else {
       addToLocalStorage({ id, key: StorageKeys.FAVOURITES });
+      dispatch(incrementFavourites());
     }
 
     setIsFavourites(!isFavourites);
+    const storageArray: string[] = getLocalStorageData(StorageKeys.FAVOURITES);
+
+    dispatch(setFavouritesValue(storageArray.length));
   };
 
   return (

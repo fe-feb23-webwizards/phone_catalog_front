@@ -1,4 +1,6 @@
 import React, { memo, useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { decrementCart, incrementCart } from '../Header/headerSlice.slice';
 import { Phone } from '../../types/Phone';
 import deleteButton from '../pages/CartPage/imgCart/icon_close.svg';
 import './CartProduct.scss';
@@ -12,16 +14,16 @@ import {
 type Props = {
   product: Phone;
   total: number;
-  totalCount: number;
   deleteProduct: (id: string) => void;
   setTotal: React.Dispatch<React.SetStateAction<number>>;
-  setTotalCount: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const CartProduct: React.FC<Props> = memo(({
-  product, total, deleteProduct, setTotal, totalCount, setTotalCount,
+  product, total, deleteProduct, setTotal,
 }) => {
   const [productCounter, setProductCounter] = useState(1);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const storageArray = getLocalStorageData(StorageKeys.CART);
@@ -36,7 +38,7 @@ export const CartProduct: React.FC<Props> = memo(({
 
     setProductCounter(productCounter + 1);
     setTotal(total + product.price);
-    setTotalCount(totalCount + 1);
+    dispatch(incrementCart());
   };
 
   const onMinusClick = (id: string) => {
@@ -44,7 +46,7 @@ export const CartProduct: React.FC<Props> = memo(({
 
     setProductCounter(productCounter - 1);
     setTotal(total - product.price);
-    setTotalCount(totalCount - 1);
+    dispatch(decrementCart());
   };
 
   const phoneImage = `https://raw.githubusercontent.com/fe-feb23-webwizards/phone_catalog_front/main/src/data/${product.image}`;
