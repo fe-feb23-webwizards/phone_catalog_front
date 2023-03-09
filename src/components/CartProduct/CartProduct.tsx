@@ -1,5 +1,6 @@
 import React, { memo, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { decrementCart, incrementCart } from '../Header/headerSlice.slice';
 import { Phone } from '../../types/Phone';
 import deleteButton from '../pages/CartPage/imgCart/icon_close.svg';
@@ -64,17 +65,22 @@ export const CartProduct: React.FC<Props> = memo(({
           src={deleteButton}
           alt="deleteButton"
         />
-        <img
-          className="product__info__img"
-          src={phoneImage}
-          alt="imageIphone"
-        />
+        <Link to={`/phones/${product.phoneId}`}>
+          <img
+            className="product__info__img"
+            src={phoneImage}
+            alt="imageIphone"
+          />
+        </Link>
 
-        <div
-          className="product__info__title"
-        >
-          {product.name}
-        </div>
+        <Link to={`/phones/${product.phoneId}`}>
+          <div
+            className="product__info__title"
+          >
+            {product.name}
+          </div>
+        </Link>
+
       </div>
       <div className="product__counting">
         <div className="product__counting__quantity">
