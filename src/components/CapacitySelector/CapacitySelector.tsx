@@ -1,15 +1,27 @@
 import React, { memo } from 'react';
 import cn from 'classnames';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
+  phoneImage: string;
   capacity: string;
   currentCapacity: string;
-  setCapacity: (memory: string) => void;
+  currentColor: string;
 };
 
 export const CapacitySelector: React.FC<Props> = memo((
-  { capacity, currentCapacity, setCapacity },
+  {
+    capacity, currentCapacity, phoneImage, currentColor,
+  },
 ) => {
+  const navigate = useNavigate();
+
+  const routeChange = (memoryToFind: string) => {
+    const basePhone = phoneImage.split('/')[8];
+
+    navigate(`/phones/${basePhone}-${memoryToFind.toLowerCase()}-${currentColor}`);
+  };
+
   return (
     <button
       type="button"
@@ -19,7 +31,7 @@ export const CapacitySelector: React.FC<Props> = memo((
           'ItemPage__capacity-btn--is-active': capacity === currentCapacity,
         },
       )}
-      onClick={() => setCapacity(capacity)}
+      onClick={() => routeChange(capacity)}
     >
       {capacity}
     </button>

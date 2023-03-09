@@ -40,7 +40,7 @@ export const ItemPage: React.FC = memo(() => {
 
   useEffect(() => {
     loadPhone();
-  }, []);
+  }, [phoneSlug]);
 
   const settings = {
     customPaging(i: number) {
@@ -110,10 +110,12 @@ export const ItemPage: React.FC = memo(() => {
 
                         return (
                           <ColorSelector
+                            colorName={color}
                             color={col}
                             currentColor={currentColor}
-                            setColor={setCurrentColor}
                             key={color}
+                            phoneImage={currentItem.images[0]}
+                            currentCapacity={currentCapacity}
                           />
                         );
                       })}
@@ -133,8 +135,9 @@ export const ItemPage: React.FC = memo(() => {
                         <CapacitySelector
                           key={capacity}
                           capacity={capacity}
-                          setCapacity={setCurrentCapacity}
+                          phoneImage={currentItem.images[0]}
                           currentCapacity={currentCapacity}
+                          currentColor={currentColor}
                         />
                       ))}
                     </div>

@@ -18,7 +18,6 @@ ReactDOM.render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route path="/home" element={<Navigate to="/" replace />} />
-        <Route path=":phoneSlug" element={<ItemPage />} />
         <Route path="/phones">
           <Route index element={<PhonesPage />} />
           <Route path=":phoneSlug" element={<ItemPage />} />
@@ -28,7 +27,6 @@ ReactDOM.render(
         <Route path="/accessories" element={<AccessoriesPage />} />
         <Route path="/favourites">
           <Route index element={<Favourites />} />
-          <Route path=":phoneSlug" element={<ItemPage />} />
         </Route>
         <Route path="/cart" element={<Cart />} />
         <Route index element={<HomePage />} />
