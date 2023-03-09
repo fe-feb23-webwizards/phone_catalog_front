@@ -1,4 +1,5 @@
 import React, { memo, useState, useEffect } from 'react';
+import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Phone } from '../../types/Phone';
@@ -117,7 +118,10 @@ export const PhoneCard: React.FC<Props> = memo(({
       <div className="card__flex">
         <button
           type="button"
-          className="card__button"
+          className={cn(
+            'card__button',
+            { 'card__button--isAdded': isAdded },
+          )}
           onClick={() => onCartClick()}
         >
           {isAdded ? 'Added' : 'Add to cart'}
