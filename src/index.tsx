@@ -32,9 +32,9 @@ ReactDOM.render(
             <Route index element={<Favourites />} />
           </Route>
           <Route path="/cart" element={<Cart />} />
+          <Route index element={<HomePage />} />
+          <Route path="*" element={<PageNotFound />} />
         </Route>
-        <Route index element={<HomePage />} />
-        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </HashRouter>
   </Provider>,
