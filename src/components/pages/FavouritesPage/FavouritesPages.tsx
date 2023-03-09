@@ -21,15 +21,8 @@ export const Favourites: React.FC = memo(() => {
   const shouldShowDiscount = true;
 
   useEffect(() => {
-    // try {
-    //   getAllPhones(1, 6)
-    //     .then(setPhones);
-    // } catch (error) {
-    //   setPhones([]);
-    // }
-
     const idToFavourites: string[] = getLocalStorageData(StorageKeys.FAVOURITES);
-    const favorPhones = phonesList.filter(phone => idToFavourites.includes(phone.id));
+    const favorPhones = phonesList.filter(phone => idToFavourites.includes(phone.phoneId));
 
     setPhones(favorPhones);
   }, [favCountActual]);

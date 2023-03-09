@@ -37,7 +37,6 @@ export const PhoneCard: React.FC<Props> = memo(({
   }, []);
 
   const {
-    id,
     phoneId,
     name,
     price,
@@ -47,6 +46,8 @@ export const PhoneCard: React.FC<Props> = memo(({
     ram,
     image,
   } = phone;
+
+  const id = phoneId;
 
   const [shouldShowDiscountOnCard, setShouldShowDiscountOnCard] = useState(shouldShowDiscount);
 
@@ -84,7 +85,7 @@ export const PhoneCard: React.FC<Props> = memo(({
   };
 
   return (
-    <div className="card" key={id}>
+    <div className="card" key={phoneId}>
 
       <Link to={`/phones/${phoneId}`}>
         <img

@@ -28,7 +28,7 @@ export const CartProduct: React.FC<Props> = memo(({
   useEffect(() => {
     const storageArray = getLocalStorageData(StorageKeys.CART);
 
-    const idCount = storageArray.filter((el: string) => el === product.id).length;
+    const idCount = storageArray.filter((el: string) => el === product.phoneId).length;
 
     setProductCounter(idCount);
   }, []);
@@ -57,7 +57,7 @@ export const CartProduct: React.FC<Props> = memo(({
         <img
           className="product__info__deleteButton"
           onClick={() => {
-            deleteProduct(product.id);
+            deleteProduct(product.phoneId);
             setTotal(total - (product.price * productCounter));
           }}
           aria-hidden="true"
@@ -82,7 +82,7 @@ export const CartProduct: React.FC<Props> = memo(({
             disabled={productCounter === 1}
             type="button"
             className="button__counting"
-            onClick={() => onMinusClick(product.id)}
+            onClick={() => onMinusClick(product.phoneId)}
           >
             -
           </button>
