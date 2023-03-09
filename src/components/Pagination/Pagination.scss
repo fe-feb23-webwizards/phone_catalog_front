@@ -6,6 +6,9 @@
 }
 
 .pag-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 32px;
   width: 32px;
   border: 1px solid #E2E6E9;
@@ -46,8 +49,14 @@
   display: flex;
   flex-wrap: nowrap;
   &__item {
+    font-family: 'Mont';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    
     text-align: center;
-    line-height: 32px;
+    
     color: #0F0F11;
 
     &--link {
