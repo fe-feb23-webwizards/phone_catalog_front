@@ -1,5 +1,7 @@
 import React, { memo, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCartValue } from '../../Header/headerSlice.slice';
 import elementBack from './imgCart/elemBack.svg';
 import './CartPage.scss';
 import phones from '../../../data/phones.json';
@@ -12,12 +14,15 @@ import {
 } from '../../../hooks/useLocalStorage';
 import { CartProduct } from '../../CartProduct/CartProduct';
 import deleteButton from './imgCart/icon_close.svg';
+import { RootState } from '../../../store';
 
 export const Cart: React.FC = memo(() => {
   const [phonesToCart, setPhonesToCart] = useState<Phone[]>([]);
   const [total, setTotal] = useState(0);
-  const [totalCount, setTotalCount] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const totalCount = useSelector((state: RootState) => state.counter.cartValue);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const storageArray: string[] = getLocalStorageData(StorageKeys.CART);
@@ -36,7 +41,6 @@ export const Cart: React.FC = memo(() => {
 
     setPhonesToCart(addedProductsToCart);
     setTotal(sum);
-    setTotalCount(storageArray.length);
   }, []);
 
   const deleteProduct = (id: string) => {
@@ -47,7 +51,7 @@ export const Cart: React.FC = memo(() => {
     const updatedPhones = phonesToCart.filter(phone => phone.id !== id);
 
     setPhonesToCart(updatedPhones);
-    setTotalCount(storageArray.length);
+    dispatch(setCartValue(storageArray.length));
   };
 
   const deleteAllProduct = () => {
@@ -58,6 +62,7 @@ export const Cart: React.FC = memo(() => {
     setTimeout(() => {
       setModalIsOpen(false);
     }, 2500);
+    dispatch(setCartValue(0));
   };
 
   return (
@@ -78,8 +83,6 @@ export const Cart: React.FC = memo(() => {
               setTotal={setTotal}
               product={product}
               deleteProduct={deleteProduct}
-              totalCount={totalCount}
-              setTotalCount={setTotalCount}
             />
           ))}
         </div>
