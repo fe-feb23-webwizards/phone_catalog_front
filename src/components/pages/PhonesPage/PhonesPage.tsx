@@ -11,6 +11,7 @@ import { Phone } from '../../../types/Phone';
 import { phonesAPI } from '../../../utils/phonesFromAPI';
 import { Loader } from '../../Loader/Loader';
 import { getSortedPhones } from '../../../api/phones';
+import { Breadcrump } from '../../Breadcrumbs/Breadcrumbs';
 
 export const PhonesPage: React.FC = memo(() => {
   const [sortBy, setSortBy] = useState('newest');
@@ -40,6 +41,8 @@ export const PhonesPage: React.FC = memo(() => {
 
   return (
     <div className="container">
+      <Breadcrump pageName="Phones" />
+
       <h1 className="page-title">Mobile Phones</h1>
       <h2 className="products-amount">{`${productsAmount} models`}</h2>
 
