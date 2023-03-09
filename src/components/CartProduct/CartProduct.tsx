@@ -1,5 +1,6 @@
 import React, { memo, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { decrementCart, incrementCart } from '../Header/headerSlice.slice';
 import { Phone } from '../../types/Phone';
 import deleteButton from '../pages/CartPage/imgCart/icon_close.svg';
@@ -28,7 +29,7 @@ export const CartProduct: React.FC<Props> = memo(({
   useEffect(() => {
     const storageArray = getLocalStorageData(StorageKeys.CART);
 
-    const idCount = storageArray.filter((el: string) => el === product.id).length;
+    const idCount = storageArray.filter((el: string) => el === product.phoneId).length;
 
     setProductCounter(idCount);
   }, []);
@@ -57,24 +58,29 @@ export const CartProduct: React.FC<Props> = memo(({
         <img
           className="product__info__deleteButton"
           onClick={() => {
-            deleteProduct(product.id);
+            deleteProduct(product.phoneId);
             setTotal(total - (product.price * productCounter));
           }}
           aria-hidden="true"
           src={deleteButton}
           alt="deleteButton"
         />
-        <img
-          className="product__info__img"
-          src={phoneImage}
-          alt="imageIphone"
-        />
+        <Link to={`/phones/${product.phoneId}`}>
+          <img
+            className="product__info__img"
+            src={phoneImage}
+            alt="imageIphone"
+          />
+        </Link>
 
-        <div
-          className="product__info__title"
-        >
-          {product.name}
-        </div>
+        <Link to={`/phones/${product.phoneId}`}>
+          <div
+            className="product__info__title"
+          >
+            {product.name}
+          </div>
+        </Link>
+
       </div>
       <div className="product__counting">
         <div className="product__counting__quantity">
@@ -82,7 +88,7 @@ export const CartProduct: React.FC<Props> = memo(({
             disabled={productCounter === 1}
             type="button"
             className="button__counting"
-            onClick={() => onMinusClick(product.id)}
+            onClick={() => onMinusClick(product.phoneId)}
           >
             -
           </button>

@@ -50,11 +50,11 @@ export const TopSlider: React.FC = memo(() => {
           <h1 className="slider__title grid__item grid__item--tablet-1-9 grid__item--desktop-1-24">Welcome to Nice Gadgets store!</h1>
 
           <Slider
-            className="grid__item grid__item--tablet-2-11 grid__item--desktop-2-23"
+            className="grid__item grid__item--tablet-2-11 grid__item--desktop-2-23 slider__item"
             {...settings}
           >
             <img
-              className="slider__image slider__image-mobile"
+              className="slider__image slider__image--mobile"
               src={banner_1}
               alt="banner for slider"
             />

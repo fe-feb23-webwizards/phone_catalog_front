@@ -1,43 +1,70 @@
 import React, { memo, useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-// import cn from 'classnames';
+import { useNavigate, useParams } from 'react-router-dom';
+import cn from 'classnames';
 import Slider from 'react-slick';
+import { useDispatch } from 'react-redux';
 import { getPhoneById } from '../../../api/phones';
 import { PhoneFromAPI } from '../../../types/PhoneFromAPI';
 import { Breadcrump } from '../../Breadcrump/Breadcrump';
 
 import './SliderStyle.scss';
 import './ItemPage.scss';
+import heartActive from '../../../styles/images/heart-active.svg';
 
 import heart from '../../../styles/images/heart.svg';
 import { AboutPhone } from '../../AboutPhone/AboutPhone';
 import { TechSpecs } from '../../TechSpecs/TechSpecs';
 import { ColorSelector } from '../../ColorSelector/ColorSelector';
 import { CapacitySelector } from '../../CapacitySelector/CapacitySelector';
+import {
+  addToLocalStorage, deleteFromLocalStorage, getLocalStorageData, StorageKeys,
+} from '../../../hooks/useLocalStorage';
+import {
+  decrementCart,
+  incrementCart,
+  incrementFavourites,
+  decrementFavourites,
+  setFavouritesValue,
+} from '../../Header/headerSlice.slice';
 
 export const ItemPage: React.FC = memo(() => {
   const { phoneSlug } = useParams();
 
-  const [currentItem, setCurrentItem] = useState<PhoneFromAPI | null>(null);
+  const [currentItem, setCurrentItem] = useState<PhoneFromAPI>();
   const [currentCapacity, setCurrentCapacity] = useState('');
   const [currentColor, setCurrentColor] = useState('');
   const [images, setImages] = useState<string[]>([]);
 
+  const [isAdded, setIsAdded] = useState(false);
+  const [isFavourites, setIsFavourites] = useState(false);
+  const [id, setId] = useState('');
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const phonesToCart = getLocalStorageData(StorageKeys.CART);
+  const phonesToFavourites = getLocalStorageData(StorageKeys.FAVOURITES);
 
   const loadPhone = async () => {
     try {
       if (phoneSlug) {
         const res = await getPhoneById(phoneSlug);
 
+        const isInCart = phonesToCart.includes(res.id);
+        const isInFavourites = phonesToFavourites.includes(res.id);
+
         setCurrentItem(res);
+        setId(res.id);
         setImages(res.images);
         setCurrentCapacity(res.capacity);
         setCurrentColor(res.color);
+
+        setIsAdded(isInCart);
+        setIsFavourites(isInFavourites);
       }
     } catch {
-      navigate('/notFound');
       setCurrentItem(null);
+      navigate('/notFound');
     }
   };
 
@@ -59,6 +86,33 @@ export const ItemPage: React.FC = memo(() => {
     slidesToScroll: 1,
     arrows: false,
     adaptiveHeight: true,
+  };
+
+  const onCartClick = () => {
+    if (isAdded) {
+      deleteFromLocalStorage({ id, key: StorageKeys.CART });
+      dispatch(decrementCart());
+    } else {
+      addToLocalStorage({ id, key: StorageKeys.CART });
+      dispatch(incrementCart());
+    }
+
+    setIsAdded(!isAdded);
+  };
+
+  const onFavouritesClick = () => {
+    if (isFavourites) {
+      deleteFromLocalStorage({ id, key: StorageKeys.FAVOURITES });
+      dispatch(decrementFavourites());
+    } else {
+      addToLocalStorage({ id, key: StorageKeys.FAVOURITES });
+      dispatch(incrementFavourites());
+    }
+
+    setIsFavourites(!isFavourites);
+    const storageArray: string[] = getLocalStorageData(StorageKeys.FAVOURITES);
+
+    dispatch(setFavouritesValue(storageArray.length));
   };
 
   return (
@@ -164,18 +218,23 @@ export const ItemPage: React.FC = memo(() => {
                   </div>
 
                   <div className="ItemPage__order">
-                    <a
-                      href="/"
-                      className="card__button card__button--big"
+                    <button
+                      type="button"
+                      className={cn(
+                        'card__button',
+                        { 'card__button--isAdded': isAdded },
+                      )}
+                      onClick={() => onCartClick()}
                     >
-                      Add to cart
-                    </a>
+                      {isAdded ? 'Added' : 'Add to cart'}
+                    </button>
 
                     <button
                       type="button"
-                      className="card__add-to-favorite card__add-to-favorite--big"
+                      className="card__add-to-favorite"
+                      onClick={() => onFavouritesClick()}
                     >
-                      <img src={heart} alt="favorite" />
+                      <img src={isFavourites ? heartActive : heart} alt="favorite" />
                     </button>
                   </div>
                 </div>

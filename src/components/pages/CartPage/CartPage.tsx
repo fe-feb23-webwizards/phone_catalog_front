@@ -27,11 +27,11 @@ export const Cart: React.FC = memo(() => {
 
   useEffect(() => {
     const storageArray: string[] = getLocalStorageData(StorageKeys.CART);
-    const addedProductsToCart = phones.filter(phone => (storageArray.includes(phone.id)));
+    const addedProductsToCart = phones.filter(phone => (storageArray.includes(phone.phoneId)));
 
     const prodPrices = storageArray
       .map(idEl => {
-        const productObject = phones.find(item => item.id === idEl);
+        const productObject = phones.find(item => item.phoneId === idEl);
 
         return productObject ? productObject.price : 0;
       });
@@ -49,7 +49,7 @@ export const Cart: React.FC = memo(() => {
 
     const storageArray: string[] = getLocalStorageData(StorageKeys.CART);
 
-    const updatedPhones = phonesToCart.filter(phone => phone.id !== id);
+    const updatedPhones = phonesToCart.filter(phone => phone.phoneId !== id);
 
     setPhonesToCart(updatedPhones);
     dispatch(setCartValue(storageArray.length));
@@ -79,7 +79,7 @@ export const Cart: React.FC = memo(() => {
         <div className="goods">
           {phonesToCart.map(product => (
             <CartProduct
-              key={product.id}
+              key={product.phoneId}
               total={total}
               setTotal={setTotal}
               product={product}
