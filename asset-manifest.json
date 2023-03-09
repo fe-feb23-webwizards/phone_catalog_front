@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/phone_catalog_front/static/css/main.d81ec76f.chunk.css",
-    "main.js": "/phone_catalog_front/static/js/main.3794571c.chunk.js",
-    "main.js.map": "/phone_catalog_front/static/js/main.3794571c.chunk.js.map",
+    "main.css": "/phone_catalog_front/static/css/main.cdc2c9ad.chunk.css",
+    "main.js": "/phone_catalog_front/static/js/main.bc550776.chunk.js",
+    "main.js.map": "/phone_catalog_front/static/js/main.bc550776.chunk.js.map",
     "runtime-main.js": "/phone_catalog_front/static/js/runtime-main.59e92e60.js",
     "runtime-main.js.map": "/phone_catalog_front/static/js/runtime-main.59e92e60.js.map",
     "static/css/2.abcd5c43.chunk.css": "/phone_catalog_front/static/css/2.abcd5c43.chunk.css",
-    "static/js/2.1eaf944b.chunk.js": "/phone_catalog_front/static/js/2.1eaf944b.chunk.js",
-    "static/js/2.1eaf944b.chunk.js.map": "/phone_catalog_front/static/js/2.1eaf944b.chunk.js.map",
+    "static/js/2.e34701c6.chunk.js": "/phone_catalog_front/static/js/2.e34701c6.chunk.js",
+    "static/js/2.e34701c6.chunk.js.map": "/phone_catalog_front/static/js/2.e34701c6.chunk.js.map",
     "index.html": "/phone_catalog_front/index.html",
     "static/css/2.abcd5c43.chunk.css.map": "/phone_catalog_front/static/css/2.abcd5c43.chunk.css.map",
-    "static/css/main.d81ec76f.chunk.css.map": "/phone_catalog_front/static/css/main.d81ec76f.chunk.css.map",
-    "static/js/2.1eaf944b.chunk.js.LICENSE.txt": "/phone_catalog_front/static/js/2.1eaf944b.chunk.js.LICENSE.txt",
+    "static/css/main.cdc2c9ad.chunk.css.map": "/phone_catalog_front/static/css/main.cdc2c9ad.chunk.css.map",
+    "static/js/2.e34701c6.chunk.js.LICENSE.txt": "/phone_catalog_front/static/js/2.e34701c6.chunk.js.LICENSE.txt",
     "static/media/App.scss": "/phone_catalog_front/static/media/Mont-SemiBold.0b5e68eb.ttf",
     "static/media/accessoires.1cb983c2.png": "/phone_catalog_front/static/media/accessoires.1cb983c2.png",
     "static/media/Footer.scss": "/phone_catalog_front/static/media/footer-logo-ok-sign.d8dc8b76.svg",
@@ -38,8 +38,8 @@
   "entrypoints": [
     "static/js/runtime-main.59e92e60.js",
     "static/css/2.abcd5c43.chunk.css",
-    "static/js/2.1eaf944b.chunk.js",
-    "static/css/main.d81ec76f.chunk.css",
-    "static/js/main.3794571c.chunk.js"
+    "static/js/2.e34701c6.chunk.js",
+    "static/css/main.cdc2c9ad.chunk.css",
+    "static/js/main.bc550776.chunk.js"
   ]
 }
