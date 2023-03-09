@@ -4,6 +4,7 @@ import './PhonesList.scss';
 import arrowLeft from '../../styles/images/left-arrow.svg';
 import arrowRight from '../../styles/images/right-arrow.svg';
 import { Phone } from '../../types/Phone';
+import { Loader } from '../Loader/Loader';
 
 type Props = {
   title: string,
@@ -62,9 +63,13 @@ export const PhonesList = (props: Props) => {
         </div>
       </div>
       <div className={`catalog catalog--${slidesPerView}`}>
-        {slidesToShow.map(el => (
-          <PhoneCard phone={el} key={el.id} shouldShowDiscount={shouldShowDiscount} />
-        ))}
+        {!slidesToShow.length ? (
+          <Loader />
+        ) : (
+          slidesToShow.map(el => (
+            <PhoneCard phone={el} key={el.id} shouldShowDiscount={shouldShowDiscount} />
+          ))
+        )}
       </div>
     </section>
   );

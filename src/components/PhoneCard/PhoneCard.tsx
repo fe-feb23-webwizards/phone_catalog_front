@@ -85,7 +85,7 @@ export const PhoneCard: React.FC<Props> = memo(({
   return (
     <div className="card" key={id}>
 
-      <Link to={phoneId}>
+      <Link to={`/phones/${phoneId}`}>
         <img
           src={phoneImage}
           alt="iphone"

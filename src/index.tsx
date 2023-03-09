@@ -28,10 +28,12 @@ ReactDOM.render(
           </Route>
           <Route path="/tablets" element={<TabletsPage />} />
           <Route path="/accessories" element={<AccessoriesPage />} />
-          <Route path="/favourites" element={<Favourites />} />
+          <Route path="/favourites">
+            <Route index element={<Favourites />} />
+          </Route>
           <Route path="/cart" element={<Cart />} />
-          <Route index element={<HomePage />} />
         </Route>
+        <Route index element={<HomePage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </HashRouter>

@@ -12,9 +12,15 @@ export const HomePage: React.FC = memo(() => {
   useEffect(() => {
     try {
       getPhonesForSlider('newest')
-        .then(setNewestPhones);
+        .then(res => {
+          res.sort((a, b) => b.price - a.price);
+          setNewestPhones(res);
+        });
       getPhonesForSlider('cheapest')
-        .then(setCheapestPhones);
+        .then(res => {
+          res.sort((a, b) => b.fullPrice - a.fullPrice);
+          setCheapestPhones(res);
+        });
     } catch (error) {
       setNewestPhones([]);
       setNewestPhones([]);

@@ -26,12 +26,18 @@
     top: 50%;
     left: 50%;
 
-    transform: translate(-50%, -50%);
+    margin: calc(24px / -2) 0px 0px
+    calc(24px / -2);
+
 
     transition: transform 0.3s;
   }
 
   &:hover {
     border-color: #b4bdc4;
+  }
+
+  &:hover &__color {
+    transform: scale(0.8);
   }
 }
