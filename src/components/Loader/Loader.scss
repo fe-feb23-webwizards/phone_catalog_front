@@ -2,7 +2,7 @@ $primaryColor: #313237;
 $secondaryColor: #89939a;
 
 .loader {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
