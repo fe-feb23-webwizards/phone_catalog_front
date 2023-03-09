@@ -9,6 +9,7 @@ module.exports = {
     'react/self-closing-comp': 0,
     'react/display-name': 0,
     'no-console': 'off',
+    'import/no-named-as-default': 'off',
 
     // JavaScript
     semi: 0,
