@@ -108,7 +108,7 @@ $card-width: 272px;
     margin-right: 8px;
   }
 
-  &__price-regular{
+  &__price-regular {
     font-size: 22px;
     color: #89939A;
     text-decoration: line-through;
@@ -208,16 +208,22 @@ $card-width: 272px;
 }
 
 .page-title {
-  margin-top: 40px;
   margin-bottom: 8px;
 
   font-family: 'Mont';
+  font-style: normal;
   font-weight: 800;
-  font-size: 32px;
-  line-height: 41px;
+  font-size: 48px;
+  line-height: 56px;
 
   letter-spacing: -0.01em;
+
   color: #0F0F11;
+
+  @include onMobile {
+    font-size: 32px;
+    line-height: 41px;
+  }
 }
 
 .products-amount {

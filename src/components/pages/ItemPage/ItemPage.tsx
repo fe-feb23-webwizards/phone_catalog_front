@@ -149,14 +149,14 @@ export const ItemPage: React.FC = memo(() => {
                   <div className="ItemPage__price">
                     {currentItem.priceDiscount && (
                       <p className="ItemPage__price--reg">
-                        {currentItem.priceDiscount}
+                        {`${currentItem.priceDiscount}$`}
                       </p>
                     )}
 
                     <p
                       className={currentItem.priceDiscount ? 'ItemPage__price--disc' : 'ItemPage__price--reg'}
                     >
-                      {currentItem.priceRegular}
+                      {`${currentItem.priceRegular}$`}
                     </p>
                   </div>
 
