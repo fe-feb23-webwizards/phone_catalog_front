@@ -28,8 +28,8 @@ export const PhoneCards: React.FC<Props> = memo(({ cards, isLoading, shouldShowD
   return (
     <section className="catalog">
       {cards.map(card => {
-        const isInCart = phonesToCart.includes(card.id);
-        const isInFavourites = phonesToFavourites.includes(card.id);
+        const isInCart = phonesToCart.includes(card.phoneId);
+        const isInFavourites = phonesToFavourites.includes(card.phoneId);
 
         return (
           <PhoneCard
