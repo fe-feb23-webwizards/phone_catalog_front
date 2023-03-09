@@ -5,7 +5,7 @@ import Slider from 'react-slick';
 import { useDispatch } from 'react-redux';
 import { getPhoneById } from '../../../api/phones';
 import { PhoneFromAPI } from '../../../types/PhoneFromAPI';
-import { Breadcrump } from '../../Breadcrump/Breadcrump';
+import { Breadcrump } from '../../Breadcrumbs/Breadcrumbs';
 
 import './SliderStyle.scss';
 import './ItemPage.scss';

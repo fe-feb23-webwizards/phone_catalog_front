@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import type { RootState } from '../../../store';
 import { PhoneCards } from '../../PhoneCards/PhoneCards';
 import './FavouritesPages.scss';
-import { Breadcrump } from '../../Breadcrump/Breadcrump';
+import { Breadcrump } from '../../Breadcrumbs/Breadcrumbs';
 import { Phone } from '../../../types/Phone';
 // import { getAllPhones } from '../../../api/phones';
 import phonesList from '../../../data/phones.json';
