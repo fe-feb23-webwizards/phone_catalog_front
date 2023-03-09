@@ -1,17 +1,17 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { memo } from 'react';
 import './PageNotFound.scss';
 
 export const PageNotFound: React.FC = memo(() => (
-  <div className="not-found">
-    <h1 className="not-found__title">404</h1>
-    <h2 className="not-found__caption">Page Not Found</h2>
-    <div className="card__flex">
-      <a
-        href="/"
-        className="card__button"
-      >
-        Go home
-      </a>
+  <div className="site">
+    <div className="sketch">
+      <div className="bee-sketch red"></div>
+      <div className="bee-sketch blue"></div>
     </div>
+
+    <h1 id="text">
+      Oh, sorry!
+      <small>Nothing found</small>
+    </h1>
   </div>
 ));
