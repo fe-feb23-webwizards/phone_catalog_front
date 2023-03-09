@@ -48,7 +48,7 @@
     height: 320px;
     object-fit: cover;
 
-    &-mobile {
+    &--mobile {
       @include onMobile {
         content: url('../../data/img/banner-mobile.jpg');
       }
