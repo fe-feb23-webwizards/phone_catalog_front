@@ -42,7 +42,7 @@ export const Header: React.FC = memo(() => {
 
   return (
     <header className={cn('header', { header__mobile: isOpenMenu })}>
-      <nav className="nav">
+      <div className="nav">
         <div className="nav__link">
           <Link to="/#" className="nav__link--logo">
             <img src={logo} alt="logo" />
@@ -56,9 +56,9 @@ export const Header: React.FC = memo(() => {
             <img src={isOpenMenu ? menuClose : menuOpen} alt="menu-open" />
           </div>
         </div>
-      </nav>
+      </div>
 
-      <div className={(cn('navigation', { navigation__mobile: !isOpenMenu }))}>
+      <nav className={(cn('navigation', { navigation__mobile: !isOpenMenu }))}>
         <ul className="navigation__list">
           {navLinkInfo.map(el => (
             <li key={el.text} className="navigation__item">
@@ -100,7 +100,7 @@ export const Header: React.FC = memo(() => {
             </NavLink>
           </ul>
         </div>
-      </div>
+      </nav>
     </header>
   );
 });
