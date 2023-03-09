@@ -1,7 +1,10 @@
 import React, { memo, useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import cn from 'classnames';
 import './Header.scss';
 import { Link, NavLink } from 'react-router-dom';
+import type { RootState } from '../../store';
+import { setCartValue, setFavouritesValue } from './headerSlice.slice';
 import logo from './imgForHeader/logo.svg';
 import heart from './imgForHeader/heartFavourite.svg';
 import bag from './imgForHeader/shoppingBag.svg';
@@ -23,12 +26,18 @@ const navLinkInfo = [
 
 export const Header: React.FC = memo(() => {
   const [isOpenMenu, setIsOpen] = useState(false);
-  const [countingProd, setCountingProd] = useState(0);
+
+  const countingCart = useSelector((state: RootState) => state.counter.cartValue);
+  const countingFavourites = useSelector((state: RootState) => state.counter.favouritesValue);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const storageArray: string[] = getLocalStorageData(StorageKeys.CART);
+    const storageCart: string[] = getLocalStorageData(StorageKeys.CART);
+    const storageFavourites: string[] = getLocalStorageData(StorageKeys.FAVOURITES);
 
-    setCountingProd(storageArray.length);
+    dispatch(setCartValue(storageCart.length));
+
+    dispatch(setFavouritesValue(storageFavourites.length));
   }, []);
 
   return (
@@ -67,7 +76,12 @@ export const Header: React.FC = memo(() => {
                 'is-active': isActive,
               })}
             >
-              <li className="navigation__user__item">
+              <li className="navigation__user__item cartNav">
+                {countingFavourites > 0 && (
+                  <span className="count__cart__prod">
+                    {countingFavourites}
+                  </span>
+                )}
                 <img src={heart} alt="favorites" />
               </li>
             </NavLink>
@@ -80,7 +94,7 @@ export const Header: React.FC = memo(() => {
               })}
             >
               <li className="navigation__user__item cartNav">
-                {countingProd > 0 && <span className="count__cart__prod">{countingProd}</span>}
+                {countingCart > 0 && <span className="count__cart__prod">{countingCart}</span>}
                 <img src={bag} alt="shopping bag" />
               </li>
             </NavLink>

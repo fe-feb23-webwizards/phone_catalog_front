@@ -48,6 +48,7 @@ body {
 
   &__link {
     display: flex;
+    position: relative;
 
     @include onMobile {
       flex-direction: row;
@@ -64,7 +65,13 @@ body {
     
       &-el {
         position: absolute;
-        margin-left: -40px;
+        left: 64px;
+        bottom: 17px;
+
+        @include onMobile {
+          left: 64px;
+          bottom: 34px;
+        }
       }
     }
 
@@ -95,7 +102,7 @@ body {
   @include onMobile {
     flex-direction: column;
     height: 100%;
-    opacity: 1;
+    // opacity: 1;
     transition: all 0.4s ease-in;
   }
 
@@ -165,9 +172,9 @@ body {
 
 .navigation__mobile {
   @include onMobile {
-    height: 0;
-    opacity: 0;
-    transition: all 0.4s ease-out;
+    display: none;
+    // opacity: 0;
+    // transition: all 0.4s ease-out;
   }
 }
 
@@ -213,6 +220,7 @@ body {
 .cartNav {
   position: relative;
 }
+
 .count__cart__prod {
   display: flex;
   align-items: center;

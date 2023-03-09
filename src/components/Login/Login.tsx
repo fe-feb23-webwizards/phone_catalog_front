@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import Button from '@mui/material/Button';
 import PropTypes from 'prop-types';
 import './Login.scss';
