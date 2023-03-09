@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 // import cn from 'classnames';
 import Slider from 'react-slick';
 import { getPhoneById } from '../../../api/phones';
@@ -23,6 +23,8 @@ export const ItemPage: React.FC = memo(() => {
   const [currentColor, setCurrentColor] = useState('');
   const [images, setImages] = useState<string[]>([]);
 
+  const navigate = useNavigate();
+
   const loadPhone = async () => {
     try {
       if (phoneSlug) {
@@ -34,6 +36,7 @@ export const ItemPage: React.FC = memo(() => {
         setCurrentColor(res.color);
       }
     } catch {
+      navigate('/notFound');
       setCurrentItem(null);
     }
   };

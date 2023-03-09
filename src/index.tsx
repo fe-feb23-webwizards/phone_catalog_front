@@ -33,7 +33,8 @@ ReactDOM.render(
           </Route>
           <Route path="/cart" element={<Cart />} />
           <Route index element={<HomePage />} />
-          <Route path="*" element={<PageNotFound />} />
+          <Route path="/notFound" element={<PageNotFound />} />
+          <Route path="*" element={<Navigate to="/notFound" />} />
         </Route>
       </Routes>
     </HashRouter>
