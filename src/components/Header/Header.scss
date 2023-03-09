@@ -48,6 +48,7 @@ body {
 
   &__link {
     display: flex;
+    position: relative;
 
     @include onMobile {
       flex-direction: row;
@@ -64,7 +65,13 @@ body {
     
       &-el {
         position: absolute;
-        margin-left: -40px;
+        left: 64px;
+        bottom: 17px;
+
+        @include onMobile {
+          left: 64px;
+          bottom: 34px;
+        }
       }
     }
 
