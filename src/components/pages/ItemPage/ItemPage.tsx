@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import cn from 'classnames';
 import Slider from 'react-slick';
 import { useDispatch } from 'react-redux';
-import { getPhoneById } from '../../../api/phones';
+import { getAllPhones, getPhoneById } from '../../../api/phones';
 import { PhoneFromAPI } from '../../../types/PhoneFromAPI';
 import { Breadcrump } from '../../Breadcrumbs/Breadcrumbs';
 
@@ -26,9 +26,8 @@ import {
   decrementFavourites,
   setFavouritesValue,
 } from '../../Header/headerSlice.slice';
-// import { Phone } from '../../../types/Phone';
-// import { PhonesList } from '../../PhonesList/PhonesList';
-// import { Phone } from '../../../types/Phone';
+import { Phone } from '../../../types/Phone';
+import { PhonesList } from '../../PhonesList/PhonesList';
 
 export const ItemPage: React.FC = memo(() => {
   const { phoneSlug } = useParams();
@@ -37,7 +36,7 @@ export const ItemPage: React.FC = memo(() => {
   const [currentCapacity, setCurrentCapacity] = useState('');
   const [currentColor, setCurrentColor] = useState('');
   const [images, setImages] = useState<string[]>([]);
-  // const [relevantProducts, setRelevantProducts] = useState<Phone[]>([]);
+  const [relevantProducts, setRelevantProducts] = useState<Phone[]>([]);
 
   const [isAdded, setIsAdded] = useState(false);
   const [isFavourites, setIsFavourites] = useState(false);
@@ -53,19 +52,19 @@ export const ItemPage: React.FC = memo(() => {
     try {
       if (phoneSlug) {
         const res = await getPhoneById(phoneSlug);
-        // const allPhones = await getAllPhones();
-        // // const relevantPhones;
+        const allPhones = await getAllPhones();
+        let relevantPhones;
 
-        // // if (res.price) {
-        // //   relevantPhones = allPhones.filter(item => (
-        // //     item.price <= res.priceDiscount + 100)
-        // && (item.price >= res.priceDiscount - 100));
-        // // } else {
-        // const relevantPhones = allPhones.filter(item => (
-        //   item.price <= res.priceDiscount + 100) && (item.price >= res.priceDiscount - 100));
-        // // }
+        if (res.price) {
+          relevantPhones = allPhones.filter(item => (
+            item.price <= res.priceDiscount + 100)
+        || (item.price >= res.priceDiscount - 100));
+        } else {
+          relevantPhones = allPhones.filter(item => (
+            item.price <= res.priceDiscount + 100) || (item.price >= res.priceDiscount - 100));
+        }
 
-        // setRelevantProducts(relevantPhones);
+        setRelevantProducts(relevantPhones);
 
         const isInCart = phonesToCart.includes(res.id);
         const isInFavourites = phonesToFavourites.includes(res.id);
@@ -307,10 +306,10 @@ export const ItemPage: React.FC = memo(() => {
             </div>
           </div>
 
-          {/* <PhonesList
+          <PhonesList
             title="You may also like"
             phones={relevantProducts}
-          /> */}
+          />
         </div>
       )}
     </>
