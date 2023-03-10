@@ -8,7 +8,6 @@ import './PhonesPage.scss';
 import { PhoneCards } from '../../PhoneCards/PhoneCards';
 import { Pagination } from '../../Pagination/Pagination';
 import { Phone } from '../../../types/Phone';
-import { phonesAPI } from '../../../utils/phonesFromAPI';
 import { Loader } from '../../Loader/Loader';
 import { getSortedPhones } from '../../../api/phones';
 
@@ -30,7 +29,7 @@ export const PhonesPage: React.FC = memo(() => {
       getSortedPhones(1, 71, sortBy)
         .then(setPhones);
     } catch (error) {
-      setPhones(phonesAPI);
+      // setPhones(phonesAPI);
     } finally {
       setIsLoading(false);
     }

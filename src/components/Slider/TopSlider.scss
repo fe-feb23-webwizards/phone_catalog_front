@@ -45,18 +45,20 @@
   }
 
   &__image {
-    height: 320px;
+    height: 100%;
     object-fit: cover;
 
     &--mobile {
       @include onMobile {
         content: url('../../data/img/banner-mobile.jpg');
       }
+
+      @include onTablet {
+        content: url('../../data/img/banner-tablet.jpg');
+      }
     }
 
     @include onTablet {
-      height: 190px;
-
       border-radius: 8px;
     }
 
