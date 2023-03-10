@@ -6,3 +6,13 @@
 
 @import 'styles/_blocks/container';
 @import 'styles/_blocks/gridTemplate';
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex-grow: 1;
+}
