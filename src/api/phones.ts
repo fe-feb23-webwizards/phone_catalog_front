@@ -1,8 +1,13 @@
 import { PhonesResponse } from '../types/PhonesResponse';
 import { client } from '../utils/fetchClients';
 
-export const getAllPhones = (page: number, perPage: number) => {
-  return client.get<PhonesResponse>(`/products?page=${page}&perPage=${perPage}`)
+// export const getAllPhones = (page: number, perPage: number) => {
+//   return client.get<PhonesResponse>(`/products?page=${page}&perPage=${perPage}`)
+//     .then(res => res.data);
+// };
+
+export const getAllPhones = () => {
+  return client.get<PhonesResponse>('/products')
     .then(res => res.data);
 };
 

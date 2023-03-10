@@ -26,6 +26,9 @@ import {
   decrementFavourites,
   setFavouritesValue,
 } from '../../Header/headerSlice.slice';
+// import { Phone } from '../../../types/Phone';
+// import { PhonesList } from '../../PhonesList/PhonesList';
+// import { Phone } from '../../../types/Phone';
 
 export const ItemPage: React.FC = memo(() => {
   const { phoneSlug } = useParams();
@@ -34,6 +37,7 @@ export const ItemPage: React.FC = memo(() => {
   const [currentCapacity, setCurrentCapacity] = useState('');
   const [currentColor, setCurrentColor] = useState('');
   const [images, setImages] = useState<string[]>([]);
+  // const [relevantProducts, setRelevantProducts] = useState<Phone[]>([]);
 
   const [isAdded, setIsAdded] = useState(false);
   const [isFavourites, setIsFavourites] = useState(false);
@@ -47,6 +51,18 @@ export const ItemPage: React.FC = memo(() => {
   const loadPhone = async () => {
     if (phoneSlug) {
       const res = await getPhoneById(phoneSlug);
+      // const allPhones = await getAllPhones();
+      // // const relevantPhones;
+
+      // // if (res.price) {
+      // //   relevantPhones = allPhones.filter(item => (
+      // //     item.price <= res.priceDiscount + 100) && (item.price >= res.priceDiscount - 100));
+      // // } else {
+      // const relevantPhones = allPhones.filter(item => (
+      //   item.price <= res.priceDiscount + 100) && (item.price >= res.priceDiscount - 100));
+      // // }
+
+      // setRelevantProducts(relevantPhones);
 
       const isInCart = phonesToCart.includes(res.id);
       const isInFavourites = phonesToFavourites.includes(res.id);
@@ -286,7 +302,7 @@ export const ItemPage: React.FC = memo(() => {
 
           {/* <PhonesList
             title="You may also like"
-            phones={newPhones}
+            phones={relevantProducts}
           /> */}
         </div>
       )}
