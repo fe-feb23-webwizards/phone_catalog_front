@@ -40,6 +40,7 @@ export default function Login({ setToken }) {
       </div>
       <div className="center">
         <h2>Please Log In</h2>
+        <h5>You can use random email and password</h5>
         <form onSubmit={handleSubmit}>
           <input
             type="email"
