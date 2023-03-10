@@ -1,4 +1,4 @@
-@import "../../styles/_colors.scss";
+@import '../../styles/colors';
 
 @mixin gridColums ($number, $size) {
   grid-template-columns: repeat($number, $size);
