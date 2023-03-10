@@ -13,13 +13,14 @@ import {
   deleteAllLocalFromCart,
 } from '../../../hooks/useLocalStorage';
 import { CartProduct } from '../../CartProduct/CartProduct';
-import deleteButton from './imgCart/icon_close.svg';
+// import deleteButton from './imgCart/icon_close.svg';
 import { RootState } from '../../../store';
+import { ThankYouPage } from '../ThankYouPage/ThankYouPage';
 
 export const Cart: React.FC = memo(() => {
   const [phonesToCart, setPhonesToCart] = useState<Phone[]>([]);
   const [total, setTotal] = useState(0);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
 
   const totalCount = useSelector((state: RootState) => state.counter.cartValue);
   const dispatch = useDispatch();
@@ -87,7 +88,26 @@ export const Cart: React.FC = memo(() => {
           ))}
         </div>
 
-        {!modalIsOpen && (
+        {!modalIsOpen && totalCount === 0 && (
+          <div className="total">
+            <div className="total__price">{total}</div>
+            <div className="total__title">
+              {`Total for ${totalCount} ${phonesToCart.length === 1 ? 'item' : 'items'}`}
+            </div>
+            <div className="total__checkout">
+              <button
+                className="total__checkout__but"
+                type="button"
+                onClick={() => deleteAllProduct()}
+                disabled
+              >
+                Checkout
+              </button>
+            </div>
+          </div>
+        )}
+
+        {!modalIsOpen && totalCount !== 0 && (
           <div className="total">
             <div className="total__price">{total}</div>
             <div className="total__title">
@@ -107,16 +127,7 @@ export const Cart: React.FC = memo(() => {
       </div>
 
       {modalIsOpen && (
-        <div className="modal">
-          <button
-            type="button"
-            className="modal__delBut"
-            onClick={() => setModalIsOpen(false)}
-          >
-            <img src={deleteButton} alt="deleteButton" />
-          </button>
-          <p>Замовлення прийнято! Дякуємо та гарного дня!</p>
-        </div>
+        <ThankYouPage setModalIsOpen={setModalIsOpen} />
       )}
     </div>
   );

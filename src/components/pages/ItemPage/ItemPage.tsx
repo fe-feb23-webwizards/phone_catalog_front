@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import cn from 'classnames';
 import Slider from 'react-slick';
 import { useDispatch } from 'react-redux';
@@ -44,11 +44,13 @@ export const ItemPage: React.FC = memo(() => {
   const [id, setId] = useState('');
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const phonesToCart = getLocalStorageData(StorageKeys.CART);
   const phonesToFavourites = getLocalStorageData(StorageKeys.FAVOURITES);
 
   const loadPhone = async () => {
+    try {
     if (phoneSlug) {
       const res = await getPhoneById(phoneSlug);
       // const allPhones = await getAllPhones();
@@ -75,6 +77,10 @@ export const ItemPage: React.FC = memo(() => {
 
       setIsAdded(isInCart);
       setIsFavourites(isInFavourites);
+      }
+    } catch {
+      setCurrentItem(null);
+      navigate('/notFound');
     }
   };
 
