@@ -97,7 +97,7 @@ export const CartProduct: React.FC<Props> = memo(({
             disabled={productCounter === 10}
             type="button"
             className="button__counting"
-            onClick={() => onPlusClick(product.phoneId)}
+            onClick={() => onPlusClick(product.id)}
           >
             +
           </button>
