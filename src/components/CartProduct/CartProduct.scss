@@ -1,18 +1,19 @@
 @import '../../styles/mixins';
+@import '../../styles/colors';
 
 .product {
-  width: 100%;
-  height: 160px;
   display: flex;
-  align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  gap: 0;
+
+  width: 100%;
+  height: 160px;
+
   padding: 0 16px;
 
-  border: 1px solid #E2E6E9;
+  border: 1px solid $color__elements;
   border-radius: 16px;
-  background: #FFFFFF;
+  background: $color__white;
 
   @include onTablet {
     height: 128px;
@@ -24,23 +25,22 @@
   &__info {
     display: flex;
     align-items: center;
+
     width: 100%;
     gap: 24px;
 
     @include onMobile {
       justify-content: space-between;
-      align-items: center;
     }
 
     &__deleteButton {
-      border: 0;
       height: 16px;
       width: 16px;
-    
+
       transition: transform 0.3s ease-in-out;
-    
+
       cursor: pointer;
-    
+
       &:hover {
         transform: scale(1.2);
       }
@@ -53,18 +53,19 @@
 
     &__title {
       width: 176px;
-  
+
       font-family: 'Mont';
       font-style: normal;
       font-weight: 600;
       font-size: 14px;
       line-height: 21px;
-      color: #0F0F11;
-  
+
+      color: $color__primary;
+
       @include onDesktop {
         width: 336px;
       }
-  
+
       @include onMobile {
         width: 128px;
       }
@@ -87,7 +88,7 @@
       align-items: center;
       justify-content: space-between;
     }
-  
+
     &__price {
       width: 60px;
       font-family: 'Mont';
@@ -95,7 +96,8 @@
       font-weight: 800;
       font-size: 22px;
       line-height: 140%;
-      color: #0F0F11
+
+      color: $color__primary
     }
   }
 }
@@ -104,30 +106,41 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
 
-  border-radius: 48px;
-  border: 1px solid #E2E6E9;
+  padding: 0;
   width: 32px;
   height: 32px;
-  font-size: 200%;
 
-  background-color: #fff;
-  color: #0F0F11;
+  border-radius: 48px;
+  border: 1px solid $color__elements;
+
+  background-color: $color__white;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: $color__primary;
 
   cursor: pointer;
-    
-  &:hover {
-    transform: scale(1.2);
-    border: 1px solid #0F0F11;
-    color: #0F0F11;
 
+  &--minus {
+    background-image: url('../../styles/images/minus.svg');
+
+  }
+
+  &--plus {
+    background-image: url('../../styles/images/plus.svg');
+  }
+
+  &:hover {
+    border: 1px solid $color__primary;
+    color: $color__primary;
+
+    transform: scale(1.2);
     transition: all 0.4s ease-in-out;
   }
 
   &:disabled {
     transform: scale(1);
-    color: #B4BDC4;
-    border: 1px solid #B4BDC4;
+    color: $color__icons;
+    border: 1px solid $color__icons;
   }
 }
