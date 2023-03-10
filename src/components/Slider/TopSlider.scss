@@ -56,6 +56,10 @@
       @include onTablet {
         content: url('../../data/img/banner-tablet.jpg');
       }
+
+      @include onTablet {
+        content: url('../../data/img/banner-desktop.jpeg');
+      }
     }
 
     @include onTablet {
