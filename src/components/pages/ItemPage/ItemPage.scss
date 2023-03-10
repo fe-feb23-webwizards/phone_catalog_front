@@ -87,6 +87,15 @@
 
     text-align: center;
 
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      color: #fff;
+      border-color: #0F0F11;
+      background-color: #0F0F11;
+      transform: scale(1.1);
+    }
+
     &--is-active {
       color: #fff;
       border-color: #0F0F11;
