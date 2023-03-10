@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: repeat(1, minmax(min-content, max-content));
   justify-content: center;
-  gap: 16px;
+  column-gap: 16px;
 
   @include onTablet {
     grid-template-columns: repeat(2, minmax(min-content, max-content));

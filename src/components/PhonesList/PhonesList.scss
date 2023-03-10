@@ -213,7 +213,7 @@ $card-width: 272px;
 
 .catalog-display {
   display: flex;
-  gap: 16px;
+  column-gap: 16px;
 }
 
 .page-title {
