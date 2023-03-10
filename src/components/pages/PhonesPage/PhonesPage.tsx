@@ -78,9 +78,9 @@ export const PhonesPage: React.FC = memo(() => {
       </div>
 
       {!phones.length ? (
-        <>
+        <div className="catalog__loader">
           <Loader />
-        </>
+        </div>
       ) : (
         <>
           <PhoneCards
