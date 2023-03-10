@@ -1,4 +1,6 @@
-import React, { memo, useState, useEffect } from 'react';
+import React, {
+  memo, useState, useEffect, useCallback,
+} from 'react';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -84,10 +86,20 @@ export const PhoneCard: React.FC<Props> = memo(({
     dispatch(setFavouritesValue(storageArray.length));
   };
 
+  const backToTop = useCallback(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
+
   return (
     <div className="card" key={phoneId}>
 
-      <Link to={`/phones/${phoneId}`}>
+      <Link
+        to={`/phones/${phoneId}`}
+        onClick={backToTop}
+      >
         <img
           src={phoneImage}
           alt="iphone"
