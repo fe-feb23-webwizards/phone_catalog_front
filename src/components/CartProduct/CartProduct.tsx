@@ -87,19 +87,17 @@ export const CartProduct: React.FC<Props> = memo(({
           <button
             disabled={productCounter === 1}
             type="button"
-            className="button__counting"
+            className="button__counting button__counting--minus"
             onClick={() => onMinusClick(product.phoneId)}
           >
-            -
           </button>
           <div>{productCounter}</div>
           <button
             disabled={productCounter === 10}
             type="button"
-            className="button__counting"
+            className="button__counting button__counting--plus"
             onClick={() => onPlusClick(product.phoneId)}
           >
-            +
           </button>
         </div>
 
