@@ -96,6 +96,8 @@
     display: flex;
     justify-content: center;
 
+    height: 64px;
+
     &:not(:last-child) {
       margin-right: 32px;
 
