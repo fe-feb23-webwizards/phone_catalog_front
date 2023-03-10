@@ -51,32 +51,33 @@ export const ItemPage: React.FC = memo(() => {
 
   const loadPhone = async () => {
     try {
-    if (phoneSlug) {
-      const res = await getPhoneById(phoneSlug);
-      // const allPhones = await getAllPhones();
-      // // const relevantPhones;
+      if (phoneSlug) {
+        const res = await getPhoneById(phoneSlug);
+        // const allPhones = await getAllPhones();
+        // // const relevantPhones;
 
-      // // if (res.price) {
-      // //   relevantPhones = allPhones.filter(item => (
-      // //     item.price <= res.priceDiscount + 100) && (item.price >= res.priceDiscount - 100));
-      // // } else {
-      // const relevantPhones = allPhones.filter(item => (
-      //   item.price <= res.priceDiscount + 100) && (item.price >= res.priceDiscount - 100));
-      // // }
+        // // if (res.price) {
+        // //   relevantPhones = allPhones.filter(item => (
+        // //     item.price <= res.priceDiscount + 100)
+        // && (item.price >= res.priceDiscount - 100));
+        // // } else {
+        // const relevantPhones = allPhones.filter(item => (
+        //   item.price <= res.priceDiscount + 100) && (item.price >= res.priceDiscount - 100));
+        // // }
 
-      // setRelevantProducts(relevantPhones);
+        // setRelevantProducts(relevantPhones);
 
-      const isInCart = phonesToCart.includes(res.id);
-      const isInFavourites = phonesToFavourites.includes(res.id);
+        const isInCart = phonesToCart.includes(res.id);
+        const isInFavourites = phonesToFavourites.includes(res.id);
 
-      setCurrentItem(res);
-      setId(res.id);
-      setImages(res.images);
-      setCurrentCapacity(res.capacity);
-      setCurrentColor(res.color);
+        setCurrentItem(res);
+        setId(res.id);
+        setImages(res.images);
+        setCurrentCapacity(res.capacity);
+        setCurrentColor(res.color);
 
-      setIsAdded(isInCart);
-      setIsFavourites(isInFavourites);
+        setIsAdded(isInCart);
+        setIsFavourites(isInFavourites);
       }
     } catch {
       setCurrentItem(null);
