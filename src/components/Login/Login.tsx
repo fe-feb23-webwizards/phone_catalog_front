@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import './Login.scss';
 
 async function loginUser(credentials) {
-  return fetch('https://gentle-springs-47615.herokuapp.com/login', {
+  return fetch('https://vast-tor-27151.herokuapp.com/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
