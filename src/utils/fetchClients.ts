@@ -1,4 +1,4 @@
-const BASE_URL = 'https://gentle-springs-47615.herokuapp.com';
+const BASE_URL = 'https://vast-tor-27151.herokuapp.com';
 
 type RequestMethod = 'GET';
 
